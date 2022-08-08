@@ -1,0 +1,4 @@
+@import url('general-rule.css');
+header .heading select {
+    display: block;
+}

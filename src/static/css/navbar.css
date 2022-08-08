@@ -1,0 +1,233 @@
+@import url('general-rule.css');
+nav{
+    position: relative;
+}
+ nav .navbar{
+    width: 100%;
+    z-index: 999;
+    font-family: 'MainFont';
+    font-weight: 400;
+    background: #222;
+    height: 60px;
+    top: -2px;
+    position: fixed;
+}
+.nav-link{
+    color: white;
+    text-align: center;
+    transition: all 0.2s ease;
+    position: relative;
+}
+.nav-link:hover::after{
+    content: "";
+    transition: all 0.21s ease;
+    width: 100%;
+    height: 3px;
+    position: absolute;
+    background: rgb(255, 208, 0);
+    bottom: -10px;
+    left: 0px;
+}
+.navbar .nav-link:hover,
+.navbar .nav-link:active,
+.navbar .nav-link:focus{
+    color: rgb(255, 208, 0);
+}
+.nav-link i{
+    padding-left: 10px;
+    font-size: 18px;
+}
+/* .navbar-scroll{
+    background-color: #222;
+    padding: 0;
+    position: fixed;
+    top:0;
+    width: 100%;
+    z-index: 99;
+    box-shadow:0px 1px 10px rgba(0,0,0,0.4);
+    transition-duration: all 6s ease;
+} */
+.login-user{display:none}
+.user-login{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.nav-item a.icon-button {
+    font-size: 20px;
+    align-self: center;
+    color: white;
+    margin: 0px 10px;
+}
+.nav-item .person-img{
+    width: 40px;
+    height: 40px;
+    border-radius:50%;
+    object-fit: cover;
+    font-weight: 500;
+}
+nav .container .logo img{
+    width:100px;
+}
+nav .container .navigation-menu a{
+    color:white;
+    text-decoration: none;
+    padding: 5px 15px;
+}
+nav .container .navigation-menu a svg{
+    padding-left:8px;
+}
+/* ul.dropdown-list{
+    position: absolute;
+    list-style-type: none;
+    right: 300px;
+    background-color:black;
+    border-radius: 12px;
+    display:none;
+} */
+.dropdown-user{
+    list-style: none;
+    background: #ffffff;
+    padding: 10px;
+    border-radius: 4px;
+    display: none;
+    transition: all 0.2s ease-in-out;
+}
+.menu-toggle-btn{
+    line-height: 45px !important;
+    color: #fff;
+    font-size:26px;
+    display:none ;
+    cursor: pointer;
+}
+li.mob{
+    display:none;
+}
+/* navbar in mobile start */
+
+@media screen and (max-width:990px){
+    .navbar .container{
+        background-color:#222;
+    }
+    .user-login a.icon-search , .user-login a.icon-bell , .dropdown{
+        display: none;
+    }
+    li.mob{
+        display:block;
+    }
+    .nav-item{
+        margin-bottom:10px;
+        color: white;
+    }
+    .user-login:hover .dropdown-user{
+        display: none;
+    }
+    nav .container .navigation-menu{
+        order:-1;
+        background-color:#0c0a04;
+        padding:10px ;
+        width:100%;
+        position: absolute;
+        top:95px;
+        left: 0;
+        display: none;
+    }
+    .navigation-menu.active{
+        display:block !important;
+    }
+    .navbar-toggler-icon{
+        color: white;
+    }
+}
+/* navbar in mobile end */
+.dropdown-menu.show{
+    text-align: right;
+    font-family: 'Aljazeera' !important;
+    font-size: 20px;
+    border-radius: 0px;
+    padding:10px;
+    left: -85px;
+    margin-top: 17px;
+}
+.dropdown-menu.show:after{
+    content: '';
+    border: 10px solid transparent;
+    border-bottom: 10px solid #d5dae0;
+    margin-left: 2px;
+    margin-bottom: 5px;
+    display: inline-block;
+    vertical-align: bottom;
+    position: absolute;
+    top: -21px;
+    left: 47%;
+}
+nav .user ul{
+    list-style: none;
+    border-color: none;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 5%);
+    background: #f0f0f0b0;
+    padding: 0px 10px;
+    display: none;
+}
+nav .user ul li{
+    padding-bottom: 10px;
+}
+nav .user ul li a{
+    color: rgb(0, 0, 0) ;
+}
+nav .user a.username:hover nav 
+.user ul {
+    display: block;
+}
+nav .user ul li a:hover{
+    background-color:var(--main-color);
+    color: rgb(247, 247, 247);
+}
+button{
+    background: none;
+    outline: none;
+    border: none;
+    color: white;
+    padding: 0px 10px;
+    font-size: 20px;
+}
+.search-navbar{
+    width: 30%;
+    position: absolute;
+    left: 0;
+    transform:translateY(120%);
+    display: none;
+}
+.search-navbar form{
+    position: relative;
+    background: rgb(70, 70, 70);
+}
+.search-navbar form input[type="text"]{
+    width: 100%;
+    font-size: 20px;
+    background: none;
+    font-size: 20px;
+    font-family: 'MainFont';
+    color: white;
+    padding: 5px 10px;
+}
+.search-navbar form input[type="text"]:focus{
+    border:none;
+    outline: none;
+}
+.search-navbar form input[type="submit"]{
+    position: absolute;
+    top: 16%;
+    background: none;
+    left: 0;
+    font-size: 14px;
+    color: rgb(204, 204, 204);
+    padding: 5px 20px;
+    border-radius: 20px;
+    font-family: 'MainFont';
+    border: none; 
+}
+.search-navbar.show{
+}
+
+

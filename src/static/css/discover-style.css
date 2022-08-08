@@ -1,0 +1,44 @@
+@import url('general-rule.css');
+
+header{
+    background:url('../image/discover-back.jpg');
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: cover;
+}
+header .container .main-heading h1{
+    color: var(--yellow-color);
+}
+header .container .main-heading p{
+    font-size: 40px;
+    color: white;
+    font-weight: 500;
+}
+header .container .main-heading .search-box{
+    text-align: center;
+    position:relative;
+}
+header .container .main-heading .search-box input{
+    width: 45%;
+    font-family: 'MainFont';
+    padding: 10px 40px 10px 10px;
+    font-size: 20px;
+    border: 2px solid white;
+    border-radius: 50px;
+    outline: none;
+    background-color:rgba(216, 216, 216, 0.61);
+}
+header .container .main-heading .search-box i{
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    font-size:20px;
+}
+@media (max-width: 768px){
+    header .container .main-heading .search-box input{
+        width: 100%;
+    }
+    header .container .main-heading p{
+        font-size: 30px;
+    }
+}

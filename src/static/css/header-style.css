@@ -1,0 +1,259 @@
+@import url('general-rule.css');
+
+/* start section header */
+header{
+    height: 50vh;
+    background-image: url("../image/back-destiotion.jpg");
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position:62% 34% !important;
+    background-attachment: fixed !important;
+    position: relative ;
+    padding-top: 200px;
+    padding-bottom: 200px;
+}
+header::after{
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.342);
+}
+header .container .main-heading{
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%,-80%);
+    z-index: 3;
+}
+header .container .main-heading h1{
+    font-family: "mainFont";
+    color: white;
+    font-size: 4.5rem;
+}
+header .main-heading form input[type="submit"]:hover{
+    background: linear-gradient(90deg, rgb(70, 70, 70), #222);
+}
+header .main-heading form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin:20px 0px;
+}
+header .main-heading form label{
+    display: none;
+}
+header .main-heading form input[type="text"]{
+    width: 50%;
+    padding: 6px 18px;
+    border-radius: 25px;
+    border: none;
+    background: #ffffffed;
+    font-size: 20px;
+    font-family: 'Mainfont';
+    color: rgb(37, 37, 37);
+}
+header .main-heading form input[type="submit"]{
+    border-radius: 30px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgb(0 0 0 / 20%);
+    background: linear-gradient(90deg, var(--main-color), #55e7fc);
+    outline: none;
+    border: none;
+    width: 118px;
+    padding: 6px;
+    margin-right: 10px;
+    font-family: 'Mainfont';
+    transition: all 0.21s ease;
+}
+.container .title-category{
+    font-size: 41px;
+    text-align: center;
+    margin: 30px 0px;
+    font-weight: 700;
+}
+header .main-heading form input[type="submit"]:hover{
+    background: linear-gradient(90deg, rgb(70, 70, 70), #222);
+}
+
+.category form {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin:20px 0px;
+}
+.category form label{
+    display: none;
+}
+.category form select{
+    padding: 5px 10px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-family: 'MainFont';
+    width:90%;
+    border: none;
+    background:#f0f0f0c4;
+}
+.category form select option:hover{
+    background:var(--main-color);
+    color:white;
+}
+.category form input[type="submit"]{
+    border-radius: 30px;
+    text-decoration: none;
+    width:90%;
+    color: #fff;
+    font-size: 18px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgb(0 0 0 / 20%);
+    background: linear-gradient(90deg, var(--main-color), #55e7fc);
+    outline: none;
+    border: none;
+    width: 118px;
+    padding: 6px;
+    margin-right: 10px;
+    font-family: 'Mainfont';
+    transition: all 0.21s ease;
+}
+
+@media (max-width:990px){
+    header .main-heading form{
+        flex-direction: column;
+    }
+    header .main-heading form input[type="text"]{
+        width: 80%;
+    }
+    header .main-heading form input[type="submit"]:hover{
+        margin-top: 10px;
+    }
+    .category form {
+        display: flex;
+    }
+    .container .title-category{
+        font-size: 32px;
+    }
+    
+}
+@media (max-width:750px) {
+    header .container .main-heading h1{
+        font-size: 3rem;
+    }
+    .category h2{
+        font-size: 30px;
+        top: -10px;
+    }
+    .container .title-category{
+        font-size: 24px;
+    }
+}
+header .container .main-heading ol{
+    color: white;
+    text-align: center;
+    list-style: none;
+    display:flex;
+    justify-content: center;
+    font-size: 25px;
+    color: var(--yellow-color);
+    font-family: "mainFont";
+}
+header .container .main-heading ol li{
+    padding-left: 10px;
+}
+.container .continent-box{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+.container .continent-box li{
+    display:flex;
+    width:18%;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'MainFont';
+    border: 2px solid var(--black-color);
+    color: var(--black-color);
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.container .continent-box li a{
+    font-size: 20px;
+    color:var(--black-color);
+    text-decoration: none;
+}
+.container .continent-box li i{
+    font-size: 30px;
+}
+.container .continent-box li:hover{
+    background-color: var(--black-color);
+    color: white;
+    transition: all 0.5s ease;
+}
+.container .continent-box li:hover a{
+    color: white;
+}
+header .inner-header-shape .content-header form{
+    display: none;
+}
+@media (max-width:1200px){
+    header .inner-header-shape .content-header h1{
+        font-size:55px;
+        transform: translateY(70%)
+    }
+    .container .continent-box li{
+        width:18%;
+    }
+    .container .continent-box li a{
+        font-size: 16px;
+    }
+    .container .continent-box li i{
+        font-size: 20px;
+    }
+    .login-user{display:inline-block;}
+}
+@media (max-width:990px){
+    .container .continent-box{
+        display: none;
+    }
+    header .inner-header-shape .content-header h1{
+        font-size: calc(2.15rem + 1rem);
+        transform: translateY(140%)
+    }
+    header .heading{
+        transform: translateY(120%);
+        display:flex;
+        flex-direction: column;
+        margin: 0 30px;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+    header .heading select {
+        display:inline-block;
+        width: 70%;
+        padding: 4px;
+        margin-top:0px;
+        outline: none;
+        font-family: "MainFont";
+    }
+    
+}
+@media (max-width:350px){
+    header .heading{
+        transform: translateY(140%)
+    }
+    header .container .login-user{
+        display: inlin;
+    }
+}
+/* End section header */

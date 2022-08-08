@@ -1,0 +1,125 @@
+@import url('general-rule.css');
+
+header{
+    background-image: url('../image/planningback.jpg');
+    background-attachment: scroll !important;
+}
+.plan-information .heading{
+    text-align: center;
+    margin: 50px 0px;
+}
+.plan-information .heading h2{
+    text-align: center;
+    font-family: 'Mainfont';
+    color: #4e4e4e;
+    font-size: 40px;
+}
+.plan-information .heading span{
+    font-family: unset;
+    color: var(--main-color);
+    font-size: 22px;
+    font-weight: 600;
+}
+.plan-information .row{
+    margin: auto 60px;
+}
+
+.plan-information .row .box-informa{
+    background: var(--main-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    border-radius: 25px;
+    cursor: pointer;
+}
+.plan-information .row .box-informa:hover{
+    background:black;
+
+    transition:0.21s all ease;
+}
+.plan-information .row .box-informa img{
+    width: 100px;
+    height: 100px;
+    
+}
+.plan-information .row .box-informa:nth-child(4) img{
+    transform:rotate(180deg)
+}
+.plan-information .row .box-informa span{
+    font-family: 'Mainfont';
+    margin-top: 15px;
+    font-size: 20px;
+    color: white;
+    text-align: center;
+}
+@media (max-width:990px){
+    .plan-information{
+        display:none;
+    }
+}
+/* end section one */
+/* start section CreateTraip */
+.CreateTraip{
+    margin: 80px 50px 50px 50px;
+}
+.CreateTraip h2
+{
+    text-align: center;
+    font-family: 'Mainfont';
+    color: #4e4e4e;
+    font-size: 40px;
+}
+.CreateTraip form{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: auto;
+    justify-content: flex-start;
+}
+.CreateTraip input{
+    margin: 20px;
+    padding: 10px;
+    border-radius: 47px;
+    border: 1px solid #2e2e2e;
+    font-family: 'MainFont';
+}
+.CreateTraip select{
+    margin: 20px;
+    padding: 10px 18px;
+    border-radius: 47px;
+    border: 1.5px solid #555555;
+    font-family: 'MainFont';
+}
+.CreateTraip input:focus{
+    border: 1px solid var(--main-color);
+    outline: none;
+}
+.CreateTraip .box2{
+    width: 70%;
+    text-align: center;
+    font-family: 'Mainfont';
+}
+.CreateTraip .box2 a{
+    padding: 12px;
+    margin: 10px 10px;
+    font-size: 20px;
+    font-family: 'MainFont';
+    color: white;
+    background: linear-gradient(90deg, var(--main-color), #55e7fc);
+}
+@media (max-width:990px){
+    .CreateTraip form{
+        width: 80%;
+    }
+}
+@media (max-width:767px){
+    .CreateTraip{
+        margin: 80px 10px 50px 10px;
+    }
+    .CreateTraip form{
+        width: 100%;
+    }
+}
+/* end section CreateTraip */

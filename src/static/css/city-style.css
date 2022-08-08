@@ -1,0 +1,25 @@
+@import url('general-rule.css');
+
+header{
+    background:url('../image/slide03.jpg');
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+/* section -info-city */
+.info-city{
+    margin: 40px 0px;
+}
+.info-city h2{
+    font-family: "MainFont";
+    font-size: 40px;
+    color: var(--main-color);
+    text-align: center;
+}
+.info-city p{
+    font-family: 'Aljazeera';
+    font-size: 30px;
+    text-align: center;
+    color: var(--text-color);
+}
