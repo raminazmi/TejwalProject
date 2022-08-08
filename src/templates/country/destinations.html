@@ -1,0 +1,51 @@
+{% extends "new_base.html" %}
+{% load static %}
+{% block meta_code %}
+    <title>الوجهات السياحية حول العالم </title>
+    <meta name="description" content=" تعرف على أشهر الدول السياحية حول العالم وأشهر المدن في كل دولة سياحية والمعالم السياحية والأنشطة السياحية المرتبطه في كل دولة" >
+    <meta name="keywords" content="الدول السياحيه , الوجهات السياحية , المعالم السياحية , السياحه , السفر">
+{% endblock %}
+    <!-- css file that related in this page  -->
+    {% block css_files %}
+    {% endblock %}
+    
+    {% block content %}
+    <!--=========================== breadcrumb ===========================-->
+    <section class="breadcrumb-size">
+        <div class="main_container">
+            <nav style="--breadcrumb-divider: quote('>');" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="{% url 'MainPage' %}"><img src="{% static 'image/home1.svg' %}"></a>
+                    </li>
+                    <li class="breadcrumb-item " aria-current="page">الوجهات</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+    <!--=========================== Tourist Destinations ===========================-->
+    <section class="main_container  Destinations Tourist_Destinations">
+        <p class="section_title"><span class=""></span>الوجهات الرائجه</p>
+        <div class="row">
+            {% for object in destinations %}
+            <div class="swiper-slide col-lg-3 col-md-4 col-sm-6">
+                <div class="card_curve">
+                    <a href="{% url 'country' object.slug %}">
+                        <img src="{{object.image.url}}" class="card__image" alt="" />
+                        <h2 class="city_name">{{object.name_country}}</h2>
+                    </a>
+                    <div class="flag"><img src="{% static 'image/qatar.svg'%}" alt=""></div>
+                </div>
+            </div>
+
+            {% endfor%}
+        </div>
+    </section>
+    <!--=========================== Tourist Destinations ===========================-->
+    <section class="main_container  Destinations Tourist_Destinations">
+        <p class="section_title"><span class=""></span>قارة أسيا</p>
+        <div class="row">
+
+        </div>
+    </section>
+    {% endblock %}

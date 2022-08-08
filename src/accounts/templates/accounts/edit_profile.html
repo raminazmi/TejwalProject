@@ -1,0 +1,56 @@
+{% extends 'base_profile.html' %}
+{% load static %}
+
+{% block meta_code %}
+<title>تجوال | الملف الشخصي</title>
+{% endblock %}
+
+{% block content%}
+          <!--=========================== Profile ===========================-->
+    <section class="profile">
+        <div class="main_container">
+            <div class="box-form">
+                 <div class="right">
+                        <form method="POST" action="{% url 'accounts:edit_profile' %}">
+                            {% csrf_token %}
+                            <h5>تعديل الملف الشخصي</h5>
+                      <div class="edit_img">
+                            <img src="#" alt="">
+                            <div class="change_img">
+                                <div class="mb-3">
+                                    <label for="formFile" class="form-label">تغير الصورة الشخصية</label>
+                                    <input class="form-control" type="file" name="person_image">
+                                </div>
+                            </div>
+                        </div>
+                            <div class="inputs">
+                                <div class="names">
+                                    <div>
+                                        <h6>الاسم الأول</h6>
+                                        <input type="text" name="first_name" placeholder="أدخل الاسم الجديد" value="{{userform.first_name.value}}">
+                                    </div>
+                                    <div>
+                                        <h6 class="">اسم العائله</h6>
+                                        <input type="text" name="last_name" placeholder="أدخل اسمك الأخير "  value="{{userform.last_name.value}}">
+                                    </div>
+                                </div>
+                                <div class="names">
+                                <div>
+                                    <h6>اسم المستخدم</h6>
+                                    <input type="text" name="username" placeholder="أدخل اسم المستخدم  "  value="{{userform.username.value}}">
+                                </div>
+                                <div>
+                                    <h6 class="">تاريخ الميلاد</h6>
+                                    <input type="text" name="brithdate" placeholder="تاريخ الميلاد" value="{{profileform.brithdate.value | date:'d.m.Y'}}" onfocus="(this.type='date')">
+                                </div>
+                                </div>
+                                <div class="register">
+                                    <input type="submit" class="custom_button" value="حفظ التعديلات الجديده">  
+                                </div>
+                        </form>
+                </div>
+            </div>
+            </div>
+            </section>
+
+{% endblock %}

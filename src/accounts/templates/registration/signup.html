@@ -1,0 +1,76 @@
+{% extends 'base_profile.html' %}
+{% load static %}
+    {% block meta_code %}
+    <title>تجوال السياحي | تسجيل جديد</title>
+    <meta name="description" content="انضم إلى تجوال السياحي واستمتع بمجموعة من الأدوات التى تساعدك في التخطيط لرحلتك القادمة">
+    {% endblock %}
+
+    {% block css_files%}
+        <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    {% endblock %}
+
+    <!--=========================== Login ===========================-->
+    {% block content%}
+    <form method="POST" novalidate">
+        <div class="box-form">
+            <div class="right">
+                <h5>تسجيل جديد</h5>
+                <div class="inputs">
+                    {% csrf_token %}
+                    <div class="another_register">
+                        <a href="#"><img src="{% static 'image/google_PNG.svg' %}" alt=""></a>
+                        <a href="#"><img src="{% static 'image/Facebook-Logo.wine_.svg' %}" alt=""></a>
+                    </div>
+                    <br>
+                    <div class="inputs">
+                        <div class="names">
+                            <div>
+                                <h6>الاسم الأول</h6>
+                                <input type="text" name="first_name" maxlength="150" id="id_first_name" placeholder="  الاسم الأول">                            
+                            </div>
+                            <div>
+                                <h6 class="">اسم العائله</h6>
+                                <input type="text" name="last_name" maxlength="150" id="id_last_name" placeholder="الاسم الثاني">                            
+                            </div>
+                        </div>
+                        <div class="names">
+                            <div>
+                                <h6>اسم المستخدم</h6>
+                                <input type="text" name="username" maxlength="150" autofocus="" placeholder=" اسم المستخدم" required="" id="id_username">                            </div>
+                        </div>
+                        <h6>البريد الإلكتروني</h6>
+                        <input type="email" name="email" maxlength="254" id="id_email">                        <br>
+                        <h6 class="">كلمه المرور</h6>
+                        <input type="password" name="password1" autocomplete="new-password" placeholder=" كلمه السر" required="" id="id_password1">                       
+                        <h6 class="">تأكيد كلمةالمرور</h6>
+                        <input type="password" name="password2" placeholder="تأكيد كلمه السر">
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" id="accepted">
+                        <label for="accepted"> الموافقه على <a href="#">الشروط والأحكام</a> الخاصه بنا</label>
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" id="notifications">
+                        <label for="notifications">استقبل الإشعارات و العروض من خلال البريد الإلكتروني</label>
+                    </div>
+                    <br>
+                    <div class="register">
+                        <input type="submit" class="custom_button" value="تسجيل جديد">
+                    </div>
+                </div>
+
+                <p>لدي حساب بالفعل ؟<a href="{% url 'accounts:login' %}"> تسجيل دخول </a></p>
+            
+            </div>
+            <div class="left" style="background-image: url({% static 'image/Login_image.jpeg' %});">
+            </div>
+        </div>
+    </form>
+{% endblock %}
+
+    <!--=========================== Footer ===========================-->
+    <!-- <div class="rights ">
+        <div class=" ">
+            <p class=" mb-0 py-2 "> كل الحقوق محفوظة © 2022 </p>
+        </div>
+    </div> -->

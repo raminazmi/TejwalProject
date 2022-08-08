@@ -1,0 +1,170 @@
+{% extends "new_base.html" %}
+{% load static %}
+
+    {% block meta_code %}
+        <title>{{post.title}}</title>
+        <meta name="title" content="{{post.title}}">
+        <meta name="description" content="{{post.meta_description}}">
+        <meta name="keywords" content="سياحه">
+        <meta name="robots" content="index, follow">
+
+    {% endblock %}
+    
+    {% block css_files %}
+    <link rel="stylesheet" href="{% static 'css/articles.css' %}">
+    {% endblock %}
+
+    {% block content %}
+        <!--=========================== breadcrumb ===========================-->
+        <section class="breadcrumb-size">
+            <div class="main_container">
+                <nav style="--breadcrumb-divider: quote('>');" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="{% url 'MainPage' %}"><img src="{% static 'image/home1.svg' %}"></a>
+                        </li>
+                        <li class="breadcrumb-item" aria-current="page">الرئيسية</li>
+                        <li class="breadcrumb-item " aria-current="page">المقالات</li>
+                        <li class="breadcrumb-item active" aria-current="page">{{post.get_category_display}}</li>
+                    </ol>
+                </nav>
+            </div>
+        </section>
+        <!--=========================== Img-cover ===========================-->
+        <section class="Articales_view main_container ">
+            <h1 class="">{{post.title}}</h1>
+            <div class="Img-cover-resturnt">
+                <div class="Img-cover">
+                    <div class="CoverImage FlexEmbed Flex-Embed" style="background-image:url({{post.background.url}})">
+                    </div>
+                    <div class="section_Author">
+                        <div>
+                            <span class="Author_column"></span>
+                            <div class="Author">
+                                <h4>{{post.author.user.first_name}} {{post.author.user.last_name}}</h4>
+                                <h6>{{post.publish_date | date:'d.m.Y'}}</h6>
+                            </div>
+                        </div>
+                        <a class="Share"><img src="{% static 'image/ic_share_24px.svg' %}"></a>
+                    </div>
+                     <p>{{post.subtitle}}</p>
+                </div>
+            </div>
+        </section>
+        <!--=========================== Most Read ===========================-->
+        <section class="most_read">
+            <div class="main_container ">
+                <p class="section_title"><span class=""></span>إقرأ أيضا</p>
+                <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">مقالات</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">نصائح للسفر</button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+                        <div class="Article-data">
+                            <span class="">1</span>
+                            <a href="#">
+                                <h6 class="Article-title ">تعرف على أشهر شؤاطى السياحية حول العالم ... عنوان للمقاله شبيه بالمقالة </h6>
+                            </a>
+                        </div>
+                        <div class="Article-data">
+                            <span class="">2</span>
+                            <a href="#">
+                                <h6 class="Article-title ">أفضل 5 شواطئ أثناء زيارتك للقطر</h6>
+                            </a>
+                        </div>
+                        <div class="Article-data">
+                            <span class="">3</span>
+                            <a href="#">
+                                <h6 class="Article-title ">أفضل 6 أماكن سياحية في قطر للأطفال</h6>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+                        <div class="Article-data">
+                            <span class="">1</span>
+                            <a href="#">
+                                <h6 class="Article-title ">لتجنب أسوأ اللحظات.. ماذا تفعل إذا فاتتك رحلة الطائرة؟</h6>
+                            </a>
+                        </div>
+                        <div class="Article-data">
+                            <span class="">2</span>
+                            <a href="#">
+                                <h6 class="Article-title ">استخدم هذه الحيل الـ 11 لحجز تذاكر طيران أرخص</h6>
+                            </a>
+                        </div>
+                        <div class="Article-data">
+                            <span class="">3</span>
+                            <a href="#">
+                                <h6 class="Article-title ">أبرز مزايا البطاقة الحمراء في الغابة السوداء</h6>
+                            </a>
+                        </div>
+                        <div class="Article-data">
+                            <span class="">4</span>
+                            <a href="#">
+                                <h6 class="Article-title ">اكتشف الكنوز المخفية في حدائق مونتريال النباتية</h6>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class=" Articales_view main_container">
+            <div class="Img-cover-resturnt">
+                <div class="Img-cover">
+                   {{post.body | safe}}
+                </div>
+            </div>
+        </section>
+
+        <!--=========================== Articales View ===========================-->
+        {% for object in parts %}
+        <section class=" Articales_view main_container">
+            <div class="Img-cover-resturnt">
+                <div class="Img-cover">
+                    <h3 class=""> <strong>{{object.title}}</strong></h3>
+                    {% if object.image %}
+                        <div class="CoverImage FlexEmbed Flex-Embed" style="background-image:url({{object.image.url}})">
+                        </div>
+                        <h5>{{object.alt_image}}</h5>
+                    {% endif %}
+                    <p>{{object.body | safe}}</p>
+                </div>
+            </div>
+        </section>
+        {% endfor%}
+        <!--=========================== Articles Gallery  ===========================-->
+        <section class="gallery gallery_Articles">
+            <div class="main_container">
+                <p class="section_title "><span class=""></span>المقالات</p>
+                <div class="Articles_gallery">
+                    <div class="row gallery-item">
+                        {% for object in articles %}
+                        <div class="item col-lg-4 col-md-6">
+                            <div class=" filterDiv ">
+                                <div class="swiper-slide">
+                                    <div href=" " class="card_curve">
+                                        <a href="{% url 'article_view' object.slug %}">
+                                            <img src="{{object.background.url}}" class="card__image" alt="" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <h5 class="">{{object.title}}</h5>
+    
+                            <div href="{% url 'article_view' object.slug %}" class="more-read ">
+                                <h5>إقرأ المزيد</h5>
+                                <i class="ri-arrow-left-s-line "></i>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            </section>
+    {% endblock %}

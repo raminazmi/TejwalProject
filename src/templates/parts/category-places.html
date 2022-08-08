@@ -1,0 +1,213 @@
+{% load static %}
+<section class="main_container landmarks Destinations ">
+    <p class="section_title"><span class=""></span>استكشف {{destination.name_country}} بالطريقه التي تريد</p>
+    <div class="swiper mySwiper-landmarks Explore">
+        <div class="arrows">
+            <i class="ri-arrow-right-s-line arrow_swipe_right"></i>
+            <i class="ri-arrow-left-s-line arrow_swipe_left"></i>
+        </div>
+        <div class="swiper-wrapper">
+            <!------------------------------ Foods ---------------------------------->
+            {% if is_restaurant == True %}
+            {% else %}
+            <div class="swiper-slide">
+                <div href="{% url 'restaurants_view' destination.slug %}" class="card_curve">
+                    <a href="{% url 'restaurants_view' destination.slug %}">
+                        <img src="{% static 'image/tiny-480px.svg' %}" class="card__image" alt="" />
+                        <h2 class="city_name">المأكولات و المطاعم</h2>
+                        <button class="custom_button">
+                            <a class="" href="{% url 'restaurants_view' destination.slug %}">
+                                <span>استكشف</span>
+                            </a>
+                        </button>
+                    </a>
+                </div>
+            </div>
+            {% endif %}
+
+            <!------------------------- Cluture and art ----------------------------->
+            {% if is_culture == True %}
+            {% else %}
+                {% if type_destination == 'country' %}
+                <div class="swiper-slide">
+                <div href="{% url 'culture_view' destination.slug %}" class="card_curve">
+                    <a href="{% url 'culture_view' destination.slug %}">
+                        <img src="{% static 'image/huge-2560px.svg' %}" class="card__image" alt="" />
+                        <h2 class="city_name">فن وثقافه</h2>
+                        <button class="custom_button">
+                            <a class="" href="{% url 'culture_view' destination.slug %}">
+                                <span>استكشف</span>
+                            </a>
+                        </button>
+                    </a>
+                </div>
+                </div>
+                {% else %}
+                <div class="swiper-slide">
+                    <div href="{% url 'culture_city' destination.slug %}" class="card_curve">
+                        <a href="{% url 'culture_city' destination.slug %}">
+                            <img src="{% static 'image/huge-2560px.svg' %}" class="card__image" alt="" />
+                            <h2 class="city_name">فن وثقافه</h2>
+                            <button class="custom_button">
+                                <a class="" href="{% url 'culture_city' destination.slug %}">
+                                    <span>استكشف</span>
+                                </a>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                {% endif %}
+            {% endif %}
+
+            <!------------------------------ Marketing -------------------------------->
+            {% if is_culture == True %}
+            {% else %}
+                {% if type_destination == 'country' %}
+                <div class="swiper-slide ">
+                <div href="{% url 'market_view' destination.slug %}" class="card_curve">
+                    <a href="{% url 'market_view' destination.slug %}">
+                        <img src="{% static 'image/تسوق.svg' %}" class="card__image" alt="" />
+                        <h2 class="city_name">التسوق</h2>
+                        <button class="custom_button">
+                            <a class="" href="{% url 'market_view' destination.slug %}">
+                                <span>استكشف</span>
+                            </a>
+                        </button>
+                    </a>
+                </div>
+                </div>
+                {% else %}
+                <div class="swiper-slide ">
+                    <div href="{% url 'market_city' destination.slug %}" class="card_curve">
+                        <a href="{% url 'market_city' destination.slug %}">
+                            <img src="{% static 'image/تسوق.svg' %}" class="card__image" alt="" />
+                            <h2 class="city_name">التسوق</h2>
+                            <button class="custom_button">
+                                <a class="" href="{% url 'market_city' destination.slug %}">
+                                    <span>استكشف</span>
+                                </a>
+                            </button>
+                        </a>
+                    </div>
+                    </div>
+                {% endif %}
+            {% endif %}
+
+            <!--------------------------------- Beach --------------------------------->
+            {% if is_beach == True %}
+            {% else %}
+                {% if type_destination == 'country' %}
+                <div class="swiper-slide">
+                <div href="{% url 'beach_view' destination.slug %}" class="card_curve">
+                    <a href="{% url 'beach_view' destination.slug %}">
+                        <img src="{% static 'image/beach-card.jpeg' %}" class="card__image" alt="" />
+                        <h2 class="city_name"> شؤاطى ومنتجعات</h2>
+                        <button class="custom_button">
+                            <a class="" href="{% url 'beach_view' destination.slug %}">
+                                <span>استكشف</span>
+                            </a>
+                        </button>
+                    </a>
+                </div>
+                </div>
+                {% else %}
+                <div class="swiper-slide">
+                    <div href="{% url 'beach_city' destination.slug %}" class="card_curve">
+                        <a href="{% url 'beach_city' destination.slug %}">
+                            <img src="{% static 'image/beach-card.jpeg' %}" class="card__image" alt="" />
+                            <h2 class="city_name"> شؤاطى ومنتجعات</h2>
+                            <button class="custom_button">
+                                <a class="" href="{% url 'beach_city' destination.slug %}">
+                                    <span>استكشف</span>
+                                </a>
+                            </button>
+                        </a>
+                    </div>
+                    </div>
+                {% endif %}
+            {% endif %}
+
+            <!----------------------------------- Adventures -------------------------->
+            {% if is_adventures == True %}
+            {% else %}
+                {% if type_destination == 'country' %}
+                <div class="swiper-slide ">
+                <div href="{% url 'adventures_view' destination.slug %}" class="card_curve">
+                    <a href="{% url 'adventures_view' destination.slug %}">
+                        <img src="{% static 'image/adventures-card.jpeg' %}" class="card__image" alt="" />
+                        <h2 class="city_name"> المغامرات والترفيه</h2>
+                        <button class="custom_button">
+                            <a class="" href="{% url 'adventures_view' destination.slug %}">
+                                <span>استكشف</span>
+                            </a>
+                        </button>
+                    </a>
+                </div>
+                </div>
+                {% else %}
+                <div class="swiper-slide ">
+                    <div href="{% url 'adventures_city' destination.slug %}" class="card_curve">
+                        <a href="{% url 'adventures_city' destination.slug %}">
+                            <img src="{% static 'image/adventures-card.jpeg' %}" class="card__image" alt="" />
+                            <h2 class="city_name"> المغامرات والترفيه</h2>
+                            <button class="custom_button">
+                                <a class="" href="{% url 'adventures_city' destination.slug %}">
+                                    <span>استكشف</span>
+                                </a>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                {% endif %}
+            {% endif %}
+             <!----------------------------------- Romantic ---------------------------->
+            <div class="swiper-slide ">
+                <div href=" " class="card_curve">
+                    <a href="">
+                        <img src="{% static 'image/romantic-card.jpeg' %}" class="card__image" alt="" />
+                        <h2 class="city_name">عطلات رومانسية</h2>
+                        <button class="custom_button">
+                            <a class="" href="#">
+                                <span>استكشف</span>
+                            </a>
+                        </button>
+                    </a>
+                </div>
+            </div>
+
+            <!------------------------------------- Nature ---------------------------------->
+            {% if is_nature == True %}
+            {% else %}
+                {% if type_destination == 'country' %}
+                <div class="swiper-slide ">
+                <div href="{% url 'nature_view' destination.slug %}" class="card_curve">
+                    <a href="{% url 'nature_view' destination.slug %}">
+                        <img src="{% static 'image/nature-card.jpeg' %}" class="card__image" alt="" />
+                        <h2 class="city_name"> الطبيعة والمنتزهات</h2>
+                        <button class="custom_button">
+                            <a class="" href="{% url 'nature_view' destination.slug %}">
+                                <span>استكشف</span>
+                            </a>
+                        </button>
+                    </a>
+                </div>
+                </div>
+                {% else %}
+                <div class="swiper-slide ">
+                    <div href="{% url 'nature_city' destination.slug %}" class="card_curve">
+                        <a href="{% url 'nature_city' destination.slug %}">
+                            <img src="{% static 'image/nature-card.jpeg' %}" class="card__image" alt="" />
+                            <h2 class="city_name"> الطبيعة والمنتزهات</h2>
+                            <button class="custom_button">
+                                <a class="" href="{% url 'nature_city' destination.slug %}">
+                                    <span>استكشف</span>
+                                </a>
+                            </button>
+                        </a>
+                    </div>
+                    </div>
+                {% endif %}
+            {% endif%}
+        </div>
+    </div>
+</section>

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css_file %}
+      <link rel="stylesheet" href="{% static 'css/planning.css' %}">
+{% endblock %}
+
+{% block content %}
+
+       {% include 'parts/navbar.html' %}
+ <section style="margin:100px">
+    <div class="container text-center">
+        <img src="{% static 'image/support.png' %}" alt="" width="300px">
+           <h1>الصفحة قيد الاعداد</h1>
+       </div>
+ </section>
+  
+{% endblock %}

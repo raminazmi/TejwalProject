@@ -1,0 +1,223 @@
+{% extends 'base_profile.html' %}
+{% load static %}
+{% block meta_code %}
+<title>تجوال | الملف الشخصي</title>
+{% endblock %}
+
+{% block content%}
+          <!--=========================== Profile ===========================-->
+    <section class="profile">
+        <div class="main_container">
+            <div class="personal_Info">
+                
+            {% if object.user.person_image %}
+            <img src="{{object.user.person_image.url}}" alt="">
+            {% else %}
+              <img src="{% static 'image/person.jpg' %}" alt="">
+            {% endif %}
+                <h3>{{user.first_name}} {{user.last_name}}</h3>
+                <div>
+                    <i class="fa-solid fa-user">
+                        {% if profile.gender == 'male' %}
+                            <span>سائح</span>
+                        {% else%}
+                            <span>سائحه</span>
+                        {% endif %}
+
+                    </i>
+                    <i class="fa-solid fa-location-dot">
+                        <span>{{profile.get_country_display}}</span>
+                    </i>
+                </div>
+            </div>
+            <div class="view_data">
+                <ul class="nav nav-pills " id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation"><a href="#"><i class="ri-briefcase-line nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"  role="tab" aria-controls="pills-home" aria-selected="true"> <span>تجاربك</span> </i></a></li>
+                    <li class="nav-item" role="presentation"><a href="#"><i class="ri-heart-line nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile"  role="tab" aria-controls="pills-profile" aria-selected="false"><span>المفضله</span> </i></a></li>
+                    <li class="nav-item" role="presentation"><a href="#"><i class="ri-thumb-up-line nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false"> <span>التقييمات</span> </i></a></li>
+                </ul>
+                <a class="custom_button" type="button" href="{% url 'accounts:edit_profile'%}">
+                    <i class="fa-solid fa-sliders"> </i>               
+                        <span>تعديل الملف الشخصي</span> 
+                </a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="tab-content" id="pills-tabContent">
+        <!--=========================== experiences ===========================-->
+        <section class="custom_button_change main_container tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+            <div class="Favorite experiences">
+                <p>تجاربك</p>
+                <div class="soon">
+                    <p class="Feature">ستتوفر هذه الميزة قريبا</p>
+                </div>
+            </div>
+        </section>
+        <!--=========================== Favorite ===========================-->
+        <section class="custom_button_change main_container tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+            <div class="Favorite">
+                <p>قائمة المفضلة </p>
+                <div class="row">
+                    {% for object in favorite %}
+                        <div class=" swiper-slide col-lg-3 col-md-4 col-sm-6">
+                            <div href="" class="card_curve">
+                                <img src="{{object.place.background.url}}" class="card__image" alt="" />
+                                <div class="mark">
+                                    <i class="ri-bookmark-line bookmark"></i>
+                                </div>
+                                <div class="card__overlay">
+                                    <div class="card__header">
+                                        <div class="card__header-text">
+                                            <h3 class="card__title">{{object.place.title_place}} </h3>
+                                        </div>
+                                        <div class="location">
+                                            <h3 class=""> {{object.place.city.name_city}} - {{object.place.city.country.name_country}}</h3>
+                                        </div>
+                                        <div class="starsAndExplore">
+                                            <div class="rating-group">
+                                                <label aria-label="1 star" class="rating__label" for="rating3-1"><i
+                                                class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                                <label aria-label="2 stars" class="rating__label" for="rating3-2"><i
+                                                class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                                <label aria-label="3 stars" class="rating__label" for="rating3-3"><i
+                                                class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                                <label aria-label="4 stars" class="rating__label" for="rating3-4"><i
+                                                class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                                <label aria-label="5 stars" class="rating__label" for="rating3-5"><i
+                                                class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                            </div>
+                                            <div class="explore">
+                                                <button class="custom_button">
+                                            <a class="" href="{% url 'place_view' object.place.slug %}" target="_blank">
+                                            <span>إكتشف الآن</span>
+                                            </a>
+                                        </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="card__description">{{object.place.short_info}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </section>
+        <!--=========================== reviews ===========================-->
+        <section class="reviews_section tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">
+            <table class="reviews">
+                <thead class="head">
+                    <tr>
+                        <td colspan="3">
+                            <div class="view_more">
+                                التقييمات
+                            </div>
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for object in reviews %}
+                    <tr>
+                        <td>
+                            <div class="flex">
+                                <img src="{{profile.person_image.url}}" alt="">
+                                <div class="user_data">
+                                    <h3>{{user.first_name}} {{user.last_name}}</h3>
+                                    <h4>{{profile.get_country_display}}</h4>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="customer_reviews">
+                                <div class="starsAndExplore">
+                                    <div class="rating-group">
+                                        <label aria-label="1 star" class="rating__label" for="rating3-1"><i
+                    class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                        <label aria-label="2 stars" class="rating__label" for="rating3-2"><i
+                    class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                        <label aria-label="3 stars" class="rating__label" for="rating3-3"><i
+                    class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                        <label aria-label="4 stars" class="rating__label" for="rating3-4"><i
+                    class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                        <label aria-label="5 stars" class="rating__label" for="rating3-5"><i
+                    class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                    </div>
+                                </div>
+                                <p class="opinion">{{object.comment}}</p>
+                            </div>
+                        </td>
+                        <td class="review_date">
+                            <div>{{object.created_at}}</div>
+                            <div class="settings">
+                                <i class="ri-delete-bin-2-fill" data-bs-toggle="modal" data-bs-target="#Delete_Review"></i>
+                                <!--=========================== Model delete Review ===========================-->
+                                <div class="modal fade" tabindex="-1" id="Delete_Review">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">حذف التقييم</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>هل أنت متأكد من حذف تقييمك؟</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
+                                                <button type="button" class="btn btn-primary">تأكيد</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--=========================== End Model delete Review ===========================-->
+                                <i class="ri-pencil-fill" data-bs-toggle="modal" data-bs-target="#Edit_Review"></i>
+                                <!--=========================== Model Edit Review ===========================-->
+                                <div class="modal fade" id="Edit_Review" tabindex="-1">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p class="">اضف التقييم ل <span>مطعم كت</span></p>
+                                                <div class="flex">
+                                                    <img src="assets/img/manama-cityguide-580x3602x.jpg" alt="">
+                                                    <div class="customer_reviews">
+                                                        <div class="starsAndExplore">
+                                                            <label aria-label="1 star" class="rating__label" for="rating3-1"><i
+                                                    class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                                            <label aria-label="2 stars" class="rating__label" for="rating3-2"><i
+                                                    class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                                            <label aria-label="3 stars" class="rating__label" for="rating3-3"><i
+                                                    class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                                            <label aria-label="4 stars" class="rating__label" for="rating3-4"><i
+                                                    class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                                            <label aria-label="5 stars" class="rating__label" for="rating3-5"><i
+                                                    class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="form-floating">
+                                                    <textarea class="form-control" placeholder="أخبر الجميع عن تجربتك" id="floatingTextarea2" style="height: 180px; border-radius: 0;"></textarea>
+                                                    <label for="floatingTextarea2">أخبر الجميع عن تجربتك</label>
+                                                </div>
+                                                <br>
+                                                <button type="button" class="custom_button">تعديل التقييم</button>
+                                                <br><br>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--=========================== End Model Edit Review ===========================-->
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </div>
+{% endblock %}

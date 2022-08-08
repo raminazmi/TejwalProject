@@ -1,0 +1,43 @@
+{% load static %}
+
+<div class="swiper-slide">
+    <div href="{% url 'place_view' object.slug %}" class="card_curve">
+        <img src="{{object.background.url}}" class="card__image" alt="" />
+        <input type="hidden" name="" class="place_id" value="{{object.id}}">
+        <div class="mark">
+            <i class="ri-bookmark-line bookmark" id="add_favorit"></i>
+        </div >
+        <div class="card__overlay">
+            <div class="card__header">
+                <div class="card__header-text">
+                    <h3 class="card__title">{{object.title_place}} </h3>
+                </div>
+                <div class="location">
+                    <h3 class="country"> {{object.city.name_city}} - {{object.city.country.name_country}}</h3>
+                </div>
+                <div class="starsAndExplore">
+                    <fieldset class="rating-group" dir="ltr">
+                        <input type="radio" id="star5" name="rating" value="5">
+                        <label for="star5"></label>
+                        <input type="radio" id="star4" name="rating" value="4">
+                        <label for="star4"></label>
+                        <input type="radio" id="star3" name="rating" value="3">
+                        <label for="star3"></label>
+                        <input type="radio" id="star2" name="rating" value="2">
+                        <label for="star2"></label>
+                        <input type="radio" id="star1" name="rating" value="1">
+                        <label for="star1"></label>
+                    </fieldset>
+                    <div class="explore">
+                        <button class="custom_button">
+                      <a class="" href="{% url 'place_view' object.slug %}">
+                      <span>إكتشف الآن</span>
+                      </a>
+                  </button>
+                    </div>
+                </div>
+            </div>
+            <p class="card__description">{{object.short_info}}</p>
+        </div>
+    </div>
+</div>

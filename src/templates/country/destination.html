@@ -1,0 +1,329 @@
+{% extends 'new_base.html' %}
+{% load static %}
+{% block meta_code %}
+    <title> السياحة في {{destination.name_country}} | أفضل المعالم السياحية في  {{destination.name_country}}</title>
+    <meta name="description" content="{{destination.meta_description}}">
+    <meta name="keywords" content="">
+{% endblock %}
+{% block css_files %}
+<link rel="stylesheet" href="{% static 'css/CountryPage.css' %}">
+{% endblock %}
+
+{% block content %}
+    <!--=========================== breadcrumb ===========================-->
+    <section class="breadcrumb-size">
+        <div class="main_container">
+            <nav style="--breadcrumb-divider: quote('>');" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="#"><img src="{% static 'image/home1.svg' %}"></a>
+                    </li>
+                    <li class="breadcrumb-item " aria-current="page">الوجهات</li>
+                    <li class="breadcrumb-item " aria-current="page">{{destination.name_country}}</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+    <!--=========================== Img-cover ===========================-->
+    <section class="Img-cover CountryPage">
+        <div class="main_container">
+            <div class="CoverImage FlexEmbed Flex-Embed" style='background-image:url("{{destination.image.url}}")'>
+                <div class="content">
+                    <h2>استكشف {{destination.name_country}}</h2>
+                    <p>دوله في قاره اسيا على تقع على ساحل البحر المتوسط</p>
+                </div>
+                <div class="reports">
+                    <div class="statistical">
+                        <div class="flex">
+                            <i class="fa-solid fa-building-columns"></i>
+                            <div>العاصمة</div>
+                            <div>{{destination.capital}}</div>
+                        </div>
+                        <div class="flex">
+                            <i class="ri-global-line"></i>
+                            <div>اللغة</div>
+                            <div>{{destination.formal_lang}}</div>
+                        </div>
+                        <div class="flex">
+                            <i class="ri-money-dollar-circle-fill"></i>
+                            <div>العملات</div>
+                            <div> {{destination.currency}}</div>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="communication">
+                            <div class="">{{destination.ambulance}}<br>الاسعاف</div>
+                            <div class="">{{destination.police}}<br>الشرطة</div>
+                            <div class="">{{destination.firefighting}}<br>الإطفاء</div>
+                        </div>
+                    </div>
+                    <div class="temp">
+                        <div class="status">
+                            <img src="assets/img/sun (1).svg" alt="">
+                            <h6>غائم جزئيا</h6>
+                        </div>
+                        <div class="" dir="ltr">
+                            <div class="clock">
+                                <h6> 12:32 am</h6>
+                                <i class="ri-time-line" dir="rtl"></i>
+                            </div>
+                            <div class="spacer"></div>
+                            <div class="temp_detail">
+                                <h3>12</h3>
+                                <h3>23</h3>
+                                <h3> 24 <i class="ri-celsius-fill"></i> </img>
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mobile">
+            <div class="reports">
+                <div class="statistical">
+                    <button class="custom_button" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">تعرف على دولة قطر</button>
+                    <div class="flex">
+                        <i class="fa-solid fa-building-columns"></i>
+                        <div>العاصمة</div>
+                        <div>{{destination.capital}}</div>
+                    </div>
+                    <div class="flex">
+                        <i class="ri-global-line"></i>
+                        <div>اللغة</div>
+                        <div>{{destination.formal_lang}}</div>
+                    </div>
+                    <div class="flex">
+                        <i class="ri-money-dollar-circle-fill"></i>
+                        <div>العملات</div>
+                        <div>{{destination.currency}}</div>
+                    </div>
+                    <div class="spacer"></div>
+                    <div class="communication">
+                        <div class="">{{destination.ambulance}}<br>الاسعاف</div>
+                        <div class="">{{destination.police}}<br>الشرطة</div>
+                        <div class="">{{destination.firefighting}}<br>الإطفاء</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="offcanvas offcanvas-center" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+        <p>{{destination.info}}</p>
+        </div>
+    </div>
+    <!--=========================== Map section ===========================-->
+    <section class="Map-section">
+        <div class="Map">
+            <div class="main_container">
+                <div class="map_con">
+                    <div id="map"></div>
+                    <p>{{destination.info}}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--=========================== Destinations ===========================-->
+    <section class="main_container landmarks Destinations content-float">
+        <p class="section_title"><span class=""></span>المدن المشهورة في {{destination.name_country}}</p>
+        <div class="swiper mySwiper-landmarks">
+            <div class="arrows">
+                <i class="ri-arrow-right-s-line arrow_swipe_right"></i>
+                <i class="ri-arrow-left-s-line arrow_swipe_left"></i>
+            </div>
+            <div class="swiper-wrapper">
+                {% for city in cities_objects %}
+                <div class="swiper-slide">
+                    <div href="" class="card_curve">
+                        <a href="{% url 'city' city.slug%}">
+                            <img src="{{city.image.url}}" class="card__image" alt="" />
+                            <div class="status">ساحلي</div>
+                            <div class="temperature">
+                                <img src="{% static 'image/sun (1).svg' %}"></img>
+                                <h6>36 C
+                                    <h6>
+                            </div>
+                            <h2 class="city_name">{{city.name_city}}</h2>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+    <!--=========================== Discover As YOU ===========================-->
+    {% include 'parts/category-places.html'%}
+
+    <!--=========================== Popular landmarks ===========================-->
+    <section class="main_container landmarks">
+        <p class="section_title"><span class=""></span>المعالم الأكثر رواجا</p>
+        <div class="swiper mySwiper-landmarks">
+            <div class="arrows">
+                <i class="ri-arrow-right-s-line arrow_swipe_right"></i>
+                <i class="ri-arrow-left-s-line arrow_swipe_left"></i>
+            </div>
+            <div class="swiper-wrapper">
+                {% for object in places%}
+                    {% include 'parts/card_place.html' %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="more-view">
+            <button class="main_container custom_button">عرض المزيد</button>
+        </div>
+    </section>
+
+    <!--===========================  Experiments Activities ===========================-->
+    <section class="swiper events experiments">
+        <div class="main_container">
+            <p class="section_title"><span class=""></span>الأنشطه التي لابد من ممارستها عند زياره {{destination.name_country}}</p>
+            <div class="mySwiper-experiments">
+                <div class="swiper-wrapper">
+                    {% for object in activities %}
+                        <div class="swiper-slide">
+                            <img src="{{object.image.url}} ">
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="swiper container-float container_float">
+                <div class="swiper-wrapper">
+                    {% for object in activities %}
+                        <div class="swiper-slide" style="background-image: url({% static 'image/Group 419.svg' %});">
+                            <div class="">
+                            <div class="tap-bar">
+                                <a href="">
+                                    <h3>{{object.get_category_display}}</h3>
+                                </a>
+                                <a href="">
+                                    <h3> {{object.city.name_city}}</h3>
+                                </a>
+                            </div>
+                            <p class="title" id="title">{{object.title}}</p>
+                            <div class="paragraph">
+                                <p class="" id="paragraph">{{object.info}}</p>
+                            </div>
+                            </div>
+                            <div class="footer-position">
+                                <button class="custom_button">
+                                <a class="" href="#">
+                                    <span>إكتشف الآن</span>
+                                </a>
+                                </button>
+                                <div class="arrows">
+                                    <i class="ri-arrow-right-s-line arrow_swipe_right"></i>
+                                    <i class=" ri-arrow-left-s-line arrow_swipe_left"></i>
+                                </div>
+                        </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--=========================== Events in Country ===========================-->
+    <section class="main_container landmarks Destinations event">
+        <p class="section_title"><span class=""></span>فعاليات {{destination.name_country}} في <span>مايو 2022</span></p>
+        <div class="swiper mySwiper-landmarks">
+            <div class="arrows">
+                <i class="ri-arrow-right-s-line arrow_swipe_right"></i>
+                <i class="ri-arrow-left-s-line arrow_swipe_left"></i>
+            </div>
+            <div class="swiper-wrapper">
+                {% for object in events %}
+                    <div class="swiper-slide">
+                        <div href="" class="card_curve">
+                        <a href="{% url 'event_view' object.slug %}">
+                            <img src="{{object.background.url}}" class="card__image" alt="" />
+                            <div class="city_name">
+                                <h6 class="date">{{object.start_date | date:'d M'}} - {{object.end_date | date:'d M'}}</h6>
+                                <h5 class=""> {{object.title}}</h5>
+                            </div>
+                        </a>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+    <!--=========================== Accordion ===========================-->
+    <section class="main_container">
+        <p class="section_title"><span class=""></span>الأسئلة الشائعة</p>
+        <div class="accordion accordion-flush Accordion" id="accordionFlushExample">
+            {% for question in questions %}
+                <div class="accordion-item">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{question.id}}" aria-expanded="false" aria-controls="flush-collapse{{question.id}}">
+                    {{question.question}}
+                    </button>
+                <div id="flush-collapse{{question.id}}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{question.id}}" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">{{question.answer}}</div>
+                </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+    <!--=========================== Featured Articles ===========================-->
+    <section class="main_container ">
+        <p class="section_title "><span class=" "></span>مقالات مميزة</p>
+        <div class="Articles ">
+            <div class="Article-side1 ">
+                <div class="Article-card ">
+                    <div class="Article-data ">
+                        <span class=" ">
+                        <img src="assets/img/skyscrapers-palm-trees-dubai-uae.jpg " alt=" ">
+                    </span>
+                        <h1 class="Article-title ">أفضل 5 شواطئ أثناء زيارتك للقطر</h1>
+                        <p class="Article-details ">في هذا الدليل إليكم مجموعة أسماء شواطئ قطر الأشهر، حيث سنسقط على أهم وأفضل 10 شواطئ في قطر والتي نرشحها بقوة للراغبين في قضاء وقت ممتع على البحر سواء كنت بمفردك أو بصحبة عائلتك أو أصدقائك.</p>
+                        <h6 class="date ">2022.05.22</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="Article-side2 ">
+                <div class="Article-card ">
+                    <div class="Article-style ">
+                        <div class="Article-data ">
+                            <h3 class="Article-title ">لتجنب أسوأ اللحظات.. ماذا تفعل إذا فاتتك رحلة الطائرة؟</h3>
+                            <a href="# " class="more-read ">
+                                <h5>إقرأ المزيد</h5><i class="ri-arrow-left-s-line "></i></a>
+                            <h6 class="date ">2022.05.22</h6>
+                        </div>
+                        <span class=" ">
+                    <img src="assets/img/dubai-desktop-580x360.jpg " alt=" ">
+                    </span>
+                    </div>
+                </div>
+                <div class="Article-card ">
+                    <div class="Article-style ">
+                        <div class="Article-data ">
+                            <h3 class="Article-title ">لتجنب أسوأ اللحظات.. ماذا تفعل إذا فاتتك رحلة الطائرة؟</h3>
+                            <a href="# " class="more-read ">
+                                <h5>إقرأ المزيد</h5><i class="ri-arrow-left-s-line "></i></a>
+                            <h6 class="date ">2022.05.22</h6>
+                        </div>
+                        <span class=" ">
+                    <img src="assets/img/abu-dhabi.jpg " alt=" ">
+                    </span>
+                    </div>
+                </div>
+                <div class="Article-card ">
+                    <div class="Article-style ">
+                        <div class="Article-data ">
+                            <h3 class="Article-title ">لتجنب أسوأ اللحظات.. ماذا تفعل إذا فاتتك رحلة الطائرة؟</h3>
+                            <a href="# " class="more-read ">
+                                <h5>إقرأ المزيد</h5><i class="ri-arrow-left-s-line "></i></a>
+                            <h6 class="date ">2022.05.22</h6>
+                        </div>
+                        <span class=" ">
+                    <img src="assets/img/manama-cityguide-580x3602x.jpg "></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

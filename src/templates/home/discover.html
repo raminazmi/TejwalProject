@@ -1,0 +1,282 @@
+{% extends 'base.html'%}
+{% load static%}
+     {% block css_file %}
+          <link rel="stylesheet" href="{% static 'css/discover-style.css' %}">
+     {% endblock %}
+    <!-- End file to css -->
+    {% block style%}
+        <header>
+        <div class="header-inner">
+            {% include 'parts/navbar.html' %}
+        </div>
+        <div class="container">
+            <div class="main-heading">
+                <h1>اكتشف الان </h1>
+                <p>استكشف العالم الكبير لتحظى برحله شيقه </p>
+                <div class="search-box">
+                    <i class="fa fa-magnifying-glass"></i>
+                    <input type="search" name="" id="" placeholder="حدد وجهتك">
+                </div>
+                <!-- <ol>
+                    <li>الرئيسية</li>
+                    <li>الوجهات</li>
+                </ol> -->
+            </div>
+        </div>
+        </header>
+    {% endblock%}
+    {% block content %}
+    <!-- ا -->
+    <div class="container">
+        <h2 class='title-category'>فئات مميزة  </h2>
+
+        <ul class="continent-box">
+            <li>
+                <a href="">المدن</a>
+                <i class="fas fa-city"></i>
+            </li>
+            <li>
+                <a href=""> الأماكن</a>
+                <i class="fas fa-map-marker-alt"></i>
+            </li>
+            <li>
+                <a href="">المأكولات</a>
+                <i class="fas fa-hamburger"></i>
+            </li>
+            <li>
+                <a href="">الأنشطه</a>
+                <i class="fas fa-skiing"></i>
+            </li>
+            
+        </ul>
+    </div>
+    <section class="food-country popular-places places section-head">
+        <div class="container swiper mySwiper">
+            <div class="heading">
+                <div class="left">
+                    <h2>أطباق مميره في تركيا </h2>
+                    <p>نص معبر عن هذا المكان للقسم</p>
+                </div>
+                <div class="right">
+                    <a href="" class="">عرض المزيد <i class="fas fa-chevron-left"></i></a>
+                </div>
+            </div>
+            <div class="swiper-wrapper">
+                <div class="card-place swiper-slide col-lg-3 col-md-6 col-sm-12">
+                    <div class="content">
+                        <div class="img-card">
+                            <img src="image/food01.jpg" alt="">
+                            <a href="" class="favorite"><i class="far fa-heart"></i></a>
+                        </div>
+                        <div class="info-card">
+                            <div class="right-box">
+                                <h2>ضلوع خروف </h2>
+                            </div>
+                            <div class="left-box">
+                                <p>غير مناسب للمرضى السكرو الضغط </p>
+                                <ul>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star-half-alt"></i></li>
+                                    <li><i class="far fa-star"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-place swiper-slide col-lg-3 col-md-6 col-sm-12">
+                    <div class="content">
+                        <div class="img-card">
+                            <img src="image/food04.jpg" alt="">
+                            <a href="" class="favorite"><i class="far fa-heart"></i></a>
+                        </div>
+                        <div class="info-card">
+                            <div class="right-box">
+                                <h2>تشيز كيك </h2>
+                            </div>
+                            <div class="left-box">
+                                <p>حلويات مرصعه بالبندق  </p>
+                                <ul>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star-half-alt"></i></li>
+                                    <li><i class="far fa-star"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-place swiper-slide col-lg-3 col-md-6 col-sm-12">
+                    <div class="content">
+                        <div class="img-card">
+                            <img src="image/food02.jpeg" alt="">
+                            <a href="" class="favorite"><i class="far fa-heart"></i></a>
+                        </div>
+                        <div class="info-card">
+                            <div class="right-box">
+                                <h2>البقلاوه </h2>
+                            </div>
+                            <div class="left-box">
+                                <p>بقلاوه اسطنبول من اشهر الحلويات </p>
+                                <ul>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star-half-alt"></i></li>
+                                    <li><i class="far fa-star"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-place swiper-slide col-lg-3 col-md-6 col-sm-12">
+                    <div class="content">
+                        <div class="img-card">
+                            <img src="image/food03.jpg" alt="">
+                            <a href="" class="favorite"><i class="far fa-heart"></i></a>
+                        </div>
+                        <div class="info-card">
+                            <div class="right-box">
+                                <h2> برجر تركي </h2>
+                            </div>
+                            <div class="left-box">
+                                <p>برجر من صنع الايادي التركيه </p>
+                                <ul>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star-half-alt"></i></li>
+                                    <li><i class="far fa-star"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-place swiper-slide col-lg-3 col-md-6 col-sm-12">
+                    <div class="content">
+                        <div class="img-card">
+                            <img src="image/food01.jpg" alt="">
+                            <a href="" class="favorite"><i class="far fa-heart"></i></a>
+                        </div>
+                        <div class="info-card">
+                            <div class="right-box">
+                                <h2>ضلوع خروف </h2>
+                            </div>
+                            <div class="left-box">
+                                <p>غير مناسب للمرضى السكرو الضغط </p>
+                                <ul>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star-half-alt"></i></li>
+                                    <li><i class="far fa-star"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-place swiper-slide col-lg-3 col-md-6 col-sm-12">
+                    <div class="content">
+                        <div class="img-card">
+                            <img src="image/food04.jpg" alt="">
+                            <a href="" class="favorite"><i class="far fa-heart"></i></a>
+                        </div>
+                        <div class="info-card">
+                            <div class="right-box">
+                                <h2>تشيز كيك </h2>
+                            </div>
+                            <div class="left-box">
+                                <p>حلويات مرصعه بالبندق  </p>
+                                <ul>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star-half-alt"></i></li>
+                                    <li><i class="far fa-star"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-place swiper-slide col-lg-3 col-md-6 col-sm-12">
+                    <div class="content">
+                        <div class="img-card">
+                            <img src="image/food02.jpeg" alt="">
+                            <a href="" class="favorite"><i class="far fa-heart"></i></a>
+                        </div>
+                        <div class="info-card">
+                            <div class="right-box">
+                                <h2>البقلاوه </h2>
+                            </div>
+                            <div class="left-box">
+                                <p>بقلاوه اسطنبول من اشهر الحلويات </p>
+                                <ul>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star-half-alt"></i></li>
+                                    <li><i class="far fa-star"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-place swiper-slide col-lg-3 col-md-6 col-sm-12">
+                    <div class="content">
+                        <div class="img-card">
+                            <img src="image/food03.jpg" alt="">
+                            <a href="" class="favorite"><i class="far fa-heart"></i></a>
+                        </div>
+                        <div class="info-card">
+                            <div class="right-box">
+                                <h2> برجر تركي </h2>
+                            </div>
+                            <div class="left-box">
+                                <p>برجر من صنع الايادي التركيه </p>
+                                <ul>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star-half-alt"></i></li>
+                                    <li><i class="far fa-star"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+    
+            </div>
+             <div class="swiper-button-next">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+             <div class="swiper-button-prev">
+                <i class="fas fa-chevron-right"></i>
+             </div>
+             <div class="swiper-pagination"></div> 
+        </div>
+    </section>
+    
+    <!-- Start Footer -->
+    {% endblock %}
+    {% block js_file %}
+        <script>
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 4,
+            spaceBetween: 20,
+            slidesPerGroup: 4,
+            loop: true,
+            loopFillGroupWithBlank: true,
+            pagination: {
+              el: ".swiper-pagination",
+              clickable: true,
+            },
+            navigation: {
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+            },
+          });
+        </script>
+    {% endblock %}

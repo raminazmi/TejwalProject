@@ -1,0 +1,75 @@
+{% load static %}
+
+<nav>
+    <nav class="navbar navbar-expand-lg" dir="rtl">
+        <div class="container">
+            <!-- logo to website -->
+          <a class="navbar-brand" href="{% url 'MainPage' %}">
+              <img src="{% static 'image/logo-white.png' %}" alt="logo" title="logo" width="110" height="40">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon">
+              <i class="fas fa-bars"></i>
+            </span>
+          </button>
+          <!-- menu Navigation -->
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="">
+                    <!-- <i class="fas fa-home"></i>  -->
+                    الرئيسية
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'discover_city' %}">
+                    <!-- <i class="fas fa-map-marked-alt"></i> -->
+                    اكتشف المدينه
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'planning-view' %}">
+                    <!-- <i class="fas fa-tasks"></i> -->
+                    خطط للرحلتك</a>
+              </li>
+              <li class="nav-item">
+                   <a class="nav-link" href="{% url 'about-view' %}">
+                   <!-- <i class="fas fa-info-circle"></i> -->
+                   حول الموقع
+                  </a>
+              </li>
+              {% if request.user.is_authenticated %}
+              <div class="nav-item user-login">
+                <a href="" class="icon-button icon-bell"><i class="fas fa-bell"></i></a>
+                <div class="dropdown">
+                    <img src="{% static 'image/user.png' %}"class="dropdown-toggle person-img" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" alt="">
+                <ul class="dropdown-menu dropdown-user" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" href="{% url 'accounts:profile_user' %}"><i class="fas fa-address-book"></i> الصفحة الشخصية </a></li>
+                  <li><a class="dropdown-item" href="#"> <i class="fas fa-heart"></i> المفضله </a></li>
+                  <li><a class="dropdown-item" href="{% url 'accounts:logout' %}"> <i class="fas fa-power-off"></i> تسجيل الخروج </a></li>
+                </ul>
+              </div>
+                <li class="nav-item mob">{{user.username}}</li>
+                <li class="nav-item mob">
+                    <a class="nav-link" href="{% url 'accounts:profile_user' %}"><i class="fas fa-address-book"></i> الصفحة الشخصية </a></li>
+                <li class="nav-item mob">
+                   <a class="nav-link" href="#"> <i class="fas fa-heart"></i> المفضله </a></li>
+                <li class="nav-item mob">
+                   <a class="nav-link" href="{% url 'accounts:logout' %}"> <i class="fas fa-power-off"></i> تسجيل الخروج </a></li>
+              </div>
+              {% else%}
+              <div class="nav-item user-login">
+                <button id="button-search"><i class="fas fa-magnifying-glass"></i></button>
+              </div>            
+                {% endif%}
+            </ul>
+          </div>
+        </div>
+        <div class="search-navbar">
+          <form method="GET" action="{% url 'general_search'%}">
+            <input type="text" name="search-text" required >
+            <input type="submit" value="ابحث">
+          </form>
+        </div>
+      </nav>
+</nav>

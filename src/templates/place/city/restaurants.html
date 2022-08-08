@@ -1,0 +1,542 @@
+{% extends 'new_base.html' %}
+{% load static %}
+     <!-- file that related in this page  -->
+     {% block css_files %}
+     <link rel="stylesheet" href="{% static 'css/CountryPage.css' %}">
+     <link rel="stylesheet" href="{% static 'css/Restaurants.css' %}">
+     {% endblock %}
+
+    {% block content %}
+             <!--=========================== breadcrumb ===========================-->
+             <section class="breadcrumb-size">
+               <div class="main_container">
+                   <nav style="--breadcrumb-divider: quote('>');" aria-label="breadcrumb">
+                       <ol class="breadcrumb">
+                           <li class="breadcrumb-item">
+                               <a href="{% url 'MainPage'%}"><img src="{% static 'image/home1.svg' %}"></a>
+                           </li>
+                           <li class="breadcrumb-item " aria-current="page">الوجهات</li>
+                           <li class="breadcrumb-item " aria-current="page">{{country.name_city}}</li>
+                           <li class="breadcrumb-item active" aria-current="page"> مأكولات ومطاعم </li>
+                       </ol>
+                   </nav>
+               </div>
+           </section>
+    <section class="Img-cover-resturnt">
+     <div class="Img-cover">
+         <div class="main_container">
+             <div class="CoverImage FlexEmbed Flex-Embed" style="background-image: url({%static 'image/Component.svg' %});">
+                 <div class="content">
+                     <h2>المأكولات و المطاعم في {{country.name_city}}</h2>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </section>
+ <!--=========================== resturunt ===========================-->
+ <section class="resturunt">
+     <div class="main_container  Destinations">
+         <div class="swiper mySwiper-resturunt">
+             <div class="text">
+                 <h2>مطاعم موصى بها</h2>
+                 <p>تعرف على أشهر المطاعم في {{country.name_city}} وتمتع بأروع الوجبات من المطبخ العربي والغربي </p>
+             </div>
+             <div class="swiper-wrapper">
+                 <div class="swiper-slide ">
+                     <div href=" " class="card_curve">
+                         <a href="">
+                             <img src="assets/img/large-1920px (26).svg" class="card__image" alt="" />
+                             <div class="city_name">
+                                 <h4>جيوان</h4>
+                                 <p>الهتمي - الكورنيش</p>
+                                 <img src="assets/img/Group 438.svg">
+                             </div>
+                         </a>
+                     </div>
+                 </div>
+                 <div class="swiper-slide">
+                     <div href=" " class="card_curve">
+                         <a href="">
+                             <img src="assets/img/large-1920px (28).svg" class="card__image" alt="" />
+                             <div class="city_name">
+                                 <h4>جيوان</h4>
+                                 <p>الهتمي - الكورنيش</p>
+                                 <img src="assets/img/Group 438.svg">
+                             </div>
+                         </a>
+                     </div>
+                 </div>
+                 <div class="swiper-slide ">
+                     <div href=" " class="card_curve">
+                         <a href="">
+                             <img src="assets/img/large-1920px (27).svg" class="card__image" alt="" />
+                             <div class="city_name">
+                                 <h4>نسايم قطر</h4>
+                                 <p>الهتمي - الكورنيش</p>
+                                 <img src="assets/img/Group 438.svg">
+                             </div>
+                         </a>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </section>
+ <!--===========================  Experiments ===========================-->
+ <section class="swiper events experiments">
+     <div class="main_container">
+         <p class="section_title"><span class=""></span>المأكولات التقليدية</p>
+         <div class="mySwiper-experiments">
+             <div class="swiper-wrapper">
+                {%for food in foods %}
+                 <div class="swiper-slide">
+                     <img src="{{food.image.url}}">
+                 </div>
+                 {% endfor %}
+             </div>
+         </div>
+         <div class="swiper container-float container_float">
+             <div class="swiper-wrapper">
+                {% for food in foods %}
+                 <div class="swiper-slide" style="background-image: url({% static 'image/Group 439.svg' %});">
+                     <div class="">
+                         <div class="tap-bar">
+                             <a href="">
+                                 <h3> {{food.get_category_display}}</h3>
+                             </a>
+                             <a href="">
+                                 <h3> {{food.country.name_city}}</h3>
+                             </a>
+                         </div>
+                         <p class="title" id="title"> {{food.title_food}}</p>
+                         <div class="paragraph">
+                             <p class="" id="paragraph">{{food.info}}</p>
+                         </div>
+                     </div>
+                     <div class="footer-position">
+                         <button class="custom_button">
+                         <a class="" href="#">
+                             <span>إكتشف الآن</span>
+                         </a>
+                         </button>
+                         <div class="arrows">
+                             <i class="ri-arrow-right-s-line arrow_swipe_right"></i>
+                             <i class=" ri-arrow-left-s-line arrow_swipe_left"></i>
+                         </div>
+                     </div>
+                 </div>
+                 {% endfor %}
+
+             </div>
+         </div>
+     </div>
+ </section>
+ <!--=========================== filters ===========================-->
+ <section class="filterSection">
+     <div class="main_container">
+         <p class="section_title "><span class=""></span>المطاعم والمقاهي </p>
+         <div class="filters custom_button_change">
+             <div class="myBtnContainer" id="myBtnContainer">
+                 <button class="btns activated" onclick="filterSelection('all')">اظهار الكل</button>
+                 <button class="btns" onclick="filterSelection('beach')"><img src="{% static 'image/wave1.svg' %}" alt=""><h4>شؤاطئ</h4></button>
+                 <button class="btns" onclick="filterSelection('Resorts')"><img src="{% static 'image/wave (3).svg' %}" alt=""><h4>منتجعات</h4></button>
+                 <button class="btns" onclick="filterSelection('Island')"><img src="{% static 'image/wave (1).svg' %}" alt=""><h4>جزر</h4></button>
+                 <button class="btns" onclick="filterSelection('waters')"><img src="{% static 'image/wave.svg' %}" alt=""><h4>مياه</h4></button>
+             </div>
+             <div class="gallery_filters">
+                 <form role="search" class="search-form" id="search-form" action="#" method="post">
+                     <div class="search-filters collapsed" id="search-filters" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse1" aria-expanded="false" aria-controls="flush-collapse1">
+                         <h3 class="search-filters-title" id="search-filters-title"><img src="{% static 'image/setting.svg' %}" alt="">عوامل التصفية</h3>
+                     </div>
+                     <div class="size-filters filter-group accordion-body  collapse" id="flush-collapse1" aria-labelledby="flush-heading1" data-bs-parent="#accordionFlushExample">
+                         <h6 class="" id="">فرز وفق مدن قطر</h6>
+                         <div>
+                             <input type="checkbox" id="filter-size-small">
+                             <label for="filter-size-small">الدوحه</label>
+                         </div>
+                         <div>
+                             <input type="checkbox" id="filter-size-medium" checked>
+                             <label for="filter-size-medium">الشارقة</label>
+                         </div>
+                         <div>
+                             <input type="checkbox" id="filter-size-large">
+                             <label for="filter-size-large">الأمير حمد</label>
+                         </div>
+                         <div>
+                             <input type="checkbox" id="filter-size-x-large">
+                             <label for="filter-size-x-large">الرياض</label>
+                         </div>
+                     </div>
+                 </form>
+                 <div class="search-results">
+                     <div class="result filterDiv beach">
+                         <div class="swiper-slide">
+                             <div href="" class="card_curve">
+                                 <img src="assets/img/large-1920px (25).svg" class="card__image" alt="" />
+                                 <div class="mark ">
+                                     <i class="ri-bookmark-line bookmark "></i>
+                                 </div>
+                                 <div class="card__overlay ">
+                                     <div class="card__header ">
+                                         <div class="card__header-text">
+                                             <h3 class="card__title ">شاطئ المالديف</h3>
+                                         </div>
+                                         <div class="location">
+                                             <h3 class=" "> جدة - السعودية</h3>
+                                         </div>
+                                         <div class="starsAndExplore">
+                                             <div class="rating-group ">
+                                                 <label aria-label="1 stars" class="rating__label " for="rating3-1 "><i
+                                 class="rating__icon rating__icon--star fa fa-star "></i></label>
+                                                 <label aria-label="2 stars" class="rating__label " for="rating3-2 "><i
+                                 class="rating__icon rating__icon--star fa fa-star "></i></label>
+                                                 <label aria-label="3 stars" class="rating__label " for="rating3-3 "><i
+                                 class="rating__icon rating__icon--star fa fa-star "></i></label>
+                                                 <label aria-label="4 stars" class="rating__label " for="rating3-4 "><i
+                                 class="rating__icon rating__icon--star fa fa-star "></i></label>
+                                                 <label aria-label="5 stars" class="rating__label " for="rating3-5 "><i
+                                 class="rating__icon rating__icon--star fa fa-star "></i></label>
+                                             </div>
+                                             <div class="explore">
+                                                 <button class="custom_button">
+                             <a class="" href="#">
+                                 <span>إكتشف الآن</span>
+                             </a>
+                         </button>
+                                             </div>
+                                         </div>
+                                     </div>
+                                     <p class="card__description ">يعتبر شاطئ من اهم الشواطئ في العالم وهو للقطر و الدوحه في العالم
+                                     </p>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="result filterDiv beach">
+                         <div class="swiper-slide ">
+                             <div href="" class="card_curve">
+                                 <img src="assets/img/large-1920px (23).svg" class=" card__image " alt=" " />
+                                 <div class="mark ">
+                                     <i class="ri-bookmark-line bookmark "></i>
+                                 </div>
+                                 <div class="card__overlay ">
+                                     <div class="card__header ">
+                                         <div class="card__header-text">
+                                             <h3 class="card__title ">شاطئ المالديف</h3>
+                                         </div>
+                                         <div class="location">
+                                             <h3 class=" "> جدة - السعودية</h3>
+                                         </div>
+                                         <div class="starsAndExplore">
+                                             <div class="rating-group ">
+                                                 <label aria-label="1 stars" class="rating__label " for="rating3-1 "><i
+                                 class="rating__icon rating__icon--star fa fa-star "></i></label>
+                                                 <label aria-label="2 stars" class="rating__label " for="rating3-2 "><i
+                                 class="rating__icon rating__icon--star fa fa-star "></i></label>
+                                                 <label aria-label="3 stars" class="rating__label " for="rating3-3 "><i
+                                 class="rating__icon rating__icon--star fa fa-star "></i></label>
+                                                 <label aria-label="4 stars" class="rating__label " for="rating3-4 "><i
+                                 class="rating__icon rating__icon--star fa fa-star "></i></label>
+                                                 <label aria-label="5 stars" class="rating__label " for="rating3-5 "><i
+                                 class="rating__icon rating__icon--star fa fa-star "></i></label>
+                                             </div>
+                                             <div class="explore">
+                                                 <button class="custom_button">
+                             <a class="" href="#">
+                                 <span>إكتشف الآن</span>
+                             </a>
+                         </button>
+                                             </div>
+                                         </div>
+                                     </div>
+                                     <p class="card__description ">يعتبر شاطئ من اهم الشواطئ في العالم وهو للقطر و الدوحه في العالم
+                                     </p>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="result filterDiv beach ">
+                         <div class="swiper-slide ">
+                             <div href="" class="card_curve">
+                                 <img src="assets/img/large-1920px (14).jpg" class="card__image " alt=" " />
+                                 <div class="mark ">
+                                     <i class="ri-bookmark-line bookmark "></i>
+                                 </div>
+                                 <div class="card__overlay ">
+                                     <div class="card__header ">
+                                         <div class="card__header-text">
+                                             <h3 class="card__title ">شاطئ المالديف</h3>
+                                         </div>
+                                         <div class="location">
+                                             <h3 class=" "> جدة - السعودية</h3>
+                                         </div>
+                                         <div class="starsAndExplore">
+                                             <div class="rating-group ">
+                                                 <label aria-label="1 star " class="rating__label " for="rating3-1 "><i
+                                 class="rating__icon rating__icon--star fa fa-star "></i></label>
+                                                 <label aria-label="2 stars " class="rating__label " for="rating3-2 "><i
+                                 class="rating__icon rating__icon--star fa fa-star "></i></label>
+                                                 <label aria-label="3 stars " class="rating__label " for="rating3-3 "><i
+                                 class="rating__icon rating__icon--star fa fa-star "></i></label>
+                                                 <label aria-label="4 stars " class="rating__label " for="rating3-4 "><i
+                                 class="rating__icon rating__icon--star fa fa-star "></i></label>
+                                                 <label aria-label="5 stars " class="rating__label " for="rating3-5 "><i
+                                 class="rating__icon rating__icon--star fa fa-star "></i></label>
+                                             </div>
+                                             <div class="explore">
+                                                 <button class="custom_button">
+                             <a class="" href="#">
+                                 <span>إكتشف الآن</span>
+                             </a>
+                         </button>
+                                             </div>
+                                         </div>
+                                     </div>
+                                     <p class="card__description ">يعتبر شاطئ من اهم الشواطئ في العالم وهو للقطر و الدوحه في العالم
+                                     </p>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="result filterDiv Resorts">
+                         <div class="swiper-slide ">
+                             <div href="" class="card_curve">
+                                 <img src="assets/img/large-1920px (26).svg" class="card__image " alt=" " />
+                                 <div class="mark ">
+                                     <i class="ri-bookmark-line bookmark "></i>
+                                 </div>
+                                 <div class="card__overlay ">
+                                     <div class="card__header ">
+                                         <div class="card__header-text">
+                                             <h3 class="card__title ">شاطئ المالديف</h3>
+                                         </div>
+                                         <div class="location">
+                                             <h3 class=" "> جدة - السعودية</h3>
+                                         </div>
+                                         <div class="starsAndExplore">
+                                             <div class="rating-group ">
+                                                 <label aria-label="1 star " class="rating__label " for="rating3-1 "><i
+                                 class="rating__icon rating__icon--star fa fa-star "></i></label>
+                                                 <label aria-label="2 stars " class="rating__label " for="rating3-2 "><i
+                                 class="rating__icon rating__icon--star fa fa-star "></i></label>
+                                                 <label aria-label="3 stars " class="rating__label " for="rating3-3 "><i
+                                 class="rating__icon rating__icon--star fa fa-star "></i></label>
+                                                 <label aria-label="4 stars " class="rating__label " for="rating3-4 "><i
+                                 class="rating__icon rating__icon--star fa fa-star "></i></label>
+                                                 <label aria-label="5 stars " class="rating__label " for="rating3-5 "><i
+                                 class="rating__icon rating__icon--star fa fa-star "></i></label>
+                                             </div>
+                                             <div class="explore">
+                                                 <button class="custom_button">
+                             <a class="" href="#">
+                                 <span>إكتشف الآن</span>
+                             </a>
+                         </button>
+                                             </div>
+                                         </div>
+                                     </div>
+                                     <p class="card__description ">يعتبر شاطئ من اهم الشواطئ في العالم وهو للقطر و الدوحه في العالم
+                                     </p>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="result filterDiv Island">
+                         <div class="swiper-slide ">
+                             <div href="" class="card_curve">
+                                 <img src="assets/img/large-1920px (24).svg" class=" card__image " alt=" " />
+                                 <div class="mark ">
+                                     <i class="ri-bookmark-line bookmark "></i>
+                                 </div>
+                                 <div class="card__overlay ">
+                                     <div class="card__header ">
+                                         <div class="card__header-text">
+                                             <h3 class="card__title ">شاطئ المالديف</h3>
+                                         </div>
+                                         <div class="location">
+                                             <h3 class=" "> جدة - السعودية</h3>
+                                         </div>
+                                         <div class="starsAndExplore">
+                                             <div class="rating-group ">
+                                                 <label aria-label="1 star " class="rating__label " for="rating3-1 "><i
+                                 class="rating__icon rating__icon--star fa fa-star "></i></label>
+                                                 <label aria-label="2 stars " class="rating__label " for="rating3-2 "><i
+                                 class="rating__icon rating__icon--star fa fa-star "></i></label>
+                                                 <label aria-label="3 stars " class="rating__label " for="rating3-3 "><i
+                                 class="rating__icon rating__icon--star fa fa-star "></i></label>
+                                                 <label aria-label="4 stars " class="rating__label " for="rating3-4 "><i
+                                 class="rating__icon rating__icon--star fa fa-star "></i></label>
+                                                 <label aria-label="5 stars " class="rating__label " for="rating3-5 "><i
+                                 class="rating__icon rating__icon--star fa fa-star "></i></label>
+                                             </div>
+                                             <div class="explore">
+                                                 <button class="custom_button">
+                             <a class="" href="#">
+                                 <span>إكتشف الآن</span>
+                             </a>
+                         </button>
+                                             </div>
+                                         </div>
+                                     </div>
+                                     <p class="card__description ">يعتبر شاطئ من اهم الشواطئ في العالم وهو للقطر و الدوحه في العالم
+                                     </p>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="result filterDiv Island">
+                         <div class="swiper-slide ">
+                             <div href="" class="card_curve">
+                                 <img src="assets/img/large-1920px (28).svg" class="card__image " alt=" " />
+                                 <div class="mark ">
+                                     <i class="ri-bookmark-line bookmark "></i>
+                                 </div>
+                                 <div class="card__overlay ">
+                                     <div class="card__header ">
+                                         <div class="card__header-text">
+                                             <h3 class="card__title ">شاطئ المالديف</h3>
+                                         </div>
+                                         <div class="location">
+                                             <h3 class=" "> جدة - السعودية</h3>
+                                         </div>
+                                         <div class="starsAndExplore">
+                                             <div class="rating-group ">
+                                                 <label aria-label="1 star " class="rating__label " for="rating3-1 "><i
+                                 class="rating__icon rating__icon--star fa fa-star "></i></label>
+                                                 <label aria-label="2 stars " class="rating__label " for="rating3-2 "><i
+                                 class="rating__icon rating__icon--star fa fa-star "></i></label>
+                                                 <label aria-label="3 stars " class="rating__label " for="rating3-3 "><i
+                                 class="rating__icon rating__icon--star fa fa-star "></i></label>
+                                                 <label aria-label="4 stars " class="rating__label " for="rating3-4 "><i
+                                 class="rating__icon rating__icon--star fa fa-star "></i></label>
+                                                 <label aria-label="5 stars " class="rating__label " for="rating3-5 "><i
+                                 class="rating__icon rating__icon--star fa fa-star "></i></label>
+                                             </div>
+                                             <div class="explore">
+                                                 <button class="custom_button">
+                             <a class="" href="#">
+                                 <span>إكتشف الآن</span>
+                             </a>
+                         </button>
+                                             </div>
+                                         </div>
+                                     </div>
+                                     <p class="card__description ">يعتبر شاطئ من اهم الشواطئ في العالم وهو للقطر و الدوحه في العالم
+                                     </p>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="result filterDiv waters">
+                         <div class="swiper-slide ">
+                             <div href="" class="card_curve">
+                                 <img src="assets/img/large-1920px (15).svg" class=" card__image " alt=" " />
+                                 <div class="mark">
+                                     <i class="ri-bookmark-line bookmark "></i>
+                                 </div>
+                                 <div class="card__overlay ">
+                                     <div class="card__header ">
+                                         <div class="card__header-text">
+                                             <h3 class="card__title ">شاطئ المالديف</h3>
+                                         </div>
+                                         <div class="location">
+                                             <h3 class=" "> جدة - السعودية</h3>
+                                         </div>
+                                         <div class="starsAndExplore">
+                                             <div class="rating-group ">
+                                                 <label aria-label="1 star " class="rating__label " for="rating3-1 "><i
+                                 class="rating__icon rating__icon--star fa fa-star "></i></label>
+                                                 <label aria-label="2 stars " class="rating__label " for="rating3-2 "><i
+                                 class="rating__icon rating__icon--star fa fa-star "></i></label>
+                                                 <label aria-label="3 stars " class="rating__label " for="rating3-3 "><i
+                                 class="rating__icon rating__icon--star fa fa-star "></i></label>
+                                                 <label aria-label="4 stars " class="rating__label " for="rating3-4 "><i
+                                 class="rating__icon rating__icon--star fa fa-star "></i></label>
+                                                 <label aria-label="5 stars " class="rating__label " for="rating3-5 "><i
+                                 class="rating__icon rating__icon--star fa fa-star "></i></label>
+                                             </div>
+                                             <div class="explore">
+                                                 <button class="custom_button">
+                             <a class="" href="#">
+                                 <span>إكتشف الآن</span>
+                             </a>
+                         </button>
+                                             </div>
+                                         </div>
+                                     </div>
+                                     <p class="card__description ">يعتبر شاطئ من اهم الشواطئ في العالم وهو للقطر و الدوحه في العالم
+                                     </p>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                 <nav aria-label="Page navigation example" class="navigation">
+                     <ul class="pagination">
+                         <li class="pagination_move">
+                             <a class="page-link " href="#" aria-label="Previous">
+                                 <i class="ri-arrow-right-s-line"></i> </a>
+                         </li>
+                         <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                         <li class="page-item"><a class="page-link" href="#">2</a></li>
+                         <li class="page-item"><a class="page-link" href="#">3</a></li>
+                         <li class=" pagination_move">
+                             <a class="page-link " href="#" aria-label="Next">
+                                 <i class="ri-arrow-left-s-line"></i>
+                             </a>
+                         </li>
+                     </ul>
+                 </nav>
+             </div>
+         </div>
+     </div>
+ </section>
+ <!--=========================== Destinations ===========================-->
+    {% include 'parts/category-places.html' %}
+ <!--=========================== Our JavaScript Section Start ===========================-->
+ <script>
+     filterSelection("all");
+
+     function filterSelection(all) {
+         var x, i;
+         x = document.getElementsByClassName("filterDiv");
+         if (all == "all") all = "";
+         for (i = 0; i < x.length; i++) {
+             RemoveClass(x[i], "show");
+             if (x[i].className.indexOf(all) > -1) AddClass(x[i], "show");
+         }
+     }
+
+     function AddClass(element, name) {
+         var i, arr1, arr2;
+         arr1 = element.className.split(" ");
+         arr2 = name.split(" ");
+         for (i = 0; i < arr2.length; i++) {
+             if (arr1.indexOf(arr2[i]) == -1) {
+                 element.className += " " + arr2[i];
+             }
+         }
+     }
+
+     function RemoveClass(element, name) {
+         var i, arr1, arr2;
+         arr1 = element.className.split(" ");
+         arr2 = name.split(" ");
+         for (i = 0; i < arr2.length; i++) {
+             while (arr1.indexOf(arr2[i]) > -1) {
+                 arr1.splice(arr1.indexOf(arr2[i]), 1);
+             }
+         }
+         element.className = arr1.join(" ");
+     }
+     var btnContainer = document.getElementById("myBtnContainer");
+     var btns = btnContainer.getElementsByClassName("btns");
+     for (var i = 0; i < btns.length; i++) {
+         btns[i].addEventListener("click", function() {
+             var current = document.getElementsByClassName("activated");
+             current[0].className = current[0].className.replace("activated", "");
+             this.className += " activated";
+         });
+     }
+ </script>
+    {% endblock %}

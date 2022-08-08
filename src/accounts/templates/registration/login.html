@@ -1,0 +1,27 @@
+{% extends 'base_profile.html' %}
+{% load static %}
+    {% block meta_code %}
+        <title>تجوال السياحي | تسجيل الدخول</title>
+        <meta name="description" content="تسجيل الدخول لتجوال السياحي">
+    {% endblock %}
+{% block content%}
+    <form method="POST" novalidate>
+        <div class="box-form">
+            <div class="right">
+                <h5>تسجيل الدخول</h5>
+                <div class="inputs">
+                    {% csrf_token %}
+                    {{form}}
+                    <a href="#">هل نسيت كلمه المرور الخاصه بك</a>
+                </div>
+                <div class="register">
+                    <input type="submit" value="تسجيل الدخول" class="custom_button">
+                </div>
+                <p>لدي حساب بالفعل ؟<a href="{% url 'accounts:signup' %}"> تسجيل جديد </a></p>
+            
+            </div>
+            <div class="left" style="background-image: url({% static 'image/Login_image.jpeg' %});">
+            </div>
+        </div>
+    </form>
+{% endblock %}

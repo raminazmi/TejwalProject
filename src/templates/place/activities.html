@@ -1,0 +1,384 @@
+{% extends 'base.html' %}
+{% load static %}
+
+    {% block css_file %}
+    <link rel="stylesheet" href="{% static 'css/destination-style.css' %}">
+    {% endblock %}
+    {% block style%}
+    <style>
+        header{
+            background:url('image/homepage-default-banner.jpg');
+            background-repeat: no-repeat;
+            background-size:cover;
+            background-position:bottom;
+            background-attachment: fixed;
+        }
+        .inner-header-shape .heading h1{
+            font-size: 35px;
+            transform: translateY(83px);
+        }
+        .Activities-cards{
+            margin: 100px 0px;
+        }
+        .Activities-cards .container{
+            width: 70%;
+        }
+    @media (max-width: 750px){
+        header .heading {
+            transform: translateY(20);
+            margin-bottom: 40px;
+          }
+          .inner-header-shape .heading h1{
+            font-size: 20px;}
+            .Activities-cards .container{
+                width: 80%;
+            }
+            .Activities-cards{
+                margin: 130px 0px;
+            }
+    }
+      
+    </style>
+    {% endblock %}
+
+    {% block content %}
+   <!-- header to Project -->
+    <header>
+        <div class="header-inner">
+            <nav>
+                <nav class="navbar navbar-expand-lg navbar-light" dir="rtl">
+                    <div class="container">
+                        <!-- logo to website -->
+                      <a class="navbar-brand" href="#">
+                          <img src="image/logo.png" alt="" width="100" height="60">
+                      </a>
+                      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                      </button>
+                      <a href="#" class="login-user"><i class="fas fa-user"></i></a>
+                      <!-- menu Navigation -->
+                      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-3 mb-2 mb-lg-0">
+                          <li class="nav-item text-primary">
+                            <a class="nav-link" aria-current="page" href="#">
+                                <i class="fas fa-home"></i> الرئيسية
+                            </a>
+                          </li>
+                          <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-grip-vertical"></i>الفئات</i>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                              <li><a class="dropdown-item" href="#">الدول السياحية</a></li>
+                              <li><a class="dropdown-item" href="#">المدن السياحية</a></li>
+                              <li><a class="dropdown-item" href="#">الوجهات السياحية</a></li>
+                            </ul>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fas fa-map-marked-alt"></i>اكتشف المدينه
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fas fa-tasks"></i>خطط للرحلتك</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">
+                               <i class="fas fa-info-circle"></i>حول الموقع</li>
+                        </ul>
+                        <div class="user">
+                            <a href="" class="btn btn-warning mb-left">تسجيل الدخول</a>
+                        </div>
+                      </div>
+                    </div>
+                  </nav>
+            </nav>
+        </div>
+       
+        <div class="container">
+            <div class="main-heading">
+                <h1> الأنشطه السياحية </h1>
+            </div>
+        </div>
+        <div class="inner-header-shape">
+            <div class="content-header">
+                <div class="heading">
+                    <h1 style="font-size:40px;"> الأنشطه الأكثر رواجا  </h1>
+                    <select name="" id="continent" placeholder="اختر القاره" >
+                        <option value="Asia">
+                            <a href="">إثاره</a>
+                            <i class="fa-solid fa-landmark"></i>                        </option>
+                        <option value="Africa">
+                            <a href="">مواقع دينية</a>
+                            <i class="fas fa-globe-africa"></i>
+                        </option>
+                        <option value="Eroup">
+                            <a href="">شواطىء </a>
+                            <i class="fa-solid fa-umbrella-beach"></i>                        </option>
+                        <option value="south-american">
+                            <a href=""> الهواء الطلق</a>
+                            <i class="fas fa-globe-americas"></i>
+                        </option>
+                        <option value="north-american">
+                            <a href=""> مدن ملاه</a>
+                            <i class="fa-solid fa-ferris-wheel"></i>                        </option>
+                    </select>
+                </div>
+           </div>
+        </div>
+    </header>
+    <div class="container">
+       <ul class="continent-box">
+        <li>
+            <a href=""> إثاره</a>
+            <i class="fas fa-globe-asia"></i>
+        </li>
+        <li>
+            <a href=""> سفارى</a>
+            <i class="fa-solid fa-ferris-wheel"></i>
+            </li>
+        <li>
+            <a href=""> التزلج</a>
+            <i class="fas fa-globe-asia"></i>
+        </li>
+        <li>
+            <a href=""> الهواء الطلق</a>
+            <i class="fas fa-globe-americas"></i>
+        </li>
+        <li>
+            <a href=""> أخرى </a>
+            <i class="fas fa-globe-americas"></i>
+        </li>
+       </ul>
+    </div>
+    <!-- End Header -->
+    <section class="Activities-cards">
+        <div class="container">
+            <div class="row">
+                <div class="Activity-card col-lg-4 col-md-6 col-sm-12">
+                    <div class="img">
+                        <img src="image/activities-5.jpg" alt="Activity2">
+                      </div>
+                      <div class="info">
+                         <h3>غوص البحار</h3>
+                         <div class="rating">
+                            <span>7.8</span>
+                            <div class="col-rating">
+                              <ul>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                              </ul>
+                              <span>948 صوت</span>
+                            </div>
+                         </div>
+                         <p>تمتع بالتزلج على رمال الصحراء الحارة في القارة الافريقية دولة الامارات العربية </p>
+                      </div>
+                 
+                </div>
+                <div class="Activity-card col-lg-4 col-md-6 col-sm-12">
+                    <div class="img">
+                        <img src="image/activities-5.jpg" alt="Activity2">
+                      </div>
+                      <div class="info">
+                         <h3>غوص البحار</h3>
+                         <div class="rating">
+                            <span>7.8</span>
+                            <div class="col-rating">
+                              <ul>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                              </ul>
+                              <span>948 صوت</span>
+                            </div>
+                         </div>
+                         <p>تمتع بالتزلج على رمال الصحراء الحارة في القارة الافريقية دولة الامارات العربية </p>
+                      </div>
+                 
+                </div>
+                <div class="Activity-card col-lg-4 col-md-6 col-sm-12">
+                    <div class="img">
+                        <img src="image/activities-5.jpg" alt="Activity2">
+                      </div>
+                      <div class="info">
+                         <h3>غوص البحار</h3>
+                         <div class="rating">
+                            <span>7.8</span>
+                            <div class="col-rating">
+                              <ul>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                              </ul>
+                              <span>948 صوت</span>
+                            </div>
+                         </div>
+                         <p>تمتع بالتزلج على رمال الصحراء الحارة في القارة الافريقية دولة الامارات العربية </p>
+                      </div>
+                 
+                </div>
+                <div class="Activity-card col-lg-4 col-md-6 col-sm-12">
+                    <div class="img">
+                        <img src="image/activities-5.jpg" alt="Activity2">
+                      </div>
+                      <div class="info">
+                         <h3>غوص البحار</h3>
+                         <div class="rating">
+                            <span>7.8</span>
+                            <div class="col-rating">
+                              <ul>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                              </ul>
+                              <span>948 صوت</span>
+                            </div>
+                         </div>
+                         <p>تمتع بالتزلج على رمال الصحراء الحارة في القارة الافريقية دولة الامارات العربية </p>
+                      </div>
+                 
+                </div>
+                <div class="Activity-card col-lg-4 col-md-6 col-sm-12">
+                    <div class="img">
+                        <img src="image/activities-5.jpg" alt="Activity2">
+                      </div>
+                      <div class="info">
+                         <h3>غوص البحار</h3>
+                         <div class="rating">
+                            <span>7.8</span>
+                            <div class="col-rating">
+                              <ul>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                              </ul>
+                              <span>948 صوت</span>
+                            </div>
+                         </div>
+                         <p>تمتع بالتزلج على رمال الصحراء الحارة في القارة الافريقية دولة الامارات العربية </p>
+                      </div>
+                 
+                </div>
+                <div class="Activity-card col-lg-4 col-md-6 col-sm-12">
+                    <div class="img">
+                        <img src="image/activities-5.jpg" alt="Activity2">
+                      </div>
+                      <div class="info">
+                         <h3>غوص البحار</h3>
+                         <div class="rating">
+                            <span>7.8</span>
+                            <div class="col-rating">
+                              <ul>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                              </ul>
+                              <span>948 صوت</span>
+                            </div>
+                         </div>
+                         <p>تمتع بالتزلج على رمال الصحراء الحارة في القارة الافريقية دولة الامارات العربية </p>
+                      </div>
+                 
+                </div>
+                <div class="Activity-card col-lg-4 col-md-6 col-sm-12">
+                    <div class="img">
+                        <img src="image/activities-5.jpg" alt="Activity2">
+                      </div>
+                      <div class="info">
+                         <h3>غوص البحار</h3>
+                         <div class="rating">
+                            <span>7.8</span>
+                            <div class="col-rating">
+                              <ul>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                              </ul>
+                              <span>948 صوت</span>
+                            </div>
+                         </div>
+                         <p>تمتع بالتزلج على رمال الصحراء الحارة في القارة الافريقية دولة الامارات العربية </p>
+                      </div>
+                 
+                </div>
+                <div class="Activity-card col-lg-4 col-md-6 col-sm-12">
+                    <div class="img">
+                        <img src="image/activities-5.jpg" alt="Activity2">
+                      </div>
+                      <div class="info">
+                         <h3>غوص البحار</h3>
+                         <div class="rating">
+                            <span>7.8</span>
+                            <div class="col-rating">
+                              <ul>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                              </ul>
+                              <span>948 صوت</span>
+                            </div>
+                         </div>
+                         <p>تمتع بالتزلج على رمال الصحراء الحارة في القارة الافريقية دولة الامارات العربية </p>
+                      </div>
+                 
+                </div>
+                <div class="Activity-card col-lg-4 col-md-6 col-sm-12">
+                    <div class="img">
+                        <img src="image/activities-5.jpg" alt="Activity2">
+                      </div>
+                      <div class="info">
+                         <h3>غوص البحار</h3>
+                         <div class="rating">
+                            <span>7.8</span>
+                            <div class="col-rating">
+                              <ul>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                                <li><i class="fas fa-star"></i></li>
+                              </ul>
+                              <span>948 صوت</span>
+                            </div>
+                         </div>
+                         <p>تمتع بالتزلج على رمال الصحراء الحارة في القارة الافريقية دولة الامارات العربية </p>
+                      </div>
+                 
+                </div>
+            </div>
+            <div class="pangration">
+                <ul>
+                    <li class="active">1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li><i class="fas fa-chevron-left"></i></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    {% endblock %}
+
+     {% block js_file %}
+     <script src="https://kit.fontawesome.com/6416f84d82.js" crossorigin="anonymous"></script>
+     <script src="{% static 'js/destination-script.js' %}"></script>
+     {% endblock %}
+ 
+   

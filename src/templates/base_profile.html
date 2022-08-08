@@ -1,0 +1,143 @@
+{% load static %}
+<!DOCTYPE html>
+<html dir="rtl">
+
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5474706777178169"
+     crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block meta_code %}
+    {% endblock %}
+    <!--=============== FAVICON ===============-->
+    <link rel="shortcut icon" href="{% static 'image/short-icon.png' %} " type="image/x-icon">
+    <link rel="icon" type="image/x-icon" href="{% static 'image/short-icon.png' %}">
+
+    <!--=============== REMIX ICONS ===============-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="{% static 'css/swiper-bundle.min.css' %}">
+    <!--=============== FONTAWESOME ===============-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <!--=============== BOOTSTRAP ===============-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.rtl.min.css" integrity="sha384-dc2NSrAXbAkjrdm9IYrX10fQq9SDG6Vjz7nQVKdKcJl3pC+k37e7qJR5MVSCS+wR" crossorigin="anonymous">
+    <!--=============== Google Fonts ===============-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet">
+
+    <!--=============== CSS ===============-->
+
+    <link rel="stylesheet" href="{% static 'css/popular events' %}">
+    <link rel="stylesheet" href="{% static 'css/mainPage.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/popular landmarks' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="stylesheet" href="{% static 'css/personal_profile.css' %}">
+    <link rel="stylesheet" href="{% static 'css/CountryPage.css' %}">
+    <link rel="stylesheet" href="{% static 'css/place_view.css' %}">
+
+
+    {% block css_files %}
+    {% endblock %}
+</head>
+
+<body class="body">
+    <!--=========================== Header ===========================-->
+    <header class="header">
+        <div class="SearchIcon"><img src="{% static 'image/magnifier.png' %}" alt="searchIcon"></div>
+        <a href="{% url 'MainPage' %}">
+            <img src="{% static 'image/logo white.svg' %}" alt="logo1" class="logo1" /></a>
+            <img src="{% static 'image/logo white.svg' %}" alt="logo2" class="logo2" />
+        <div class="navbar">
+            <div class="menu">
+                {% if request.user.is_authenticated %}
+                <div class="nav-header">
+                    <a class="navbar-link" href="#">
+                        <div><i class="fa-solid fa-user"></i> {{user.username}}</div>
+                    </a>
+                </div>
+                {% else %}
+                <div class="nav-header">
+                    <a class="navbar-link" href="{% url 'accounts:signup'%}">
+                        <div><i class="fa-solid fa-user"></i> تسجيل جديد</div>
+                    </a>
+                </div>
+                {% endif %}
+                <form method="GET" id="search" class="search-web" action="{% url 'general_search' %}" validate="required" >
+
+                <div class="search">
+                    <input class="search-input" name="search-text" type="search" placeholder="ابحث عن وجهتك">
+                    <div class="search_icon"><img src="{% static 'image/magnifier.png' %}" alt="searchIcon"></i>
+                    </div>
+                </div>
+
+                </form>
+                <ul class="navbar-list">
+                    <li>
+                        <a class="navbar-link" href="{% url 'MainPage' %}"><img src="{% static 'image/home.svg' %}"></img>الرئيسية</a>
+                    </li>
+                    <li>
+                        <a class="navbar-link" href="{% url 'CountryList' %}"><img src="{% static 'image/333.svg ' %}"></img>وجهات</a>
+                    </li>
+                    <li>
+                        <a class="navbar-link" href="#"><img src="{% static 'image/man.svg ' %}"></img>الفعاليات</a>
+                    </li>
+                    <li>
+                        <a class="navbar-link" href="#"><img src="{% static 'image/election-event-on-a-calendar-with-star-symbol.svg ' %}"></img>مقالات</a>
+                    </li>
+                    {% if request.user.is_authenticated %}
+                    <li>
+                        <button class="custom_button">
+                            <a class="" href="#">
+                                <span>{{user.username}}</span>
+                            </a>
+                        </button>
+                    </li>
+
+                    {% else %}
+                    <li>
+                        <a class="login_button" href="{% url 'accounts:login' %}"><img src="{% static 'image/newsletter.svg ' %}"></img>دخول</a>
+                    </li>
+                    <li>
+                        <button class="custom_button">
+                            <a class="" href="{% url 'accounts:signup' %}">
+                                <span>تسجيل جديد</span>
+                            </a>
+                        </button>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+            <p class="tejwal-rights">منصة تجوال | جميع الحقوق محفوظة</p>
+        </div>
+        <button type="button" class="mobile-navbar-btn">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+        </button>
+        <div class="shadow_color" id="full_Screen" onclick=""></div>
+    </header>
+{% block content %}
+
+{% endblock %}
+
+
+    <!--=========================== Footer ===========================-->
+    <div class="rights ">
+        <div class=" ">
+            <p class=" mb-0 py-2 "> كل الحقوق محفوظة © 2022 </p>
+        </div>
+    </div>
+    <!--=========================== Our JavaScript Section Start ===========================-->
+    <script type="module " src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js "></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js "></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js " integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB " crossorigin="anonymous "></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js " integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2 " crossorigin="anonymous "></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js "></script>
+    <script src="{% static 'js/index.js' %} ">
+    </script>
+    <script src="{% static 'js/swiper-bundle.min.js' %} "></script>
+</body>
+
+</html>

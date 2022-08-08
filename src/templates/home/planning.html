@@ -1,0 +1,65 @@
+{% extends "new_base.html" %}
+{% load static %}
+{% block css_file %}
+      <link rel="stylesheet" href="{% static 'css/planning.css' %}">
+{% endblock %}
+
+{% block content %}
+
+ <section class="plan-information">
+    <div class="container">
+       <div class="heading">
+          <span>نساعدك في التخطيط للرحلتك </span>
+          <h2>كيف أخطط للرحلتي</h2>
+       </div>
+       <div class="row justify-content-around">
+          <div class="col-2 box-informa">
+             <img src="{% static 'image/countries.png' %}" alt="">
+             <span>حدد وجهتك</span>
+          </div>
+          <div class="col-2 box-informa">
+            <img src="{% static 'image/notes.png' %}" alt="">
+            <span>أدخل معلومات الرحلة</span>
+         </div>
+         <div class="col-2 box-informa">
+            <img src="{% static 'image/data-plan.png' %}" alt="">
+            <span>انتقل الى لوحة التخطيط</span>
+         </div>
+         <div class="col-2 box-informa">
+            <img src="{% static 'image/right-arrow.png' %}" alt="">
+            <span>انتقل الى لوحة التخطيط</span>
+         </div>
+       </div>
+   </div>
+ </section>
+ <section class="CreateTraip">
+    {% if user.is_authenticated %}
+    <h2>إنشاء رحلة </h2>
+    <form method="POST" action="#">
+      {% csrf_token %}
+       <input name="title" class="" type="text" placeholder="عنوان الرحلة ">
+       <select name="country" class="" aria-label="Default select example">
+         {% for x in country %}
+         <option value="{{x.country_id}}">{{x.name_country}}</option>
+         {% endfor %}
+       </select>
+       <select name="tour_type" class="" aria-label="Default select example">
+         <option value="worship">عبادة</option>
+         <option value="family">عائلي</option>
+         <option value="friends">الأصدقاء</option>
+       </select>
+       <input name="lunch_date" type="date" min="2022-03-14">
+       <input name="budget" type="number" placeholder="الميزانية">
+       <input type="submit" class="button-website" value="إنشاء رحلة">
+      
+    </form>
+    {% else %}
+    <div class="container box2">
+      <p class="alert alert-warning">حتى تستفيد من هذه الخدمة يجب أن تكون عضوا في الموقع </p>
+      <a href="{% url 'accounts:signup_user' %}">تسجيل جديد</a>
+      <a href="{% url 'login' %}">تسجيل دخول</a>
+    </div>
+
+    {% endif %}
+ </section>
+{% endblock %}

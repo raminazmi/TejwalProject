@@ -1,0 +1,94 @@
+{% extends "new_base.html" %}
+{% load static %}
+    <!-- css file that related in this page  -->
+    {% block css_files %}
+    <link rel="stylesheet" href="{% static 'css/destination-style.css' %}"> 
+    {% endblock %}
+    
+    {% block content %}
+    <!-- start header  -->
+    <header>
+        <div class="header-inner">
+            {% include 'parts/navbar.html' %}
+        </div>
+        <div class="container">
+            <div class="main-heading">
+                <h1>الوجهات</h1>
+            </div>
+        </div>  
+    </header>
+    <div class="container category">
+        <h2 class='title-category'> إختر وجهتك السياحية </h2>
+        <!-- <ul class="continent-box">
+        <li>
+            <a href="{% url 'country_filter' 'asia' %}">اسيا</a>
+            <i class="fas fa-globe-asia"></i>
+        </li>
+        <li>
+            <a href="{% url 'country_filter' 'africa' %}">أفريقيا</a>
+            <i class="fas fa-globe-africa"></i>
+        </li>
+        <li>
+            <a href="{% url 'country_filter' 'europe' %}">أوروبا</a>
+            <i class="fas fa-globe-asia"></i>
+        </li>
+        <li>
+            <a href="{% url 'country_filter' 'north_america' %}">أمريكا الشمالية</a>
+            <i class="fas fa-globe-americas"></i>
+        </li>
+        <li>
+            <a href="{% url 'country_filter' 'north_america' %}">أمريكا الجنوبية</a>
+            <i class="fas fa-globe-americas"></i>
+        </li>
+       </ul> -->
+       <form method="GET" class="header-search">
+           {{continenty_filter.form}}
+           <input type="submit" value="ابحث">
+       </form>
+    </div>
+    <!-- End header  -->
+    <section class="destination">
+        <div class="container">
+            <div class="row">
+                {% for x in country_list %}
+                <div class="col-lg-3 col-md-6 col-sm-12 box-destination">
+                        <div class="full-card">
+                            <div class="img">
+                                <img src="{{x.image.url}}" alt="">
+                                <h2 id="heading-destination" ">
+                                    <a href="{% url 'country' x.slug%}" style="color:white" >{{x.name_country}}</a></h2>
+                            </div>
+                            <div class="info">
+                                <div class="heading">
+                                    <h2><a href="" style="color:rgb(37, 37, 37)">{{x.name_country}}</a></h2>
+                                </div>
+                                <div class="detailes">
+                                    <p>دولة الحضارة والمتعة مهد لقاء الشرق مع الغرب</p>
+                                    <div class="rating">
+                                        <ul>
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star-half-alt"></i></li>
+                                            <li><i class="far fa-star"></i></li>
+    
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                    
+                </div>
+                {% endfor%}            
+            </div>
+            <!-- <div class="pangration">
+                <ul>
+                    <li class="active">1</li>
+                    <li>2</li>
+                    <li><i class="fas fa-chevron-left"></i></li>
+                </ul>
+            </div> -->
+        </div>
+    </section>
+    <!-- Start Footer -->
+    <!-- End Footer -->
+    {% endblock %}

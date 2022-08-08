@@ -1,0 +1,166 @@
+{% extends "new_base.html" %}
+{% load static %}
+    {% block meta_code %}
+        <title>{{event.title}} | تجوال السياحي </title>
+        <meta name="description" content="{{destination.meta_description}}">
+        <meta name="keywords" content="">
+    {% endblock %}
+
+     <!-- file that related in this page  -->
+     {% block css_files %}
+     <link rel="stylesheet" href="{% static 'css/CountryPage.css' %}">
+     {% endblock %}
+
+    {% block content %}
+        <!--=========================== breadcrumb ===========================-->
+        <section class="breadcrumb-size">
+            <div class="main_container">
+                <nav style="--breadcrumb-divider: quote('>');" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="{% url 'MainPage'%}"><img src="{% static 'image/home1.svg' %}"></a>
+                        </li>
+                        <li class="breadcrumb-item " aria-current="page">الفعاليات</li>
+                        <li class="breadcrumb-item active" aria-current="page">{{event.title}}</li>
+                    </ol>
+                </nav>
+            </div>
+        </section>
+        <!--=========================== Tickets ===========================-->
+        <section class="Tickets">
+    
+            <div class="main_container">
+                <p class="section_title"> {{event.title}}</p>
+            </div>
+            <div class="tickets">
+                <div class="main_container">
+                    <div class="row">
+                        <div class=" col-lg-2 col-md-3 col-sm-6">
+                            <div>
+                                <h5>1 نوفمبر 2021 - 6 مايو 2022</h5>
+                                <h5>{{event.end_time}} - {{event.start_time}}</h5>
+                            </div>
+                        </div>
+                        <div class=" col-lg-2 col-md-3 col-sm-6">
+                            <img src="{% static 'image/ic_room_24px.svg' %}" alt="">
+                            <div>
+                                <h5>العنوان</h5>
+                                <h5>{{event.city.name_city}} - {{event.city.country.name_country}}</h5>
+                            </div>
+                        </div>
+                        <div class=" col-lg-2 col-md-3 col-sm-6">
+                            <img src="{% static 'image/category (1).svg' %}" alt="">
+                            <div>
+                                <h5>فئة</h5>
+                                <h5> {{event.get_category_display}}</h5>
+                            </div>
+                        </div>
+                        <div class=" col-lg-2 col-md-3 col-sm-6">
+                            <img src="{% static 'image/audience.svg' %}" alt="">
+                            <div>
+                                <h5>الجمهور</h5>
+                                <h5> {{event.get_audience_display}}</h5>
+                            </div>
+                        </div>
+                        <div class=" col-lg-2 col-md-3 col-sm-6">
+                            <img src="{% static 'image/ticket.svg' %}" alt="">
+                            <div>
+                                <h5>رسوم </h5>
+                                {% if fee is True%}
+                                <h5>فعالية مدفوعة</h5>
+                                {% else %}
+                                <h5> فعالية مجانيه</h5>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class=" col-lg-2 col-md-3 col-sm-6">
+                            <a class="custom_button" href="{{event.}}">احصل على التذاكر</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--=========================== Img-cover ===========================-->
+        <section class="Img-cover CityPage Boulevard">
+            <div class="main_container">
+                <div class="CoverImage FlexEmbed Flex-Embed" style="background-image:url({{event.background.url}})">
+                    <div class="content">
+                        <h2> {{event.title}}</h2>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--=========================== Map section ===========================-->
+        <section class="event_view">
+            <div class=" Map-city ">
+                <div class="main_container">
+                    <div class="Map">
+                        <div class="map_con">
+                            <div id="map"></div>
+                            <div>
+                                <h5>نبذة</h5>
+                                <p class="description"> {{event.info}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--=========================== Destinations ===========================-->
+        <section class="main_container landmarks Destinations event">
+            <p class="section_title"><span class=""></span>فعاليات أخرى</p>
+            <div class="swiper mySwiper-landmarks">
+                <div class="arrows">
+                    <i class="ri-arrow-right-s-line arrow_swipe_right"></i>
+                    <i class="ri-arrow-left-s-line arrow_swipe_left"></i>
+                </div>
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div href="" class="card_curve">
+                            <a href="">
+                                <img src="assets/img/events.svg" class="card__image" alt="" />
+                                <div class="city_name">
+                                    <h6 class="date">19مايو-15-مارس</h6>
+                                    <h5 class="">مهرجان الدوحه للتسوق</h5>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div href="" class="card_curve">
+                            <a href="">
+                                <img src="assets/img/dubai-desktop-580x360.jpg" class="card__image" alt="" />
+                                <div class="city_name">
+                                    <h6 class="date">19مايو-15-مارس</h6>
+                                    <h5 class="">مونديال 2022</h5>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide ">
+                        <div href=" " class="card_curve">
+                            <a href="">
+                                <img src="assets/img/134556.svg" class="card__image" alt="" />
+                                <div class="city_name">
+                                    <h6 class="date">19مايو-15-مارس</h6>
+                                    <h5 class="">مهرجان الدوحه للساعات والمجهورات </h5>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div href=" " class="card_curve">
+                            <a href="">
+                                <img src="assets/img/eventsx.svg" class="card__image" alt="" />
+                                <div class="city_name">
+                                    <h6 class="date">19مايو-15-مارس</h6>
+                                    <h5 class="">مهرجان الدوحه للتسوق</h5>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endblock %}

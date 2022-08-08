@@ -1,0 +1,106 @@
+{% extends 'base-profile.html'%}
+{% load static %}
+
+{% block content%}
+<section class="profile">
+    <div class="container">
+        <div class="background">
+            <div class="img">
+                <img src="{{user.person_image.url}}" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+<section class="info">
+    <div class="container">
+        <div class="row">
+            <div class="col-3 info-person">
+                <div class="item">
+                    <h2>
+                        <i class="fa-solid fa-user"></i>
+                        {{user.user.first_name}} {{user.user.last_name}}
+                    </h2>
+                </div>
+                <div class="item">
+                    <h2><i class="fa-solid fa-calendar"></i>
+                        ولد في
+                        {{user.brithdate}}
+                    </h2>
+                </div>
+                <div class="item">
+                    <h2> <i class="fa-solid fa-flag"></i>
+                        يقيم 
+                        {{user.country}}
+                    </h2>
+                </div>
+            </div>
+            <div class="col-8 content">
+                <nav>
+                    <ul>
+                        <li><a href="{%url 'accounts:profile_user' %}">المفضلة </a></li>
+                        <li><a href="{%url 'accounts:profile_comment' %}" class="active">التعليقات </a></li>
+                        <li><a href="{%url 'accounts:profile_info' %}" >الملف الشخصي </a></li>
+                    </ul>
+                </nav>
+                <div class="comment-profile">
+                 {% for one_comment in comment%}
+                 <div class="row box">
+                     <div class="col-2">
+                         <img src="{{one_comment.place.background.url}}" alt="">
+                     </div>
+                     <div class="col-9">
+                         <div>
+                            المكان : {{one_comment.place.title_place}}
+                         </div>
+                         <div>
+                            التعليق : {{one_comment.comment}}
+                        </div>
+                        <div class="button">
+                            <ul >
+                                <li><a class="" href="">  تعديل التعليق </a></li>
+                                <li><a class="" href="#">  حذف التعليق </a></li>
+                              </ul>
+                        </div>
+                        
+                     </div>
+                   {% endfor%}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<h5>تعديل الملف الشخصي</h5>
+<div class="edit_img">
+                    <img src="assets/img/young-serious-pretty-woman-shirt-protective-mask-putting-blue-gloves-avoid-covid19-infection-period-quarantine_274679-12367.svg" alt="">
+                    <div class="change_img">
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">تغير الصورة الشخصية</label>
+                            <input class="form-control" type="file" name="person_image" value="">
+                        </div>
+                    </div>
+</div>
+<div class="inputs">
+<div class="names">
+    <div>
+        <h6>الاسم الأول</h6>
+        <input type="text" name="first_name" placeholder="أدخل الاسم الجديد" value="{{userform.first_name.value}}">
+    </div>
+    <div>
+        <h6 class="">اسم العائله</h6>
+        <input type="text" name="last_name" placeholder="أدخل اسمك الأخير "  value="{{userform.last_name.value}}">
+    </div>
+</div>
+<div class="names">
+<div>
+    <h6>اسم المستخدم</h6>
+    <input type="text" name="username" placeholder="أدخل اسم المستخدم  "  value="{{userform.username.value}}">
+</div>
+<div>
+    <h6 class="">تاريخ الميلاد</h6>
+    <input type="text" name="brithdate" placeholder="تاريخ الميلاد" value="{{profileform.brithdate.value | date:'d.m.Y'}}" onfocus="(this.type='date')">
+</div>
+</div>
+<div class="register">
+    <input type="submit" class="custom_button" value="حفظ التعديلات الجديده">  
+</div>
+{% endblock %}

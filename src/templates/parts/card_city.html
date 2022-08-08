@@ -1,0 +1,9 @@
+{% load static %}
+<div class="swiper-slide">
+    <div href="" class="card_curve">
+        <a href="{% url 'city' object.slug %}">
+            <img src="{{object.image.url}}" class="card__image" alt="" />
+            <h2 class="city_name">{{object.name_city}}</h2>
+        </a>
+    </div>
+</div>

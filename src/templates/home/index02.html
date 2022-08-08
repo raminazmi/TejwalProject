@@ -1,0 +1,208 @@
+   {% extends 'new_base.html' %}
+   {% load static%}
+
+   {% block meta_code %}
+   <title>تجوال السياحي | رفيق سفرك</title>
+   <meta name="title" content="تجوال السياحي | رفيق سفرك">
+   <meta name="description" content="تجوال منصة إلكترونية مختصة في الإرشاد السياحي حول العالم وتقديم محتوى غني ومواكب لأهم المعالم السياحية في الوجهة المقصودة من مطاعم ومعالم وأنشطة مميزة في الوجهه المقصوده">
+   <meta name="keywords" content="سياحه ، سفر ، معالم سياحية ، أنشطة سياحية ، أهم المعالم السياحية ، الإرشاد السياحي ، السياحه في تركيا">
+   <meta name="robots" content="index, follow">
+   {% endblock %}
+
+   {% block content %}
+   
+   <!--=========================== Discover ===========================-->
+    <section class="discover">
+      <div class="main_container">
+          <div class="discover_now">
+              <div class="big-world">
+                  <h6>اكتشف العالم الكبير</h6><img src="{% static 'image/airplane.svg' %}" alt="">
+              </div>
+              <div class="discover_now_title">إكتشف الان<img src="{% static 'image/shuttle.svg' %}" alt=""></div>
+              <p class="paragraph">ابدأ رحلتك من هنا بإستكشاف المعالم السياحية العالمية من منصة تجوال<img src="assets/img/destination.svg" alt=""></p>
+              <form method="GET" id="search" class="search-web" action="{% url 'general_search' %}" validate="required" >
+                <div class="search">
+                    <input class="search-input" type="search" name="search-text" placeholder="ابحث عن وجهتك" required>
+                    <div class="search-button">
+                            <input type="submit" value="">
+                            <div class="search_icon"><img src="{% static 'image/magnifier.png' %}" alt="searchIcon"></i>
+                    </div>
+                    </div>
+                </div>
+            </form>
+              <div class="button_group shadow_color">
+                  <div class="button "><a href='{% url "country" "Turkey" %}' ><img src="{% static 'image/ic_place_24px.svg' %}"></img>تركيا</a></div>
+                  <div class="button"><a href='{% url "country" "Qatar" %}' ><img src="{% static 'image/ic_place_24px.svg' %}"></img>قطر</a></div>
+                  <div class="button"><a href='{% url "country" "Egypt" %}' ><img src="{% static 'image/ic_place_24px.svg' %}"></img>مصر</a></div>
+              </div>
+          </div>
+          <div class="image">
+              <img src="{% static 'image/covermain2.png' %}" alt="">
+          </div>
+      </div>
+  </section>
+  <!--=========================== Destinations ===========================-->
+  <section class="main_container landmarks Destinations">
+      <p class="section_title"><span class=""></span>أشهر الوجهات السياحية العالمية</p>
+      <div class="swiper mySwiper-landmarks">
+          <div class="arrows">
+              <i class="ri-arrow-right-s-line arrow_swipe_right"></i>
+              <i class="ri-arrow-left-s-line arrow_swipe_left"></i>
+          </div>
+          <div class="swiper-wrapper">
+            {% for object in cities %}
+                {% include 'parts/card_city.html' %}
+            {% endfor %}
+
+          </div>
+      </div>
+  </section>
+  <!--=========================== Popular landmarks ===========================-->
+  <section class="main_container landmarks">
+      <p class="section_title"><span class=""></span>أشهر المعالم السياحيه</p>
+      <div class="swiper mySwiper-landmarks">
+          <div class="arrows">
+              <i class="ri-arrow-right-s-line arrow_swipe_right"></i>
+              <i class="ri-arrow-left-s-line arrow_swipe_left"></i>
+          </div>
+          <div class="swiper-wrapper">
+            {% for object in places%}
+                {% include 'parts/card_place.html' %}
+            {% endfor %}
+          </div>
+      </div>
+  </section>
+  <!--=========================== Pupoler Events ===========================-->
+  <section class="swiper events">
+      <div class="main_container">
+          <p class="section_title"><span class=""></span>الفعاليات السياحية الرائجة</p>
+      </div>
+      <div class="swiper mySwiper-events">
+          <div class="swiper-wrapper">
+            {% for event in events %}
+              <a class="swiper-slide" href="{% url 'event_view' event.slug %}" target="_blank">
+                  <img src="{{event.background.url}}" />
+                  <div class="content">
+                      <span class="caption">{{event.city.country.name_country}}<span>{{event.start_date | date:'M Y'}}</span></span>
+                      <p class="title">{{event.title}}</p>
+                  </div>
+                </a>
+            {% endfor %}
+          </div>
+          <div class="swiper-button-prev swiper-button-white"></div>
+          <div class="swiper-button-next swiper-button-white"></div>
+      </div>
+      <div class="swiper-pagination"></div>
+  </section>
+
+  <!--===========================  Experiments ===========================-->
+  <section class="swiper events experiments">
+      <div class="main_container">
+          <p class="section_title"><span class=""></span>تجارب لا تفوت</p>
+          <div class="mySwiper-experiments">
+              <div class="swiper-wrapper">
+                {% for object in activities %}
+                  <div class="swiper-slide">
+                      <img src="{{object.image.url}}">
+                  </div>
+                  {% endfor %}
+              </div>
+          </div>
+          <div class="swiper container-float container_float">
+              <div class="swiper-wrapper">
+                {% for object in activities %}
+                  <div class="swiper-slide" style="background-image: url({% static 'image/Group 419.svg'%});">
+                      <div class="">
+                          <div class="tap-bar">
+                              <a href="">
+                                  <h3> {{object.get_category_display}}</h3>
+                              </a>
+                              <a href="">
+                                  <h3>{{object.city.name_city}}</h3>
+                              </a>
+                          </div>
+                          <p class="title" id="title">{{object.title}}</p>
+                          <div class="paragraph">
+                            <p>{{object.info}}</p>
+                          </div>
+                      </div>
+                      <div class="footer-position">
+                          <button class="custom_button">
+                          <a class="" href="#">
+                              <span>إكتشف الآن</span>
+                          </a>
+                          </button>
+                          <div class="arrows">
+                              <i class="ri-arrow-right-s-line arrow_swipe_right"></i>
+                              <i class=" ri-arrow-left-s-line arrow_swipe_left"></i>
+                          </div>
+                      </div>
+                  </div>
+                {% endfor %}
+              </div>
+          </div>
+      </div>
+  </section>
+  <!--=========================== Featured Articles ===========================-->
+  <section class="main_container ">
+      <p class="section_title "><span class=" "></span>مقالات مميزة</p>
+      <div class="Articles ">
+        
+          <div class="Article-side1 ">
+              <a class="Article-card" href="#">
+                  <div class="Article-data ">
+                      <span class=" ">
+                          <img src="{{main_post.background.url}}" alt=" ">
+                      </span>
+                      <h2 class="Article-title "> {{main_post.title}}</h2>
+                      <p class="Article-details ">{{main_post.meta_description}}</p>
+                      <h6 class="date ">{{main_post.publish_date | date:'d.m.Y'}}</h6>
+                  </div>
+                </a>
+          </div>
+          <div class="Article-side2 ">
+            {%for object in posts%}
+            {% if forloop.first %}
+            {% else %}
+              <div class="Article-card ">
+                  <div class="Article-style ">
+                      <div class="Article-data ">
+                          <h3 class="Article-title ">{{object.title}}</h3>
+                          <a href="{% url 'article_view' object.slug %}" class="more-read ">
+                              <h5>إقرأ المزيد</h5><i class="ri-arrow-left-s-line "></i>
+                          </a>
+                          <h6 class="date ">{{object.publish_date | date:'d.m.Y'}}</h6>
+                      </div>
+                      <span class=" ">
+                          <img src="{{object.background.url}} " alt=" ">
+                      </span>
+                  </div>
+              </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+      </div>
+  </section>
+
+  {% endblock %}
+
+  {% block java_script %}
+    <script>
+        $(".bookmark").click(function(){
+            var place_id = $('.place_id').val();
+            alert
+            $.ajax({
+                url:'{% url "add_favorite" %}',
+                data:{
+                    'place_id':place_id,
+                },
+                datatype:'json',
+                success:function(data){
+                    alert('Adding True');
+                }
+
+            })
+          });
+
+    </script>
+  {% endblock %}

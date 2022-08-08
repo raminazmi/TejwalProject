@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% load static %}
+    <!-- css file that related in this page  -->
+    {% block css_file %}
+    <link rel="stylesheet" href="{% static 'css/destination-style.css' %}"> 
+    <link rel="stylesheet" href="{% static 'css/card-item.css'%}">
+    {% endblock %}
+    {% block style%}
+    <style>
+        .places .card-place-active .content .img-card{
+            position: relative;
+            height: 18rem;
+        }
+        header{
+            background-image: url("{% static 'image/background_city.jpg' %}");
+        }
+    </style>
+    {% endblock%}
+    {% block content %}
+    <!-- start header  -->
+    <header>
+        <div class="header-inner">
+            {% include 'parts/navbar.html' %}
+        </div>
+        <div class="container">
+            <div class="main-heading">
+                <h1>المدن السياحية</h1>
+                <form method="GET" class="header-search">
+                    {{city_filter.form}}
+                    <input type="submit" value="ابحث">
+                </form>
+            </div>
+        </div>
+        </div>
+        
+    </header>
+    <div class="container">
+        <h2 class='title-category'> إختر وجهتك السياحية </h2>
+       <ul class="continent-box">
+        <li>
+            <a href="{% url 'country_filter' 'asia' %}">اسيا</a>
+            <i class="fas fa-globe-asia"></i>
+        </li>
+        <li>
+            <a href="{% url 'country_filter' 'africa' %}">أفريقيا</a>
+            <i class="fas fa-globe-africa"></i>
+        </li>
+        <li>
+            <a href="{% url 'country_filter' 'europe' %}">أوروبا</a>
+            <i class="fas fa-globe-asia"></i>
+        </li>
+        <li>
+            <a href="{% url 'country_filter' 'north_america' %}">أمريكا الشمالية</a>
+            <i class="fas fa-globe-americas"></i>
+        </li>
+        <li>
+            <a href="{% url 'country_filter' 'north_america' %}">أمريكا الجنوبية</a>
+            <i class="fas fa-globe-americas"></i>
+        </li>
+       </ul>
+    </div>
+    <!-- End header  -->
+    <section class="popular-places places section-head">
+        <div class="container">
+            <div class="row">
+                {% for x in objects%}
+                <div style="margin-bottom:20px;box-shadow:none;"class="card-city card-place-active col-lg-4">
+                    <div class="content">
+                        <a href="{% url 'city' x.slug %}">
+                            <div class="img-card">
+                                <img src="{{x.image.url}}" alt="">
+                                <a href="" class="location">
+                                    <span style="font-size:35px">{{x.name_city}}</span>
+                                     <br>
+                                     <span style="font-size:22px;">{{x.country.name_country}} , اسيا</span>
+                                     </a>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}         
+            </div>
+            {% if objects.has_other_pages %}
+            <div class="pangration">
+                <ul>
+                    {% if objects.has_previous %}
+                    <li><a href="?page={{objects.previous_page_number}}"><i class="fas fa-chevron-right"></i></a></i></li>
+                    {% endif %}
+
+                    {% for i in objects.paginator.page_range %}
+                    <li class=""><a href="?page={{i}}">{{i}}</a></li>
+                    {% endfor %}
+
+                    {% if objects.has_next %}
+                    <li><a href="?page={{objects.next_page_number}}"><i class="fas fa-chevron-left"></i></a></i></li>
+                    {% endif %}
+
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+    </section>
+    <!-- Start Footer -->
+    <!-- End Footer -->
+
+    {% endblock %}
+    {% block js_file %}
+    <script>
+        var x = $('#title_page').text();
+        document.title = ' تجوال | المدن السياحية  '.concat(x)
+        $('input').attr("placeholder", "ابحث عن المدن");
+     </script>
+    {% endblock %}
