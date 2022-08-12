@@ -1,7 +1,3 @@
-// /****************** Fancybox *******************/
-// Fancybox.bind('[data-fancybox="gallery"]', {
-//     infinite: true,
-// });
 /****************** navbar button *******************/
 const mobile_nav = document.querySelector(".mobile-navbar-btn");
 const nav_header = document.querySelector(".header");
@@ -72,11 +68,17 @@ var sliderSelector = '.container_float',
             nextEl: '.arrow_swipe_left',
             prevEl: '.arrow_swipe_right',
         },
-
+        on: {
+            slideChangeTransitionStart: function() {
+                $(".container_float").find(".tap-bar").animate({ "margin-top": "100px", "opacity": "0" }, -1500);
+                $(".container_float").find(".tap-bar").animate({ "margin-top": "0", "opacity": "1" }, 600);
+            },
+        },
         loop: true,
     };
-var ExperimentsSwiper = new Swiper(sliderSelector, options);
-ExperimentsSwiper.init();
+var ExperimentsSwiper1 = new Swiper(sliderSelector, options);
+ExperimentsSwiper1.init();
+
 var sliderSelector = '.mySwiper-experiments',
     options = {
         speed: 600,
@@ -106,6 +108,7 @@ var sliderSelector = '.mySwiper-experiments',
     };
 var ExperimentsSwiper = new Swiper(sliderSelector, options);
 ExperimentsSwiper.init();
+
 
 /******************* Popular landmarks ********************/
 

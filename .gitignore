@@ -1,0 +1,5 @@
+
+src/project/static/css/bootstrap.min.css
+src/project/settings.py
+*.py
+src/accounts/__pycache__/__init__.cpython-310.pyc

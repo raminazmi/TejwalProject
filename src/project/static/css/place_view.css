@@ -1,5 +1,8 @@
+/************* New **************/
+
 .place {
     position: relative;
+    z-index: 1;
 }
 
 .place .main_container {
@@ -17,6 +20,7 @@
 .place_container {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
 }
 
 .place .reports {
@@ -28,6 +32,7 @@
 
 .place .reports .statistical {
     padding: 15px;
+    min-width: 300px;
     max-width: 300px;
     background: #2a0ec6b2;
     backdrop-filter: blur( 6px);
@@ -37,7 +42,8 @@
 
 .place .reports .statistical button {
     width: 100%;
-    margin: 0 auto 15px;
+    margin: 5px auto 15px;
+    padding: 5px 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -60,7 +66,6 @@
 
 .place .reports .statistical .details {
     margin-bottom: 30px;
-    width: 313px;
 }
 
 .place .reports .statistical .details div {
@@ -93,7 +98,8 @@
 
 .place .flex div {
     font-family: 'Cairo', sans-serif;
-    font-family: 'Tajawal', sans-serif;}
+    font-family: 'Tajawal', sans-serif;
+}
 
 .place .features {
     flex-wrap: wrap;
@@ -106,7 +112,8 @@
     gap: 20px;
     color: #7f7f7f;
     font-family: 'Cairo', sans-serif;
-    font-family: 'Tajawal', sans-serif;}
+    font-family: 'Tajawal', sans-serif;
+}
 
 .reviews .flex {
     gap: 5px;
@@ -116,7 +123,6 @@
     width: 60px;
     height: 60px;
     border-radius: 100px;
-    object-fit: cover;
     -webkit-border-radius: 100px;
     -moz-border-radius: 100px;
     -ms-border-radius: 100px;
@@ -140,19 +146,22 @@
 .place .first_row .flex h4:nth-child(2) {
     color: #7f7f7f;
     font-family: 'Cairo', sans-serif;
-    font-family: 'Tajawal', sans-serif;}
+    font-family: 'Tajawal', sans-serif;
+}
 
 .place .place_container p {
     width: 50vw;
     color: #7f7f7f;
     font-family: 'Cairo', sans-serif;
-    font-family: 'Tajawal', sans-serif;}
+    font-family: 'Tajawal', sans-serif;
+}
 
 .place .reviews_value h2,
 .reviews_value h6 {
     font-size: 16px;
     font-family: 'Cairo', sans-serif;
-    font-family: 'Tajawal', sans-serif;}
+    font-family: 'Tajawal', sans-serif;
+}
 
 .place .reviews_value h2 {
     font-size: 20px;
@@ -280,6 +289,11 @@
 
 .reviews .reviews_value .evaluate h5 {
     color: var(--first-color-alt);
+    margin-left: 15px
+}
+
+.reviews .reviews_value .empty h6 {
+    margin-right: 5px
 }
 
 .reviews button {
@@ -319,7 +333,8 @@
     max-width: 40vw;
     color: #626262;
     font-family: 'Cairo', sans-serif;
-    font-family: 'Tajawal', sans-serif;}
+    font-family: 'Tajawal', sans-serif;
+}
 
 .reviews .user img {
     width: 60px;
@@ -426,8 +441,11 @@ tfoot td {
         text-align: right;
         color: #626262;
     }
+    .reviews .reviews_value .evaluate h5 {
+        font-size: 16px;
+    }
     .reviews .reviews_value .evaluate h6 {
-        font-size: 14px;
+        font-size: 13px;
     }
 }
 
@@ -459,17 +477,98 @@ tfoot td {
         padding: 5px 10px;
     }
 }
-.modal-content {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    top: 37px;
-    color: var(--bs-modal-color);
-    pointer-events: auto;
-    background-color: var(--bs-modal-bg);
-    background-clip: padding-box;
-    border: var(--bs-modal-border-width) solid var(--bs-modal-border-color);
-    border-radius: var(--bs-modal-border-radius);
-    outline: 0;
+
+
+/************* fancybox ***************/
+
+.fancybox__caption {
+    color: #fff;
+    font-size: 25px;
+}
+
+.fancybox__backdrop::after {
+    content: "";
+    position: absolute;
+    width: 10%;
+    height: 10%;
+    filter: blur(2px);
+    left: 50%;
+    top: 50%;
+    transform: scale(11);
+    opacity: 0.3;
+    background-image: var(--bg-image);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.fancybox__container {
+    --carousel-button-bg: #ffffff;
+    --carousel-button-svg-filter: none;
+    --fancybox-bg: #000;
+    color: var(--first-color);
+}
+
+.fancybox__nav {
+    --carousel-button-svg-width: 22px;
+    --carousel-button-svg-height: 22px;
+    --carousel-button-svg-stroke-width: 2;
+}
+
+.fancybox__nav .carousel__button.is-prev {
+    left: 15px;
+}
+
+.fancybox__nav .carousel__button.is-next {
+    right: 15px;
+}
+
+.carousel__button.is-close {
+    top: 30px;
+    right: 30px;
+}
+
+.fancybox__slide {
+    padding: 0;
+}
+
+.fancybox__thumbs .carousel__slide {
+    padding: 20px 12px;
+    overflow: visible;
+}
+
+.fancybox__thumb {
+    border-radius: 6px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.26);
+}
+
+.is-nav-selected .fancybox__thumb {
+    transform: scale(1.25);
+    box-shadow: 0 0 0 2.5px var(--container-color);
+}
+
+.is-nav-selected .fancybox__thumb::after {
+    display: none;
+}
+
+.carousel .carousel__button:focus {
+    outline: none;
+    box-shadow: 1px 3px 3px #fff;
+}
+
+@media (max-width: 600px) {
+    .fancybox__nav,
+    .fancybox__container {
+        --carousel-button-width: 30px;
+        --carousel-button-height: 30px;
+        --carousel-button-svg-width: 18px;
+        --carousel-button-svg-height: 18px;
+        --carousel-button-svg-stroke-width: 3;
+    }
+    .fancybox__nav .carousel__button.is-prev {
+        left: 8px;
+    }
+    .fancybox__nav .carousel__button.is-next {
+        right: 8px;
+    }
 }

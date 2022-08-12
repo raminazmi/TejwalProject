@@ -3,12 +3,9 @@
 <html dir="rtl">
 
 <head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5474706777178169"
-     crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5474706777178169" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% block meta_code %}
-    {% endblock %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> {% block meta_code %} {% endblock %}
     <!--=============== FAVICON ===============-->
     <link rel="shortcut icon" href="{% static 'image/short-icon.png' %} " type="image/x-icon">
     <link rel="icon" type="image/x-icon" href="{% static 'image/short-icon.png' %}">
@@ -35,11 +32,7 @@
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
     <link rel="stylesheet" href="{% static 'css/personal_profile.css' %}">
     <link rel="stylesheet" href="{% static 'css/CountryPage.css' %}">
-    <link rel="stylesheet" href="{% static 'css/place_view.css' %}">
-
-
-    {% block css_files %}
-    {% endblock %}
+    <link rel="stylesheet" href="{% static 'css/place_view.css' %}"> {% block css_files %} {% endblock %}
 </head>
 
 <body class="body">
@@ -48,7 +41,7 @@
         <div class="SearchIcon"><img src="{% static 'image/magnifier.png' %}" alt="searchIcon"></div>
         <a href="{% url 'MainPage' %}">
             <img src="{% static 'image/logo white.svg' %}" alt="logo1" class="logo1" /></a>
-            <img src="{% static 'image/logo white.svg' %}" alt="logo2" class="logo2" />
+        <img src="{% static 'image/logo white.svg' %}" alt="logo2" class="logo2" />
         <div class="navbar">
             <div class="menu">
                 {% if request.user.is_authenticated %}
@@ -64,13 +57,13 @@
                     </a>
                 </div>
                 {% endif %}
-                <form method="GET" id="search" class="search-web" action="{% url 'general_search' %}" validate="required" >
+                <form method="GET" id="search" class="search-web" action="{% url 'general_search' %}" validate="required">
 
-                <div class="search">
-                    <input class="search-input" name="search-text" type="search" placeholder="ابحث عن وجهتك">
-                    <div class="search_icon"><img src="{% static 'image/magnifier.png' %}" alt="searchIcon"></i>
+                    <div class="search">
+                        <input class="search-input" name="search-text" type="search" placeholder="ابحث عن وجهتك">
+                        <div class="search_icon"><img src="{% static 'image/magnifier.png' %}" alt="searchIcon"></i>
+                        </div>
                     </div>
-                </div>
 
                 </form>
                 <ul class="navbar-list">
@@ -81,10 +74,10 @@
                         <a class="navbar-link" href="{% url 'CountryList' %}"><img src="{% static 'image/333.svg ' %}"></img>وجهات</a>
                     </li>
                     <li>
-                        <a class="navbar-link" href="#"><img src="{% static 'image/man.svg ' %}"></img>الفعاليات</a>
+                        <a class="navbar-link" href="{% url 'events' %}"><img src="{% static 'image/man.svg ' %}"></img>الفعاليات</a>
                     </li>
                     <li>
-                        <a class="navbar-link" href="#"><img src="{% static 'image/election-event-on-a-calendar-with-star-symbol.svg ' %}"></img>مقالات</a>
+                        <a class="navbar-link" href="{% url 'articles' %}"><img src="{% static 'image/election-event-on-a-calendar-with-star-symbol.svg ' %}"></img>مقالات</a>
                     </li>
                     {% if request.user.is_authenticated %}
                     <li>
@@ -97,12 +90,9 @@
 
                     {% else %}
                     <li>
-                        <a class="login_button" href="{% url 'accounts:login' %}"><img src="{% static 'image/newsletter.svg ' %}"></img>دخول</a>
-                    </li>
-                    <li>
                         <button class="custom_button">
-                            <a class="" href="{% url 'accounts:signup' %}">
-                                <span>تسجيل جديد</span>
+                            <a class="" href="{% url 'accounts:login' %}">
+                                <span>تسجيل الدخول</span>
                             </a>
                         </button>
                     </li>
@@ -118,9 +108,7 @@
         </button>
         <div class="shadow_color" id="full_Screen" onclick=""></div>
     </header>
-{% block content %}
-
-{% endblock %}
+    {% block content %} {% endblock %}
 
 
     <!--=========================== Footer ===========================-->

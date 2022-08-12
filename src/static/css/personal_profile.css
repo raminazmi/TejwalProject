@@ -72,12 +72,6 @@
     color: var(--container-color);
 }
 
-.profile button i span {
-    font-weight: 500;
-    font-family: 'Cairo', sans-serif;
-    font-family: 'Tajawal', sans-serif;
-}
-
 .profile .nav-item i.active {
     background: #6247f948;
     color: var(--first-color-alt);

@@ -1,294 +1,286 @@
-{% extends "new_base.html" %}
-{% load static %}
-    {% block meta_code %}
-        <title>تجوال السياحي | المقالات</title>
-        <meta name="robots" content="index, follow">
-    {% endblock %}
-
-    {% block css_files %}
-        <link rel="stylesheet" href="{% static 'css/articles.css' %}">
-    {% endblock %}
-
-    {% block content %}
-    <!--=========================== breadcrumb ===========================-->
-        <section class="breadcrumb-size">
-        <div class="main_container">
-            <nav style="--breadcrumb-divider: quote('>');" aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item">
-                        <a href="#"><img src="{% static 'image/home1.svg' %}"></a>
-                    </li>
-                    <li class="breadcrumb-item active" aria-current="page">المقالات</li>
-                </ol>
-            </nav>
-        </div>
-        </section>
-    <!--=========================== Most Read ===========================-->
-        <section class="most_read">
-        <div class="main_container ">
-            <p class="section_title "><span class=" "></span>الأكثر قراءة</p>
-            <ul class="nav nav-pills" id="pills-tab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">مقالات</button>
+{% extends "new_base.html" %} {% load static %} {% block meta_code %}
+<title>تجوال السياحي | المقالات</title>
+<meta name="robots" content="index, follow"> {% endblock %} {% block css_files %}
+<link rel="stylesheet" href="{% static 'css/articles.css' %}"> {% endblock %} {% block content %}
+<!--=========================== breadcrumb ===========================-->
+<section class="breadcrumb-size">
+    <div class="main_container">
+        <nav style="--breadcrumb-divider: quote('>');" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="#"><img src="{% static 'image/home1.svg' %}"></a>
                 </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">نصائح للسفر</button>
-                </li>
-            </ul>
-            <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
-                    {% for object in articles%}
-                    <div class="Article-data">
-                        <span class="">1</span>
-                        <a href="{% url 'article_view' object.slug %}">
-                            <h6 class="Article-title ">{{object.title}}</h6>
-                        </a>
-                    </div>
-                    {% endfor %}
+                <li class="breadcrumb-item active" aria-current="page">المقالات</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+<!--=========================== Most Read ===========================-->
+<section class="most_read">
+    <div class="main_container ">
+        <p class="section_title "><span class=" "></span>الأكثر قراءة</p>
+        <ul class="nav nav-pills" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">مقالات</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">نصائح للسفر</button>
+            </li>
+        </ul>
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+                {% for object in articles%}
+                <div class="Article-data">
+                    <span class="">1</span>
+                    <a href="{% url 'article_view' object.slug %}">
+                        <h6 class="Article-title ">{{object.title}}</h6>
+                    </a>
                 </div>
-                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
-                    <div class="Article-data">
-                        <span class="">1</span>
-                        <a href="#">
-                            <h6 class="Article-title ">لتجنب أسوأ اللحظات.. ماذا تفعل إذا فاتتك رحلة الطائرة؟</h6>
-                        </a>
-                    </div>
-                    <div class="Article-data">
-                        <span class="">2</span>
-                        <a href="#">
-                            <h6 class="Article-title ">استخدم هذه الحيل الـ 11 لحجز تذاكر طيران أرخص</h6>
-                        </a>
-                    </div>
-                    <div class="Article-data">
-                        <span class="">3</span>
-                        <a href="#">
-                            <h6 class="Article-title ">أبرز مزايا البطاقة الحمراء في الغابة السوداء</h6>
-                        </a>
-                    </div>
-                    <div class="Article-data">
-                        <span class="">4</span>
-                        <a href="#">
-                            <h6 class="Article-title ">اكتشف الكنوز المخفية في حدائق مونتريال النباتية</h6>
-                        </a>
-                    </div>
+                {% endfor %}
+            </div>
+            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+                <div class="Article-data">
+                    <span class="">1</span>
+                    <a href="#">
+                        <h6 class="Article-title ">لتجنب أسوأ اللحظات.. ماذا تفعل إذا فاتتك رحلة الطائرة؟</h6>
+                    </a>
+                </div>
+                <div class="Article-data">
+                    <span class="">2</span>
+                    <a href="#">
+                        <h6 class="Article-title ">استخدم هذه الحيل الـ 11 لحجز تذاكر طيران أرخص</h6>
+                    </a>
+                </div>
+                <div class="Article-data">
+                    <span class="">3</span>
+                    <a href="#">
+                        <h6 class="Article-title ">أبرز مزايا البطاقة الحمراء في الغابة السوداء</h6>
+                    </a>
+                </div>
+                <div class="Article-data">
+                    <span class="">4</span>
+                    <a href="#">
+                        <h6 class="Article-title ">اكتشف الكنوز المخفية في حدائق مونتريال النباتية</h6>
+                    </a>
                 </div>
             </div>
         </div>
-        </section>
-    <!--=========================== Articles Gallery  ===========================-->
-        <section class="gallery gallery_Articles">
-        <div class="main_container">
-            <p class="section_title "><span class=""></span>المقالات</p>
-            <div class="Articles_gallery">
-                <div class="row gallery-item">
-                    {% for object in articles %}
-                    <div class="item col-lg-4 col-md-6">
-                        <div class=" filterDiv ">
-                            <div class="swiper-slide">
-                                <div href=" " class="card_curve">
-                                    <a href="{% url 'article_view' object.slug %}">
-                                        <img src="{{object.background.url}}" class="card__image" alt="" />
-                                    </a>
-                                </div>
+    </div>
+</section>
+<!--=========================== Articles Gallery  ===========================-->
+<section class="gallery gallery_Articles">
+    <div class="main_container">
+        <p class="section_title "><span class=""></span>المقالات</p>
+        <div class="Articles_gallery">
+            <div class="row gallery-item">
+                {% for object in articles %}
+                <div class="item col-lg-4 col-md-6">
+                    <div class=" filterDiv ">
+                        <div class="swiper-slide">
+                            <div href=" " class="card_curve">
+                                <a href="{% url 'article_view' object.slug %}">
+                                    <img src="{{object.background.url}}" class="card__image" alt="" />
+                                </a>
                             </div>
                         </div>
-                        <h5 class="">{{object.title}}</h5>
-
-                        <div href="{% url 'article_view' object.slug %}" class="more-read ">
-                            <h5>إقرأ المزيد</h5>
-                            <i class="ri-arrow-left-s-line "></i>
-                        </div>
                     </div>
-                    {% endfor %}
-                    <nav aria-label="Page navigation " class="Page">
-                        <ul class="pagination">
-                            <li class="pagination_move">
-                                <div class="page-link prev" aria-label="Previous">
-                                    <i class="ri-arrow-right-s-line"></i>
-                                </div>
-                            </li>
-                            <li class="page-item">
-                                <div class="page page-link">
-                                    صفحة (
-                                    <span class="page-num active"></span>)
-                                </div>
-                            </li>
-                            <li class=" pagination_move">
-                                <div class="page-link next" aria-label="Next">
-                                    <i class="ri-arrow-left-s-line"></i>
-                                </div>
-                            </li>
-                        </ul>
-                    </nav>
+                    <h5 class="">{{object.title}}</h5>
+
+                    <div href="{% url 'article_view' object.slug %}" class="more-read ">
+                        <h5>إقرأ المزيد</h5>
+                        <i class="ri-arrow-left-s-line "></i>
+                    </div>
                 </div>
+                {% endfor %}
+                <nav aria-label="Page navigation " class="Page">
+                    <ul class="pagination">
+                        <li class="pagination_move">
+                            <div class="page-link prev" aria-label="Previous">
+                                <i class="ri-arrow-right-s-line"></i>
+                            </div>
+                        </li>
+                        <li class="page-item">
+                            <div class="page page-link">
+                                صفحة (
+                                <span class="page-num active"></span>)
+                            </div>
+                        </li>
+                        <li class=" pagination_move">
+                            <div class="page-link next" aria-label="Next">
+                                <i class="ri-arrow-left-s-line"></i>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </div>
-        </section>
-    <!--=========================== Featured Articles ===========================-->
-        <section class="main_container ">
-        <p class="section_title "><span class=" "></span>مقالات مميزة</p>
-        <div class="Articles ">
-            <div class="Article-side1 ">
-                <div class="Article-card ">
-                    <div class="Article-data ">
-                        <span class=" ">
+    </div>
+</section>
+<!--=========================== Featured Articles ===========================-->
+<section class="main_container ">
+    <p class="section_title "><span class=" "></span>مقالات مميزة</p>
+    <div class="Articles ">
+        <div class="Article-side1 ">
+            <div class="Article-card ">
+                <div class="Article-data ">
+                    <span class=" ">
                             <img src="assets/img/skyscrapers-palm-trees-dubai-uae.jpg " alt=" ">
                         </span>
-                        <h1 class="Article-title ">أفضل 5 شواطئ أثناء زيارتك للقطر</h1>
-                        <p class="Article-details ">في هذا الدليل إليكم مجموعة أسماء شواطئ قطر الأشهر، حيث سنسقط على أهم وأفضل 10 شواطئ في قطر والتي نرشحها بقوة للراغبين في قضاء وقت ممتع على البحر سواء كنت بمفردك أو بصحبة عائلتك أو أصدقائك.</p>
-                        <h6 class="date ">2022.05.22</h6>
-                    </div>
-                </div>
-            </div>
-            <div class="Article-side2 ">
-                <div class="Article-card ">
-                    <div class="Article-style ">
-                        <div class="Article-data ">
-                            <h3 class="Article-title ">لتجنب أسوأ اللحظات.. ماذا تفعل إذا فاتتك رحلة الطائرة؟</h3>
-                            <a href="# " class="more-read ">
-                                <h5>إقرأ المزيد</h5><i class="ri-arrow-left-s-line "></i>
-                            </a>
-                            <h6 class="date ">2022.05.22</h6>
-                        </div>
-                        <span class=" ">
-                            <img src="assets/img/dubai-desktop-580x360.jpg " alt=" ">
-                        </span>
-                    </div>
-                </div>
-                <div class="Article-card ">
-                    <div class="Article-style ">
-                        <div class="Article-data ">
-                            <h3 class="Article-title ">لتجنب أسوأ اللحظات.. ماذا تفعل إذا فاتتك رحلة الطائرة؟</h3>
-                            <a href="# " class="more-read ">
-                                <h5>إقرأ المزيد</h5><i class="ri-arrow-left-s-line "></i>
-                            </a>
-                            <h6 class="date ">2022.05.22</h6>
-                        </div>
-                        <span class=" ">
-                            <img src="assets/img/abu-dhabi.jpg " alt=" ">
-                        </span>
-                    </div>
-                </div>
-                <div class="Article-card ">
-                    <div class="Article-style ">
-                        <div class="Article-data ">
-                            <h3 class="Article-title ">لتجنب أسوأ اللحظات.. ماذا تفعل إذا فاتتك رحلة الطائرة؟</h3>
-                            <a href="# " class="more-read ">
-                                <h5>إقرأ المزيد</h5><i class="ri-arrow-left-s-line "></i>
-                            </a>
-                            <h6 class="date ">2022.05.22</h6>
-                        </div>
-                        <span class=" ">
-                            <img src="assets/img/manama-cityguide-580x3602x.jpg "></span>
-                    </div>
+                    <h1 class="Article-title ">أفضل 5 شواطئ أثناء زيارتك للقطر</h1>
+                    <p class="Article-details ">في هذا الدليل إليكم مجموعة أسماء شواطئ قطر الأشهر، حيث سنسقط على أهم وأفضل 10 شواطئ في قطر والتي نرشحها بقوة للراغبين في قضاء وقت ممتع على البحر سواء كنت بمفردك أو بصحبة عائلتك أو أصدقائك.</p>
+                    <h6 class="date ">2022.05.22</h6>
                 </div>
             </div>
         </div>
-        </section>
+        <div class="Article-side2 ">
+            <div class="Article-card ">
+                <div class="Article-style ">
+                    <div class="Article-data ">
+                        <h3 class="Article-title ">لتجنب أسوأ اللحظات.. ماذا تفعل إذا فاتتك رحلة الطائرة؟</h3>
+                        <a href="# " class="more-read ">
+                            <h5>إقرأ المزيد</h5><i class="ri-arrow-left-s-line "></i>
+                        </a>
+                        <h6 class="date ">2022.05.22</h6>
+                    </div>
+                    <span class=" ">
+                            <img src="assets/img/dubai-desktop-580x360.jpg " alt=" ">
+                        </span>
+                </div>
+            </div>
+            <div class="Article-card ">
+                <div class="Article-style ">
+                    <div class="Article-data ">
+                        <h3 class="Article-title ">لتجنب أسوأ اللحظات.. ماذا تفعل إذا فاتتك رحلة الطائرة؟</h3>
+                        <a href="# " class="more-read ">
+                            <h5>إقرأ المزيد</h5><i class="ri-arrow-left-s-line "></i>
+                        </a>
+                        <h6 class="date ">2022.05.22</h6>
+                    </div>
+                    <span class=" ">
+                            <img src="assets/img/abu-dhabi.jpg " alt=" ">
+                        </span>
+                </div>
+            </div>
+            <div class="Article-card ">
+                <div class="Article-style ">
+                    <div class="Article-data ">
+                        <h3 class="Article-title ">لتجنب أسوأ اللحظات.. ماذا تفعل إذا فاتتك رحلة الطائرة؟</h3>
+                        <a href="# " class="more-read ">
+                            <h5>إقرأ المزيد</h5><i class="ri-arrow-left-s-line "></i>
+                        </a>
+                        <h6 class="date ">2022.05.22</h6>
+                    </div>
+                    <span class=" ">
+                            <img src="assets/img/manama-cityguide-580x3602x.jpg "></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-        <script>
-            const galleryItems = document.querySelector(".gallery-item").children;
-            const prev = document.querySelector(".prev");
-            const next = document.querySelector(".next");
-            const page = document.querySelector(".page-num");
-            const maxItem = 6;
-            let index = 1;
-    
-            const pagination = Math.ceil(galleryItems.length / maxItem);
-            console.log(pagination)
-    
-            prev.addEventListener("click", function() {
-                index--;
-                check();
-                showItems();
-            })
-            next.addEventListener("click", function() {
-                index++;
-                check();
-                showItems();
-            })
-    
-            function check() {
-                if (index == pagination) {
-                    next.classList.add("disabled");
-                } else {
-                    next.classList.remove("disabled");
-                }
-    
-                if (index == 1) {
-                    prev.classList.add("disabled");
-                } else {
-                    prev.classList.remove("disabled");
-                }
-            }
-    
-            function showItems() {
-                for (let i = 0; i < galleryItems.length; i++) {
-                    galleryItems[i].classList.remove("show");
-                    galleryItems[i].classList.add("hide");
-    
-    
-                    if (i >= (index * maxItem) - maxItem && i < index * maxItem) {
-                        // if i greater than and equal to (index*maxItem)-maxItem;
-                        // means  (1*8)-8=0 if index=2 then (2*8)-8=8
-                        galleryItems[i].classList.remove("hide");
-                        galleryItems[i].classList.add("show");
-                    }
-                    page.innerHTML = index;
-                }
-    
-    
-            }
-    
-            window.onload = function() {
-                showItems();
-                check();
-            }
-        </script>
+<script>
+    const galleryItems = document.querySelector(".gallery-item").children;
+    const prev = document.querySelector(".prev");
+    const next = document.querySelector(".next");
+    const page = document.querySelector(".page-num");
+    const maxItem = 6;
+    let index = 1;
 
-        <script>
-            filterSelection("all");
-    
-            function filterSelection(all) {
-                var x, i;
-                x = document.getElementsByClassName("filterDiv");
-                if (all == "all") all = "";
-                for (i = 0; i < x.length; i++) {
-                    RemoveClass(x[i], "show");
-                    if (x[i].className.indexOf(all) > -1) AddClass(x[i], "show");
-                }
+    const pagination = Math.ceil(galleryItems.length / maxItem);
+    console.log(pagination)
+
+    prev.addEventListener("click", function() {
+        index--;
+        check();
+        showItems();
+    })
+    next.addEventListener("click", function() {
+        index++;
+        check();
+        showItems();
+    })
+
+    function check() {
+        if (index == pagination) {
+            next.classList.add("disabled");
+        } else {
+            next.classList.remove("disabled");
+        }
+
+        if (index == 1) {
+            prev.classList.add("disabled");
+        } else {
+            prev.classList.remove("disabled");
+        }
+    }
+
+    function showItems() {
+        for (let i = 0; i < galleryItems.length; i++) {
+            galleryItems[i].classList.remove("show");
+            galleryItems[i].classList.add("hide");
+
+
+            if (i >= (index * maxItem) - maxItem && i < index * maxItem) {
+                // if i greater than and equal to (index*maxItem)-maxItem;
+                // means  (1*8)-8=0 if index=2 then (2*8)-8=8
+                galleryItems[i].classList.remove("hide");
+                galleryItems[i].classList.add("show");
             }
-    
-            function AddClass(element, name) {
-                var i, arr1, arr2;
-                arr1 = element.className.split(" ");
-                arr2 = name.split(" ");
-                for (i = 0; i < arr2.length; i++) {
-                    if (arr1.indexOf(arr2[i]) == -1) {
-                        element.className += " " + arr2[i];
-                    }
-                }
+            page.innerHTML = index;
+        }
+
+
+    }
+
+    window.onload = function() {
+        showItems();
+        check();
+    }
+</script>
+
+<script>
+    filterSelection("all");
+
+    function filterSelection(all) {
+        var x, i;
+        x = document.getElementsByClassName("filterDiv");
+        if (all == "all") all = "";
+        for (i = 0; i < x.length; i++) {
+            RemoveClass(x[i], "show");
+            if (x[i].className.indexOf(all) > -1) AddClass(x[i], "show");
+        }
+    }
+
+    function AddClass(element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+            if (arr1.indexOf(arr2[i]) == -1) {
+                element.className += " " + arr2[i];
             }
-    
-            function RemoveClass(element, name) {
-                var i, arr1, arr2;
-                arr1 = element.className.split(" ");
-                arr2 = name.split(" ");
-                for (i = 0; i < arr2.length; i++) {
-                    while (arr1.indexOf(arr2[i]) > -1) {
-                        arr1.splice(arr1.indexOf(arr2[i]), 1);
-                    }
-                }
-                element.className = arr1.join(" ");
+        }
+    }
+
+    function RemoveClass(element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+            while (arr1.indexOf(arr2[i]) > -1) {
+                arr1.splice(arr1.indexOf(arr2[i]), 1);
             }
-            var btnContainer = document.getElementById("myBtnContainer");
-            var btns = btnContainer.getElementsByClassName("btns");
-            for (var i = 0; i < btns.length; i++) {
-                btns[i].addEventListener("click", function() {
-                    var current = document.getElementsByClassName("activated");
-                    current[0].className = current[0].className.replace("activated", "");
-                    this.className += " activated";
-                });
-            }
-        </script>
-    {% endblock %}
+        }
+        element.className = arr1.join(" ");
+    }
+    var btnContainer = document.getElementById("myBtnContainer");
+    var btns = btnContainer.getElementsByClassName("btns");
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function() {
+            var current = document.getElementsByClassName("activated");
+            current[0].className = current[0].className.replace("activated", "");
+            this.className += " activated";
+        });
+    }
+</script>
+{% endblock %}

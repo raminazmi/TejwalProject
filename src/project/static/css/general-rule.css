@@ -1,3 +1,12 @@
+@font-face {
+    font-family: 'Tajawal-Bold';
+    src: url(../fonts/Tajawal/Tajawal-Bold.ttf);
+}
+
+@font-face {
+    font-family: 'Tajawal-Regular';
+    src: url(../fonts/Tajawal/Tajawal-Regular.ttf);
+}
 
 * {
     padding: 0;
@@ -38,6 +47,14 @@ body {
     --light-color: #eaeaea;
 }
 
+a {
+    cursor: pointer;
+}
+
+i {
+    color: var(--first-color-alt);
+}
+
 .custom_button {
     background-color: var(--first-color-alt);
     border: none;
@@ -53,6 +70,10 @@ body {
     -moz-border-radius: 50px;
     -ms-border-radius: 50px;
     -o-border-radius: 50px;
+}
+
+.card_curve {
+    width: 100%
 }
 
 .custom_button a {
@@ -75,11 +96,14 @@ body {
 
 .section_title {
     position: relative;
-    margin-right: 40px;
-    margin-bottom: 30px;
+    margin: 0 40px 30px 15px;
     font-size: 23px;
     color: var(--first-color);
     font-weight: bold;
+}
+
+.modal {
+    z-index: 99999999999;
 }
 
 .section_title span::before {
@@ -114,7 +138,7 @@ body {
 
 .main_container {
     max-width: 1200px;
-    margin: 30px auto 90px;
+    margin: 30px auto;
 }
 
 .accordion-header {
@@ -156,6 +180,34 @@ body {
 
 .bookmark:hover {
     color: var(--first-color-alt);
+}
+
+.more-read h5 {
+    font-size: 17px;
+}
+
+.more-read {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.more-read,
+.more-read i {
+    text-decoration: none;
+    color: var(--first-color-alt);
+}
+
+.more-read i {
+    margin-right: 5px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+@media screen and (max-width: 50rem) {
+    .more-read h5 {
+        font-size: 14px;
+    }
 }
 
 @media screen and (max-width: 500px) {

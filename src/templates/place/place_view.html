@@ -1,286 +1,291 @@
-{% extends 'new_base.html' %}
-{% load static %}
-     <!-- file that related in this page  -->
-     {% block meta_code %}
-        <title>{{object.title_place}} - {{object.city.name_city}}</title>
-        <meta name="description" content="{{object.short_info}}">
-        <meta name="keywords" content="سياحه">
-     {% endblock %}
+{% extends 'new_base.html' %} {% load static %}
+<!-- file that related in this page  -->
+{% block meta_code %}
+<title>{{object.title_place}} - {{object.city.name_city}}</title>
+<meta name="description" content="{{object.short_info}}">
+<meta name="keywords" content="سياحه"> {% endblock %} {% block css_files %}
+<link rel="stylesheet" href="{% static 'css/CountryPage.css' %}">
+<link rel="stylesheet" href="{% static 'css/place_view.css' %}"> {% endblock %} {% block content %}
+<!--=========================== breadcrumb ===========================-->
+<section class="breadcrumb-size">
+    <div class="main_container">
+        <nav style="--breadcrumb-divider: quote('>');" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="#"><img src="{% static 'image/home1.svg' %}"></a>
+                </li>
+                <li class="breadcrumb-item " aria-current="page">الوجهات</li>
+                <li class="breadcrumb-item " aria-current="page">{{object.city.country.name_country}}</li>
+                <li class="breadcrumb-item " aria-current="page">{{object.get_category_display}}</li>
+                <li class="breadcrumb-item active" aria-current="page"> {{object.title_place}} </li>
+            </ol>
+        </nav>
+    </div>
+</section>
+<!--=========================== Img-cover ===========================-->
+<section class="Img-cover CountryPage place">
+    <div class="main_container">
+        <a class=" ">
+            <div class="CoverImage FlexEmbed   galary_space" style="background-image:url({{object.background.url}})" data-fancybox="gallery" data-src="{{object.background.url}}" data-caption="">
+                <img src="{{object.background.url}}" />
+                <i class="ri-bookmark-line bookmark "></i>
+                <input type="hidden" name="" class='place_id' value="{{object.id}}">
+                <div class="pic">
+                    <a data-fancybox="gallery" data-src="{{object.background.url}}" data-caption="ssss">
+                        <img src="{{object.background.url}}" />
+                    </a>
+                    <a data-fancybox="gallery" data-src="{{object.background.url}}" data-caption="">
+                        <img src="{{object.background.url}}" />
+                        <i class="ri-image-2-line bookmark"></i>
+                    </a>
+                    <a data-fancybox="gallery" data-src="{{object.background.url}}" data-caption="">
+                        <img src="{{object.background.url}}" />
+                        <i class="ri-image-2-line bookmark"></i> </a>
+                </div>
+            </div>
+            <div class="gallery_place">
+                <a data-fancybox="gallery" data-src="{{object.background.url}} " data-caption="">
+                    <img src="{{object.background.url}}" />
+                </a>
+                <a data-fancybox="gallery" data-src="{{object.background.url}} " data-caption="">
+                    <img src="{{object.background.url}}" />
+                </a>
+            </div>
+        </a>
+    </div>
+</section>
+<!--=========================== place ===========================-->
+<section class="main_container place">
+    <div class="place_container">
+        <div class="data">
+            <div class="first_row">
+                <div>
+                    <div class="flex">
+                        <h4> {{object.get_category_display}}</h4>
+                        <h4></h4>
+                    </div>
+                    <div class="">
+                        <h1> {{object.title_place}}</h1>
+                    </div>
+                </div>
+                <div class="review">
+                    <div class="customer_reviews">
+                        <div class="starsAndExplore">
+                            <fieldset class="rating-group" dir="ltr">
+                                <input type="radio" id="star5" name="rating" value="5">
+                                <label for="star5"></label>
+                                <input type="radio" id="star4" name="rating" value="4">
+                                <label for="star4"></label>
+                                <input type="radio" id="star3" name="rating" value="3">
+                                <label for="star3"></label>
+                                <input type="radio" id="star2" name="rating" value="2">
+                                <label for="star2"></label>
+                                <input type="radio" id="star1" name="rating" value="1">
+                                <label for="star1"></label>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="reviews_value">
+                        <h2>{{rate}}</h2>
+                        <h6>({{count.rate__count}} مراجعات)</h6>
+                    </div>
+                </div>
+            </div>
+            <p>{{object.info}}</p>
+            <h5>مميزات {{object.title_place}}</h5>
+            <div class="flex features">
 
-     {% block css_files %}
-        <link rel="stylesheet" href="{% static 'css/CountryPage.css' %}">
-        <link rel="stylesheet" href="{% static 'css/place_view.css' %}">
-     {% endblock %}
-
-    {% block content %}
-        <!--=========================== breadcrumb ===========================-->
-        <section class="breadcrumb-size">
-          <div class="main_container">
-              <nav style="--breadcrumb-divider: quote('>');" aria-label="breadcrumb">
-                  <ol class="breadcrumb">
-                      <li class="breadcrumb-item">
-                          <a href="#"><img src="{% static 'image/home1.svg' %}"></a>
-                      </li>
-                      <li class="breadcrumb-item " aria-current="page">الوجهات</li>
-                      <li class="breadcrumb-item " aria-current="page">{{object.city.country.name_country}}</li>
-                      <li class="breadcrumb-item " aria-current="page">{{object.get_category_display}}</li>
-                      <li class="breadcrumb-item active" aria-current="page"> {{object.title_place}} </li>
-                  </ol>
-              </nav>
-          </div>
-      </section>
-      <!--=========================== Img-cover ===========================-->
-      <section class="Img-cover CountryPage place">
-          <div class="main_container">
-              <div class="CoverImage FlexEmbed Flex-Embed" style="background-image:url({{object.background.url}})">
-                  <i class="ri-bookmark-line bookmark"></i>
-                  <input type="hidden" name=""class='place_id' value="{{object.id}}">
-                  <div class="content">
-                      <h2> {{object.title_place}}</h2>
-                  </div>
-              </div>
-          </div>
-      </section>
-      <!--=========================== place ===========================-->
-      <section class="main_container place">
-          <div class="place_container">
-              <div class="data">
-                  <div class="first_row">
-                      <div>
-                          <div class="flex">
-                              <h4> {{object.get_category_display}}</h4>
-                              <h4></h4>
-                          </div>
-                          <div class="">
-                              <h1> {{object.title_place}}</h1>
-                          </div>
-                      </div>
-                      <div class="review">
-                          <div class="customer_reviews">
-                              <div class="starsAndExplore">
-                                  <div class="rating-group">
-                                      <label aria-label="1 star" class="rating__label" for="rating3-1"><i
-                          class="rating__icon rating__icon--star fa fa-star"></i></label>
-                                      <label aria-label="2 stars" class="rating__label" for="rating3-2"><i
-                          class="rating__icon rating__icon--star fa fa-star"></i></label>
-                                      <label aria-label="3 stars" class="rating__label" for="rating3-3"><i
-                          class="rating__icon rating__icon--star fa fa-star"></i></label>
-                                      <label aria-label="4 stars" class="rating__label" for="rating3-4"><i
-                          class="rating__icon rating__icon--star fa fa-star"></i></label>
-                                      <label aria-label="5 stars" class="rating__label" for="rating3-5"><i
-                          class="rating__icon rating__icon--star fa fa-star"></i></label>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="reviews_value">
-                              <h2>{{rate}}</h2>
-                              <h6>({{count.rate__count}} مراجعات)</h6>
-                          </div>
-                      </div>
-                  </div>
-                  <p>{{object.info}}</p>
-                  <h5>مميزات  {{object.title_place}}</h5>
-                  <div class="flex features">
-                    
-                      <div class=""><img src="{% static 'image/check.svg' %}"></img>{{features}} </div>
-                  </div>
-              </div>
-              <div class="reports">
-                  <div class="statistical">
-                      <button class="custom_button" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample"><i class="ri-map-pin-2-fill"></i>
+                <div class=""><img src="{% static 'image/check.svg' %}"></img>{{features}} </div>
+            </div>
+        </div>
+        <div class="reports">
+            <div class="statistical">
+                <button class="custom_button" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample"><i class="ri-map-pin-2-fill"></i>
                           ارشادات الوصول</button>
-                      <div class="details">
-                          <div>
-                              <h6>العنوان</h6>
-                              <h5>{{object.city.country.name_country}} - {{object.city.name_city}}</h5>
-                          </div>
-                          <div>
-                              <h6>الموقع الالكتروني</h6>
-                              {% if object.website is None %}
-                              <h5>لا يتوفر موقع إلكتروني</h5>
-                              {% else %}
-                              <h5>{{object.website}}</h5>
-                              {% endif %}
-                          </div>
-                          <div>
-                              <h6>الهاتف</h6>
-                              <h5>987 322 2463 29 +</h5>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </section>
-      <!--=========================== Reviews ===========================-->
-      <section class="main_container ">
-          <p class="section_title"><span class=""></span>التقيمات</p>
-          <table class="reviews">
-              <thead>
-                  <tr>
-                      <th colspan="3">
-                          <div class="table_head">
-                            {% if count.rate__count != 0 %}
-                              <div class="reviews_value">
-                                  <h2>{{rate}}</h2>
-                                  <div class="evaluate">
-                                      <h5>ممتاز</h5>
-                                      <h6>({{count.rate__count}} مراجعات)</h6>
-                                  </div>
-                              </div>
-                            {% else %}
-                            <div class="reviews_value">
-                                <div class="evaluate">
-                                    <h5>لا يتوفر تقييمات حتى الان</h5>
-                                    <h6>قم بإضافة التقييم الان</h6>
-                                </div>
+                <div class="details">
+                    <div>
+                        <h6>العنوان</h6>
+                        <h5>{{object.city.country.name_country}} - {{object.city.name_city}}</h5>
+                    </div>
+                    <div>
+                        <h6>الموقع الالكتروني</h6>
+                        {% if object.website is None %}
+                        <h5>لا يتوفر موقع إلكتروني</h5>
+                        {% else %}
+                        <h5>{{object.website}}</h5>
+                        {% endif %}
+                    </div>
+                    <div>
+                        <h6>الهاتف</h6>
+                        <h5>987 322 2463 29 +</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--=========================== Reviews ===========================-->
+<section class="main_container ">
+    <p class="section_title"><span class=""></span>التقيمات</p>
+    <table class="reviews">
+        <thead>
+            <tr>
+                <th colspan="3">
+                    <div class="table_head">
+                        {% if count.rate__count != 0 %}
+                        <div class="reviews_value">
+                            <h2>{{rate}}</h2>
+                            <div class="evaluate">
+                                <h5>ممتاز</h5>
+                                <h6>({{count.rate__count}} مراجعات)</h6>
                             </div>
-                            {% endif %}
-                              <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        </div>
+                        {% else %}
+                        <div class="reviews_value">
+                            <div class="evaluate empty">
+                                <h5>لا يتوفر تقييمات حتى الان</h5>
+                                <h6>قم بإضافة التقييم الان</h6>
+                            </div>
+                        </div>
+                        {% endif %}
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
                               <div class="Share">
                                   <i class="ri-share-fill"></i>
                                   <h4>شارك تجربتك</h4>
                              </div>
                       </button>
-                              <!-- Modal -->
-                              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <form action="{% url 'review' %}" method="GET">  
-                                    <div class="modal-dialog modal-dialog-centered">
-                                      <div class="modal-content">
-                                          <div class="modal-header">
-                                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                          </div>
-                                          <div class="modal-body">
-                                              <p class="">اضف التقييم ل <span> {{object.title_place}}</span></p>
-                                              <div class="flex">
-                                                  <img src="" alt="">
-                                                  <div class="customer_reviews">
-                                                      <div class="starsAndExplore">
-                                                          <label aria-label="1 star" class="rating__label" for="rating3-1"><i
-                                                  class="rating__icon rating__icon--star fa fa-star"></i></label>
-                                                          <label aria-label="2 stars" class="rating__label" for="rating3-2"><i
-                                                  class="rating__icon rating__icon--star fa fa-star"></i></label>
-                                                          <label aria-label="3 stars" class="rating__label" for="rating3-3"><i
-                                                  class="rating__icon rating__icon--star fa fa-star"></i></label>
-                                                          <label aria-label="4 stars" class="rating__label" for="rating3-4"><i
-                                                  class="rating__icon rating__icon--star fa fa-star"></i></label>
-                                                          <label aria-label="5 stars" class="rating__label" for="rating3-5"><i
-                                                  class="rating__icon rating__icon--star fa fa-star"></i></label>
-                                                      </div>
-                                                  </div>
-                                                  <input type="hidden" name="place_id" value="{{object.id}}">
-                                              </div>
-                                              <br>
-                                              <div class="form-floating">
-                                                  <textarea class="form-control" name="comment" placeholder="أخبر الجميع عن تجربتك" id="floatingTextarea2" style="height: 180px; border-radius: 0;"></textarea>
-                                                  <label for="floatingTextarea2">أخبر الجميع عن تجربتك</label>
-                                              </div>
-                                              <br>
-                                              <input type="submit" class="custom_button w-100" value="أضف التقييم">
-                                              <br><br>
-                                          </div>
-                                      </div>
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <form action="{% url 'review' %}" method="GET">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p class="">اضف التقييم ل <span> {{object.title_place}}</span></p>
+                                            <div class="flex">
+                                                <img src="" alt="">
+                                                <div class="customer_reviews">
+                                                    <div class="starsAndExplore">
+                                                        <fieldset class="rating-group" dir="ltr">
+                                                            <input type="radio" id="star5" name="rating" value="5">
+                                                            <label for="star5"></label>
+                                                            <input type="radio" id="star4" name="rating" value="4">
+                                                            <label for="star4"></label>
+                                                            <input type="radio" id="star3" name="rating" value="3">
+                                                            <label for="star3"></label>
+                                                            <input type="radio" id="star2" name="rating" value="2">
+                                                            <label for="star2"></label>
+                                                            <input type="radio" id="star1" name="rating" value="1">
+                                                            <label for="star1"></label>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                                <input type="hidden" name="place_id" value="{{object.id}}">
+                                            </div>
+                                            <br>
+                                            <div class="form-floating">
+                                                <textarea class="form-control" name="comment" placeholder="أخبر الجميع عن تجربتك" id="floatingTextarea2" style="height: 180px; border-radius: 0;"></textarea>
+                                                <label for="floatingTextarea2">أخبر الجميع عن تجربتك</label>
+                                            </div>
+                                            <br>
+                                            <input type="submit" class="custom_button w-100" value="أضف التقييم">
+                                            <br><br>
+                                        </div>
                                     </div>
-                                </form>
                                 </div>
-                          </div>
-                      </th>
-                  </tr>
-              </thead>
-              <tbody>
-                {% if count.rate__count != 0%}
-                {% for object in comments %}
-                  <tr>
-                      <td>
-                          <div class="flex">
-                            {% if object.user.person_image %}
-                            <img src="{{object.user.person_image.url}}" alt="">
-                            {% else %}
-                              <img src="{% static 'image/person.jpg' %}" alt="">
-                            {% endif %}
-                              <div class="user_data">
-                                  <h3>{{object.user.user.username}} </h3>
-                                  <h4></h4>
-                              </div>
-                          </div>
-                      </td>
-                      <td>
-                          <div class="customer_reviews">
-                              <div class="starsAndExplore">
-                                  <div class="rating-group">
-                                      <label aria-label="1 star" class="rating__label" for="rating3-1"><i
-                      class="rating__icon rating__icon--star fa fa-star"></i></label>
-                                      <label aria-label="2 stars" class="rating__label" for="rating3-2"><i
-                      class="rating__icon rating__icon--star fa fa-star"></i></label>
-                                      <label aria-label="3 stars" class="rating__label" for="rating3-3"><i
-                      class="rating__icon rating__icon--star fa fa-star"></i></label>
-                                      <label aria-label="4 stars" class="rating__label" for="rating3-4"><i
-                      class="rating__icon rating__icon--star fa fa-star"></i></label>
-                                      <label aria-label="5 stars" class="rating__label" for="rating3-5"><i
-                      class="rating__icon rating__icon--star fa fa-star"></i></label>
-                                  </div>
-                              </div>
-                              <p class="opinion">{{object.comment}}</p>
-                          </div>
-                      </td>
-                      <td class="review_date">
-                          <div>{{object.created_at}}</div>
-                      </td>
-                  </tr>
-                {% endfor %}
-                {% endif%}
-              </tbody>
-              {% if count.rate__count != 0%}
-              <tfoot>
-                  <tr>
-                      <td colspan="3">
-                          <div class="view_more">
-                              عرض المزيد
-                          </div>
-                      </td>
-                  </tr>
-              </tfoot>
-              {%endif%}
-          </table>
-      </section>
-      <!--=========================== Popular landmarks ===========================-->
-      <section class="main_container landmarks custom_button_change">
-          <p class="section_title"><span class=""></span>معالم مشابهة</p>
-          <div class="swiper mySwiper-landmarks">
-              <div class="arrows">
-                  <i class="ri-arrow-right-s-line arrow_swipe_right"></i>
-                  <i class="ri-arrow-left-s-line arrow_swipe_left"></i>
-              </div>
-              <div class="swiper-wrapper">
-                {% for object in similer_objects %}
-                    {% include 'parts/card_place.html' %}
-                {% endfor %}
-              </div>
-          </div>
-      </section>
-    {% endblock %}
+                            </form>
+                        </div>
+                    </div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if count.rate__count != 0%} {% for object in comments %}
+            <tr>
+                <td>
+                    <div class="flex">
+                        {% if object.user.person_image %}
+                        <img src="{{object.user.person_image.url}}" alt=""> {% else %}
+                        <img src="{% static 'image/person.jpg' %}" alt=""> {% endif %}
+                        <div class="user_data">
+                            <h3>{{object.user.user.username}} </h3>
+                            <h4></h4>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="customer_reviews">
+                        <div class="starsAndExplore">
+                            <fieldset class="rating-group" dir="ltr">
+                                <input type="radio" id="star5" name="rating" value="5">
+                                <label for="star5"></label>
+                                <input type="radio" id="star4" name="rating" value="4">
+                                <label for="star4"></label>
+                                <input type="radio" id="star3" name="rating" value="3">
+                                <label for="star3"></label>
+                                <input type="radio" id="star2" name="rating" value="2">
+                                <label for="star2"></label>
+                                <input type="radio" id="star1" name="rating" value="1">
+                                <label for="star1"></label>
+                            </fieldset>
+                        </div>
+                        <p class="opinion">{{object.comment}}</p>
+                    </div>
+                </td>
+                <td class="review_date">
+                    <div>{{object.created_at}}</div>
+                </td>
+            </tr>
+            {% endfor %} {% endif%}
+        </tbody>
+        {% if count.rate__count != 0%}
+        <tfoot>
+            <tr>
+                <td colspan="3">
+                    <div class="view_more">
+                        عرض المزيد
+                    </div>
+                </td>
+            </tr>
+        </tfoot>
+        {%endif%}
+    </table>
+</section>
+<!--=========================== Popular landmarks ===========================-->
+<section class="main_container landmarks custom_button_change">
+    <p class="section_title"><span class=""></span>معالم مشابهة</p>
+    <div class="swiper mySwiper-landmarks">
+        <div class="arrows">
+            <i class="ri-arrow-right-s-line arrow_swipe_right"></i>
+            <i class="ri-arrow-left-s-line arrow_swipe_left"></i>
+        </div>
+        <div class="swiper-wrapper">
+            {% for object in similer_objects %} {% include 'parts/card_place.html' %} {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %} {% block java_script %}
+<script>
+    $(".bookmark").click(function() {
+        var place_id = $('.place_id').val();
+        $.ajax({
+            url: '{% url "add_favorite" %}',
+            data: {
+                'place_id': place_id,
+            },
+            dataType: 'json',
+            success: function(data) {
+                if (data.success) {
+                    alert('لقد تم الإضافة');
+                } else {
+                    alert('تم الحذف من المفضله ');
 
-    {% block java_script %}
-    <script>
-        $(".bookmark").click(function(){
-            var place_id = $('.place_id').val();
-            $.ajax({
-                url:'{% url "add_favorite" %}',
-                data:{
-                    'place_id':place_id,
-                },
-                dataType:'json',
-                success:function(data){
-                    if(data.success){
-                        alert('لقد تم الإضافة');
-                    }
-                    else{
-                        alert('تم الحذف من المفضله ');
-
-                    }
                 }
+            }
 
-            })
-          });
-
-    </script>
-  {% endblock %}
+        })
+    });
+</script>
+{% endblock %}

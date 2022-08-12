@@ -71,11 +71,6 @@
 .profile button i {
     color: var(--container-color);
 }
-.profile button i span{
-    font-weight: 500;
-    font-family: 'Cairo', sans-serif;
-    font-family: 'Tajawal', sans-serif;
-}
 
 .profile .nav-item i.active {
     background: #6247f948;
@@ -248,9 +243,4 @@
 
 .Favorite .card_curve:hover .card__description {
     background: var(--container-color);
-}
-.dropdown-menu[data-bs-popper] {
-    top: 100%;
-    right: -26px;
-    margin-top: var(--bs-dropdown-spacer);
 }

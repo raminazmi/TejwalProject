@@ -1,3 +1,13 @@
+@font-face {
+    font-family: 'Tajawal-Bold';
+    src: url(../fonts/Tajawal/Tajawal-Bold.ttf);
+}
+
+@font-face {
+    font-family: 'Tajawal-Regular';
+    src: url(../fonts/Tajawal/Tajawal-Regular.ttf);
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -11,6 +21,13 @@ body {
 }
 
 :root {
+    /*========== Colors ==========*/
+    /*Color mode HSL(hue, saturation, lightness)*/
+    /*
+     first-color: hsl(232, 26%, 17%)
+     second-color: hsl(49, 100%, 91%)
+     yallow:hsl(49, 100%, 91%)
+ */
     --hue: 230;
     --sat: 26%;
     --lig: 17%;
@@ -79,8 +96,7 @@ i {
 
 .section_title {
     position: relative;
-    margin-right: 40px;
-    margin-bottom: 30px;
+    margin: 0 40px 30px 15px;
     font-size: 23px;
     color: var(--first-color);
     font-weight: bold;

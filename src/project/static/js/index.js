@@ -34,19 +34,21 @@ var sliderSelector = '.mySwiper-events',
             prevEl: '.swiper-button-next',
         },
         breakpoints: {
-            200: { spaceBetween: 20 },
-            400: { spaceBetween: 30 },
+            300: {
+                spaceBetween: 20,
+                slidesPerView: 1.15
+            },
+            400: {
+                spaceBetween: 30,
+                slidesPerView: 1.25
+            },
             600: {
                 spaceBetween: 40,
             },
             800: { spaceBetween: 50 },
-
-            1100: {
-                spaceBetween: 65,
-            },
             1300: {
                 spaceBetween: 65,
-
+                slidesPerView: 1.25
             },
         },
     };
@@ -66,23 +68,47 @@ var sliderSelector = '.container_float',
             nextEl: '.arrow_swipe_left',
             prevEl: '.arrow_swipe_right',
         },
+        on: {
+            slideChangeTransitionStart: function() {
+                $(".container_float").find(".tap-bar").animate({ "margin-top": "100px", "opacity": "0" }, -1500);
+                $(".container_float").find(".tap-bar").animate({ "margin-top": "0", "opacity": "1" }, 600);
+            },
+        },
         loop: true,
     };
-var ExperimentsSwiper = new Swiper(sliderSelector, options);
-ExperimentsSwiper.init();
+var ExperimentsSwiper1 = new Swiper(sliderSelector, options);
+ExperimentsSwiper1.init();
+
 var sliderSelector = '.mySwiper-experiments',
     options = {
         speed: 600,
         allowTouchMove: false,
         spaceBetween: 15,
+        centeredSlides: true,
+
         navigation: {
             nextEl: '.arrow_swipe_left',
             prevEl: '.arrow_swipe_right',
+        },
+        breakpoints: {
+
+            800: {
+                slidesPerView: 1.15,
+
+                spaceBetween: 7,
+
+            },
+
+            1300: {
+                slidesPerView: 1,
+                spaceBetween: 10,
+            },
         },
         loop: true,
     };
 var ExperimentsSwiper = new Swiper(sliderSelector, options);
 ExperimentsSwiper.init();
+
 
 /******************* Popular landmarks ********************/
 
@@ -94,22 +120,34 @@ var swiper = new Swiper(".mySwiper-landmarks", {
         prevEl: ".arrow_swipe_right",
     },
     breakpoints: {
-        600: {
-            slidesPerView: 1,
-            spaceBetween: 0,
+
+        280: {
+            slidesPerView: 1.10,
         },
-        800: {
+        330: {
+            slidesPerView: 1.20,
+            spaceBetween: 15,
+        },
+        450: {
+            slidesPerView: 1.5,
+            spaceBetween: 20,
+        },
+        550: {
             slidesPerView: 2,
             spaceBetween: 20,
+        },
+        800: {
+            slidesPerView: 3,
+            spaceBetween: 15,
 
         },
         1100: {
             slidesPerView: 3,
-            spaceBetween: 30,
+            spaceBetween: 10,
         },
         1300: {
             slidesPerView: 4,
-            spaceBetween: 40,
+            spaceBetween: 20,
         },
     }
 });
@@ -167,20 +205,33 @@ var swiper = new Swiper(".Explore", {
         prevEl: ".arrow_swipe_right",
     },
     breakpoints: {
-        600: {
-            slidesPerView: 1,
-            spaceBetween: 0,
+        280: {
+            slidesPerView: 1.10,
         },
-        800: {
+        330: {
+            slidesPerView: 1.20,
+            spaceBetween: 15,
+        },
+        450: {
+            slidesPerView: 1.5,
             spaceBetween: 20,
         },
-        1100: {
+        550: {
             slidesPerView: 2,
-            spaceBetween: 25,
+            spaceBetween: 20,
+        },
+        800: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+
+        },
+        1100: {
+            slidesPerView: 3,
+            spaceBetween: 30,
         },
         1300: {
             slidesPerView: 3,
-            spaceBetween: 30,
+            spaceBetween: 40,
         },
     }
 });

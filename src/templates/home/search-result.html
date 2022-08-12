@@ -1,73 +1,56 @@
-{% extends "new_base.html" %}
-{% load static %}
-{% block css_file %}
-{% endblock %}
-
-{% block content %}
-    <div class="header">
-        <div class="container background">
-            <div class="title" style="color:aliceblue">
-                نتائج البحث
+{% extends "new_base.html" %} {% load static %} {% block css_file %} {% endblock %} {% block content %}
+<div class="search_header">
+    <h5> نتائج البحث عن</h5>
+</div>
+{% if result %}
+<h1 class="not-search">لا توجد نتائج بحث <i class="fa-solid fa-heart-crack"></i></h1>
+{% endif %} {% if country_objects|length > 0%}
+<section class="main_container  Destinations Tourist_Destinations">
+    <p class="section_title"><span class=""></span>الوجهات الرائجه</p>
+    <div class="row">
+        {% for object in country_objects %}
+        <div class="swiper-slide col-lg-3 col-md-4 col-sm-6">
+            <div class="card_curve">
+                <a href="{% url 'country' object.slug %}">
+                    <img src="{{object.image.url}}" class="card__image" alt="" />
+                    <h2 class="city_name">{{object.name_country}}</h2>
+                </a>
+                <div class="flag"><img src="{% static 'image/qatar.svg'%}" alt=""></div>
             </div>
         </div>
+
+        {% endfor%}
     </div>
-    {% if result %}
-    <h1 class="not-search">لا توجد نتائج بحث </h1>
-    {% endif %}
+</section>
+{% endif%}
 
-    {% if country_objects|length > 0%}
-        <section class="main_container  Destinations Tourist_Destinations">
-            <p class="section_title"><span class=""></span>الوجهات الرائجه</p>
-            <div class="row">
-                {% for object in country_objects %}
-                <div class="swiper-slide col-lg-3 col-md-4 col-sm-6">
-                    <div class="card_curve">
-                        <a href="{% url 'country' object.slug %}">
-                            <img src="{{object.image.url}}" class="card__image" alt="" />
-                            <h2 class="city_name">{{object.name_country}}</h2>
-                        </a>
-                        <div class="flag"><img src="{% static 'image/qatar.svg'%}" alt=""></div>
-                    </div>
-                </div>
-
-                {% endfor%}
-            </div>
-        </section>
-    {% endif%}
-
-    <!-- city Objects  -->
-    {% if city_objects|length > 0 %}
-        <section class="main_container landmarks Destinations">
-            <p class="section_title"><span class=""></span> المدن السياحية</p>
-            <div class="swiper mySwiper-landmarks">
-                <div class="arrows">
-                    <i class="ri-arrow-right-s-line arrow_swipe_right"></i>
-                    <i class="ri-arrow-left-s-line arrow_swipe_left"></i>
-                </div>
-                <div class="swiper-wrapper">
-                {% for object in cities %}
-                    {% include 'parts/card_city.html' %}
-                {% endfor %}
-                </div>
-            </div>
-        </section>
-    {% endif %}
-    <!-- Place objects  -->
-    {% if place_objects|length > 0 %}
-        <section class="main_container landmarks">
-            <p class="section_title"><span class=""></span>أشهر المعالم السياحيه</p>
-            <div class="swiper mySwiper-landmarks">
-                <div class="arrows">
-                    <i class="ri-arrow-right-s-line arrow_swipe_right"></i>
-                    <i class="ri-arrow-left-s-line arrow_swipe_left"></i>
-                </div>
-                <div class="swiper-wrapper">
-                {% for object in place_objects %}
-                    {% include 'parts/card_place.html' %}
-                {% endfor %}
-                </div>
-            </div>
-        </section>
-    {% endif%}
-
-{% endblock %}
+<!-- city Objects  -->
+{% if city_objects|length > 0 %}
+<section class="main_container landmarks Destinations">
+    <p class="section_title"><span class=""></span> المدن السياحية</p>
+    <div class="swiper mySwiper-landmarks">
+        <div class="arrows">
+            <i class="ri-arrow-right-s-line arrow_swipe_right"></i>
+            <i class="ri-arrow-left-s-line arrow_swipe_left"></i>
+        </div>
+        <div class="swiper-wrapper">
+            {% for object in cities %} {% include 'parts/card_city.html' %} {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+<!-- Place objects  -->
+{% if place_objects|length > 0 %}
+<section class="main_container landmarks">
+    <p class="section_title"><span class=""></span>أشهر المعالم السياحيه</p>
+    <div class="swiper mySwiper-landmarks">
+        <div class="arrows">
+            <i class="ri-arrow-right-s-line arrow_swipe_right"></i>
+            <i class="ri-arrow-left-s-line arrow_swipe_left"></i>
+        </div>
+        <div class="swiper-wrapper">
+            {% for object in place_objects %} {% include 'parts/card_place.html' %} {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif%} {% endblock %}
