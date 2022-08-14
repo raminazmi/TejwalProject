@@ -164,11 +164,12 @@ i {
 
 .bookmark {
     position: absolute;
-    top: 15px;
+    bottom: 105px;
     left: 15px;
     font-size: 22px;
-    background-color: var(--container-color);
-    color: var(--first-color);
+    background-color: var(--second-color);
+    box-shadow: 0 1px 6px var(--second-color);
+    color: var(--container-color);
     border-radius: 40px;
     padding: 0 5px;
     cursor: pointer;
@@ -179,7 +180,9 @@ i {
 }
 
 .bookmark:hover {
-    color: var(--first-color-alt);
+    color: var(--second-color);
+    background-color: var(--container-color);
+    border: 1.5px solid var(--second-color);
 }
 
 .more-read h5 {

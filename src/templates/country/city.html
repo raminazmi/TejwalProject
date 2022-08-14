@@ -145,10 +145,6 @@
 <section class="main_container landmarks content-float-city">
     <p class="section_title"><span class=""></span>المعالم الأكثر رواجا</p>
     <div class="swiper mySwiper-landmarks">
-        <div class="arrows">
-            <i class="ri-arrow-right-s-line arrow_swipe_right"></i>
-            <i class="ri-arrow-left-s-line arrow_swipe_left"></i>
-        </div>
         <div class="swiper-wrapper">
             {% for object in places%} {% include 'parts/card_place.html' %} {% endfor %}
         </div>
@@ -156,6 +152,8 @@
     <div class="more-view">
         <button class="main_container custom_button">عرض المزيد</button>
     </div>
+    <i class="ri-arrow-right-s-line arrow_swipe_right landmarks_arrows_right"></i>
+    <i class="ri-arrow-left-s-line arrow_swipe_left landmarks_arrows_left"></i>
 </section>
 <!--===========================  Experiments Activities ===========================-->
 {% if activities|length > 0 %}
@@ -317,11 +315,7 @@
 <!--=========================== Destinations ===========================-->
 <section class="main_container landmarks Destinations ">
     <p class="section_title"><span class="">وجهات أخرى مميزه في {{destination.country.name_country}}</span> </p>
-    <div class="swiper mySwiper-landmarks">
-        <div class="arrows">
-            <i class="ri-arrow-right-s-line arrow_swipe_right"></i>
-            <i class="ri-arrow-left-s-line arrow_swipe_left"></i>
-        </div>
+    <div class="swiper mySwiper-Destinations">
         <div class="swiper-wrapper">
             {% for object in cities %} {% if object.name_city == destination.name_city %} {% else %}
             <div class="swiper-slide">
@@ -335,5 +329,7 @@
             {% endif %} {% endfor %}
         </div>
     </div>
+    <i class="ri-arrow-right-s-line arrow_swipe_right Destinations_arrows_right"></i>
+    <i class="ri-arrow-left-s-line arrow_swipe_left Destinations_arrows_left"></i>
 </section>
 {% endblock %}

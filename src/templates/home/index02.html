@@ -44,29 +44,24 @@
 <!--=========================== Destinations ===========================-->
 <section class="main_container landmarks Destinations">
     <p class="section_title"><span class=""></span>أشهر الوجهات السياحية العالمية</p>
-    <div class="swiper mySwiper-landmarks">
-        <div class="arrows">
-            <i class="ri-arrow-right-s-line arrow_swipe_right"></i>
-            <i class="ri-arrow-left-s-line arrow_swipe_left"></i>
-        </div>
+    <div class="swiper mySwiper-Destinations">
         <div class="swiper-wrapper">
             {% for object in cities %} {% include 'parts/card_city.html' %} {% endfor %}
-
         </div>
     </div>
+    <i class="ri-arrow-right-s-line arrow_swipe_right Destinations_arrows_right"></i>
+    <i class="ri-arrow-left-s-line arrow_swipe_left Destinations_arrows_left"></i>
 </section>
 <!--=========================== Popular landmarks ===========================-->
 <section class="main_container landmarks">
     <p class="section_title"><span class=""></span>أشهر المعالم السياحيه</p>
     <div class="swiper mySwiper-landmarks">
-        <div class="arrows">
-            <i class="ri-arrow-right-s-line arrow_swipe_right"></i>
-            <i class="ri-arrow-left-s-line arrow_swipe_left"></i>
-        </div>
         <div class="swiper-wrapper">
             {% for object in places%} {% include 'parts/card_place.html' %} {% endfor %}
         </div>
     </div>
+    <i class="ri-arrow-right-s-line arrow_swipe_right landmarks_arrows_right"></i>
+    <i class="ri-arrow-left-s-line arrow_swipe_left landmarks_arrows_left"></i>
 </section>
 <!--=========================== Pupoler Events ===========================-->
 <section class="swiper events">
@@ -107,7 +102,7 @@
         <div class="swiper container-float container_float">
             <div class="swiper-wrapper">
                 {% for object in activities %}
-                <div class="swiper-slide" style="background-image: url({% static 'image/Group 419.svg'%});">
+                <div class="swiper-slide" style="background-image: url({% static 'image/pic.svg'%});">
                     <div class="">
                         <div class="tap-bar">
                             <a href="">

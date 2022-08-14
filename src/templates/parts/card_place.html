@@ -3,10 +3,6 @@
 <div class="swiper-slide">
     <div href="{% url 'place_view' object.slug %}" class="card_curve">
         <img src="{{object.background.url}}" class="card__image" alt="" />
-        <input type="hidden" name="" class="place_id" value="{{object.id}}">
-        <div class="mark">
-            <i class="ri-bookmark-line bookmark" id="add_favorit"></i>
-        </div >
         <div class="card__overlay">
             <div class="card__header">
                 <div class="card__header-text">
@@ -36,6 +32,8 @@
                   </button>
                     </div>
                 </div>
+                <input type="hidden" name="" class="place_id" value="{{object.id}}">
+                <i class="ri-heart-3-fill bookmark" id="add_favorit"></i>
             </div>
             <p class="card__description">{{object.short_info}}</p>
         </div>

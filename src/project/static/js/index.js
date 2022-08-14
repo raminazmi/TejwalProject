@@ -30,8 +30,8 @@ var sliderSelector = '.mySwiper-events',
             clickable: true,
         },
         navigation: {
-            nextEl: '.swiper-button-prev',
-            prevEl: '.swiper-button-next',
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
         },
         breakpoints: {
             300: {
@@ -89,6 +89,7 @@ var sliderSelector = '.mySwiper-experiments',
         navigation: {
             nextEl: '.arrow_swipe_left',
             prevEl: '.arrow_swipe_right',
+            disabledClass: 'disabled_swiper_button'
         },
         breakpoints: {
 
@@ -112,15 +113,15 @@ ExperimentsSwiper.init();
 
 /******************* Popular landmarks ********************/
 
-var swiper = new Swiper(".mySwiper-landmarks", {
+var swiper = new Swiper(".mySwiper-Destinations", {
     loopFillGroupWithBlank: true,
     allowTouchMoveallowTouchMove: true,
     navigation: {
-        nextEl: ".arrow_swipe_left",
-        prevEl: ".arrow_swipe_right",
+        nextEl: ".Destinations_arrows_left",
+        prevEl: ".Destinations_arrows_right",
+        disabledClass: 'disabled_swiper_button'
     },
     breakpoints: {
-
         280: {
             slidesPerView: 1.10,
         },
@@ -132,11 +133,52 @@ var swiper = new Swiper(".mySwiper-landmarks", {
             slidesPerView: 1.5,
             spaceBetween: 20,
         },
-        550: {
+        600: {
             slidesPerView: 2,
+            spaceBetween: 15,
+        },
+        850: {
+            slidesPerView: 3,
+            spaceBetween: 15,
+        },
+        1100: {
+            slidesPerView: 3,
+            spaceBetween: 10,
+        },
+        1300: {
+            slidesPerView: 4,
             spaceBetween: 20,
         },
-        800: {
+    }
+});
+
+/******************* Popular landmarks ********************/
+
+var swiper = new Swiper(".mySwiper-landmarks", {
+    loopFillGroupWithBlank: true,
+    allowTouchMoveallowTouchMove: true,
+    navigation: {
+        nextEl: ".landmarks_arrows_left",
+        prevEl: ".landmarks_arrows_right",
+        disabledClass: 'disabled_swiper_button'
+    },
+    breakpoints: {
+        280: {
+            slidesPerView: 1.10,
+        },
+        330: {
+            slidesPerView: 1.20,
+            spaceBetween: 15,
+        },
+        450: {
+            slidesPerView: 1.5,
+            spaceBetween: 20,
+        },
+        600: {
+            slidesPerView: 2,
+            spaceBetween: 15,
+        },
+        850: {
             slidesPerView: 3,
             spaceBetween: 15,
 
