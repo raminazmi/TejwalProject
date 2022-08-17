@@ -122,11 +122,7 @@
 <!--=========================== Destinations ===========================-->
 <section class="main_container landmarks Destinations content-float">
     <p class="section_title"><span class=""></span>المدن المشهورة في {{destination.name_country}}</p>
-    <div class="swiper mySwiper-landmarks">
-        <div class="arrows">
-            <i class="ri-arrow-right-s-line arrow_swipe_right"></i>
-            <i class="ri-arrow-left-s-line arrow_swipe_left"></i>
-        </div>
+    <div class="swiper mySwiper-Destinations">
         <div class="swiper-wrapper">
             {% for city in cities_objects %}
             <div class="swiper-slide">
@@ -144,9 +140,10 @@
                 </div>
             </div>
             {% endfor %}
-
         </div>
     </div>
+    <i class="ri-arrow-right-s-line arrow_swipe_right Destinations_arrows_right"></i>
+    <i class="ri-arrow-left-s-line arrow_swipe_left Destinations_arrows_left"></i>
 </section>
 <!--=========================== Discover As YOU ===========================-->
 {% include 'parts/category-places.html'%}
@@ -155,18 +152,16 @@
 <section class="main_container landmarks">
     <p class="section_title"><span class=""></span>المعالم الأكثر رواجا</p>
     <div class="swiper mySwiper-landmarks">
-        <div class="arrows">
-            <i class="ri-arrow-right-s-line arrow_swipe_right"></i>
-            <i class="ri-arrow-left-s-line arrow_swipe_left"></i>
-        </div>
         <div class="swiper-wrapper">
             {% for object in places%} {% include 'parts/card_place.html' %} {% endfor %}
         </div>
     </div>
-    <div class="more-view">
-        <button class="main_container custom_button">عرض المزيد</button>
-    </div>
+    <i class="ri-arrow-right-s-line arrow_swipe_right landmarks_arrows_right"></i>
+    <i class="ri-arrow-left-s-line arrow_swipe_left landmarks_arrows_left"></i>
 </section>
+<div class="more-view">
+    <button class="main_container custom_button">عرض المزيد</button>
+</div>
 
 <!--===========================  Experiments Activities ===========================-->
 <section class="swiper events experiments">
@@ -184,7 +179,7 @@
         <div class="swiper container-float container_float">
             <div class="swiper-wrapper">
                 {% for object in activities %}
-                <div class="swiper-slide" style="background-image: url({% static 'image/Group 419.svg' %});">
+                <div class="swiper-slide" style="background-image: url({% static 'image/pic.svg' %});">
                     <div class="">
                         <div class="tap-bar">
                             <a href="">
@@ -206,8 +201,8 @@
                                 </a>
                                 </button>
                         <div class="arrows">
-                            <i class="ri-arrow-right-s-line arrow_swipe_right"></i>
-                            <i class=" ri-arrow-left-s-line arrow_swipe_left"></i>
+                            <i class="ri-arrow-right-s-line arrow_swipe_right container_float_right"></i>
+                            <i class=" ri-arrow-left-s-line arrow_swipe_left container_float_left"></i>
                         </div>
                     </div>
                 </div>
@@ -220,11 +215,7 @@
 <!--=========================== Events in Country ===========================-->
 <section class="main_container landmarks Destinations event">
     <p class="section_title"><span class=""></span>فعاليات {{destination.name_country}} في <span>مايو 2022</span></p>
-    <div class="swiper mySwiper-landmarks">
-        <div class="arrows">
-            <i class="ri-arrow-right-s-line arrow_swipe_right"></i>
-            <i class="ri-arrow-left-s-line arrow_swipe_left"></i>
-        </div>
+    <div class="swiper mySwiper-event">
         <div class="swiper-wrapper">
             {% for object in events %}
             <div class="swiper-slide">
@@ -239,9 +230,10 @@
                 </div>
             </div>
             {% endfor %}
-
         </div>
     </div>
+    <i class="ri-arrow-right-s-line arrow_swipe_right event_arrows_right"></i>
+    <i class="ri-arrow-left-s-line arrow_swipe_left event_arrows_left"></i>
 </section>
 <!--=========================== Accordion ===========================-->
 <section class="main_container">

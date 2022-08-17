@@ -28,7 +28,7 @@
         <a class=" ">
             <div class="CoverImage FlexEmbed   galary_space" style="background-image:url({{object.background.url}})" data-fancybox="gallery" data-src="{{object.background.url}}" data-caption="">
                 <img src="{{object.background.url}}" />
-                <i class="ri-bookmark-line bookmark "></i>
+                <i class="ri-heart-3-fill bookmark "></i>
                 <input type="hidden" name="" class='place_id' value="{{object.id}}">
                 <div class="pic">
                     <a data-fancybox="gallery" data-src="{{object.background.url}}" data-caption="ssss">
@@ -254,17 +254,15 @@
     </table>
 </section>
 <!--=========================== Popular landmarks ===========================-->
-<section class="main_container landmarks custom_button_change">
+<section class="main_container landmarks">
     <p class="section_title"><span class=""></span>معالم مشابهة</p>
     <div class="swiper mySwiper-landmarks">
-        <div class="arrows">
-            <i class="ri-arrow-right-s-line arrow_swipe_right"></i>
-            <i class="ri-arrow-left-s-line arrow_swipe_left"></i>
-        </div>
         <div class="swiper-wrapper">
             {% for object in similer_objects %} {% include 'parts/card_place.html' %} {% endfor %}
         </div>
     </div>
+    <i class="ri-arrow-right-s-line arrow_swipe_right landmarks_arrows_right"></i>
+    <i class="ri-arrow-left-s-line arrow_swipe_left landmarks_arrows_left"></i>
 </section>
 {% endblock %} {% block java_script %}
 <script>

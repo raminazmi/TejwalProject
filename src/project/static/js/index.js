@@ -65,8 +65,8 @@ var sliderSelector = '.container_float',
         speed: 600,
         direction: "vertical",
         navigation: {
-            nextEl: '.arrow_swipe_left',
-            prevEl: '.arrow_swipe_right',
+            nextEl: '.container_float_left',
+            prevEl: '.container_float_right',
         },
         on: {
             slideChangeTransitionStart: function() {
@@ -87,9 +87,8 @@ var sliderSelector = '.mySwiper-experiments',
         centeredSlides: true,
 
         navigation: {
-            nextEl: '.arrow_swipe_left',
-            prevEl: '.arrow_swipe_right',
-            disabledClass: 'disabled_swiper_button'
+            nextEl: '.container_float_left',
+            prevEl: '.container_float_right',
         },
         breakpoints: {
 
@@ -152,6 +151,46 @@ var swiper = new Swiper(".mySwiper-Destinations", {
     }
 });
 
+/******************* Popular event ********************/
+var swiper = new Swiper(".mySwiper-event", {
+    loopFillGroupWithBlank: true,
+    allowTouchMoveallowTouchMove: true,
+    navigation: {
+        nextEl: ".event_arrows_left",
+        prevEl: ".event_arrows_right",
+        disabledClass: 'disabled_swiper_button'
+    },
+    breakpoints: {
+        280: {
+            slidesPerView: 1.10,
+        },
+        330: {
+            slidesPerView: 1.20,
+            spaceBetween: 15,
+        },
+        450: {
+            slidesPerView: 1.5,
+            spaceBetween: 20,
+        },
+        600: {
+            slidesPerView: 2,
+            spaceBetween: 15,
+        },
+        850: {
+            slidesPerView: 3,
+            spaceBetween: 15,
+
+        },
+        1100: {
+            slidesPerView: 3,
+            spaceBetween: 10,
+        },
+        1300: {
+            slidesPerView: 4,
+            spaceBetween: 20,
+        },
+    }
+});
 /******************* Popular landmarks ********************/
 
 var swiper = new Swiper(".mySwiper-landmarks", {
@@ -243,8 +282,9 @@ var swiper = new Swiper(".Explore", {
     loopFillGroupWithBlank: true,
     allowTouchMoveallowTouchMove: true,
     navigation: {
-        nextEl: ".arrow_swipe_left",
-        prevEl: ".arrow_swipe_right",
+        nextEl: ".Explore_arrows_left",
+        prevEl: ".Explore_arrows_right",
+        disabledClass: 'disabled_swiper_button',
     },
     breakpoints: {
         280: {

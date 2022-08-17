@@ -28,15 +28,13 @@
 {% if city_objects|length > 0 %}
 <section class="main_container landmarks Destinations">
     <p class="section_title"><span class=""></span> المدن السياحية</p>
-    <div class="swiper mySwiper-landmarks">
-        <div class="arrows">
-            <i class="ri-arrow-right-s-line arrow_swipe_right"></i>
-            <i class="ri-arrow-left-s-line arrow_swipe_left"></i>
-        </div>
+    <div class="swiper mySwiper-Destinations">
         <div class="swiper-wrapper">
             {% for object in cities %} {% include 'parts/card_city.html' %} {% endfor %}
         </div>
     </div>
+    <i class="ri-arrow-right-s-line arrow_swipe_right Destinations_arrows_right"></i>
+    <i class="ri-arrow-left-s-line arrow_swipe_left Destinations_arrows_left"></i>
 </section>
 {% endif %}
 <!-- Place objects  -->
@@ -44,13 +42,11 @@
 <section class="main_container landmarks">
     <p class="section_title"><span class=""></span>أشهر المعالم السياحيه</p>
     <div class="swiper mySwiper-landmarks">
-        <div class="arrows">
-            <i class="ri-arrow-right-s-line arrow_swipe_right"></i>
-            <i class="ri-arrow-left-s-line arrow_swipe_left"></i>
-        </div>
         <div class="swiper-wrapper">
             {% for object in place_objects %} {% include 'parts/card_place.html' %} {% endfor %}
         </div>
     </div>
+    <i class="ri-arrow-right-s-line arrow_swipe_right landmarks_arrows_right"></i>
+    <i class="ri-arrow-left-s-line arrow_swipe_left landmarks_arrows_left"></i>
 </section>
 {% endif%} {% endblock %}

@@ -140,7 +140,6 @@
         </div>
     </div>
 </section>
-
 <!--=========================== Popular landmarks ===========================-->
 <section class="main_container landmarks content-float-city">
     <p class="section_title"><span class=""></span>المعالم الأكثر رواجا</p>
@@ -149,22 +148,22 @@
             {% for object in places%} {% include 'parts/card_place.html' %} {% endfor %}
         </div>
     </div>
-    <div class="more-view">
-        <button class="main_container custom_button">عرض المزيد</button>
-    </div>
     <i class="ri-arrow-right-s-line arrow_swipe_right landmarks_arrows_right"></i>
     <i class="ri-arrow-left-s-line arrow_swipe_left landmarks_arrows_left"></i>
 </section>
+<div class="more-view">
+    <button class="main_container custom_button">عرض المزيد</button>
+</div>
 <!--===========================  Experiments Activities ===========================-->
 {% if activities|length > 0 %}
 <section class="swiper events experiments">
     <div class="main_container">
-        <p class="section_title"><span class=""></span>الأنشطه التي لابد من ممارستها عند زياره {{destination.name_city}}</p>
+        <p class="section_title"><span class=""></span>تجارب لا تفوت</p>
         <div class="mySwiper-experiments">
             <div class="swiper-wrapper">
                 {% for object in activities %}
                 <div class="swiper-slide">
-                    <img src="{{object.image.url}} ">
+                    <img src="{{object.image.url}}">
                 </div>
                 {% endfor %}
             </div>
@@ -172,30 +171,30 @@
         <div class="swiper container-float container_float">
             <div class="swiper-wrapper">
                 {% for object in activities %}
-                <div class="swiper-slide" style="background-image: url({% static 'image/Group 419.svg' %});">
+                <div class="swiper-slide" style="background-image: url({% static 'image/pic.svg'%});">
                     <div class="">
                         <div class="tap-bar">
                             <a href="">
-                                <h3>{{object.get_category_display}}</h3>
+                                <h3> {{object.get_category_display}}</h3>
                             </a>
                             <a href="">
-                                <h3> {{object.city.name_city}}</h3>
+                                <h3>{{object.city.name_city}}</h3>
                             </a>
                         </div>
                         <p class="title" id="title">{{object.title}}</p>
                         <div class="paragraph">
-                            <p class="" id="paragraph">{{object.info}}</p>
+                            <p>{{object.info}}</p>
                         </div>
                     </div>
                     <div class="footer-position">
                         <button class="custom_button">
-                                        <a class="" href="#">
-                                            <span>إكتشف الآن</span>
-                                        </a>
-                                        </button>
+                          <a class="" href="#">
+                              <span>إكتشف الآن</span>
+                          </a>
+                          </button>
                         <div class="arrows">
-                            <i class="ri-arrow-right-s-line arrow_swipe_right"></i>
-                            <i class=" ri-arrow-left-s-line arrow_swipe_left"></i>
+                            <i class="ri-arrow-right-s-line arrow_swipe_right container_float_right"></i>
+                            <i class=" ri-arrow-left-s-line arrow_swipe_left container_float_left"></i>
                         </div>
                     </div>
                 </div>
@@ -211,11 +210,7 @@
 {% if events|length > 0 %}
 <section class="main_container landmarks Destinations event">
     <p class="section_title"><span class=""></span>فعاليات {{destination.name_city}} في <span>مايو 2022</span></p>
-    <div class="swiper mySwiper-landmarks">
-        <div class="arrows">
-            <i class="ri-arrow-right-s-line arrow_swipe_right"></i>
-            <i class="ri-arrow-left-s-line arrow_swipe_left"></i>
-        </div>
+    <div class="swiper mySwiper-event">
         <div class="swiper-wrapper">
             {% for object in events %}
             <div class="swiper-slide">
@@ -233,6 +228,8 @@
 
         </div>
     </div>
+    <i class="ri-arrow-right-s-line arrow_swipe_right event_arrows_right"></i>
+    <i class="ri-arrow-left-s-line arrow_swipe_left event_arrows_left"></i>
 </section>
 {% endif %}
 
